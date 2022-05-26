@@ -1,0 +1,160 @@
+<style>
+    #rechargeOrder-add .radioItem{
+        display: block;
+        float: left;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    #rechargeOrder-add .radioItem .layui-form-radio{
+        padding: 0;
+        margin: 6px 0 0 0;
+    }
+    #rechargeOrder-add .radioItem .layui-form-radio div{
+        display: none;
+    }
+    #rechargeOrder-add .layui-form-item {
+        margin-bottom: 25px;
+        clear: both;
+        *zoom: 1;
+    }
+
+</style>
+
+<div class="layui-fluid" id="rechargeOrder-add" lay-title="充值">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">充值</div>
+                <div class="layui-card-body" pad15="">
+                    <form class="layui-form" lay-filter="rechargeOrder-add-form" style="padding: 20px 30px 0 0;">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <label class="layui-form-label">充值金额：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="rechargeAmount" autocomplete="off" lay-verify="required|moneyNumber" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">元</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <label class="layui-form-label">充值方式：</label>
+                                <div class="layui-input-block">
+                                    <span th:each="entries,stat:${listNetwayCode}" class="radioItem">
+                                        <input type="radio" lay-filter="t1" name="netwayCode" th:value="${entries.code}" th:title="${entries.name}" th:if="${stat.index} eq 0 " checked>
+                                        <input type="radio" name="netwayCode" th:value="${entries.code}" th:title="${entries.name}" th:if="${stat.index} gt 0 ">
+                                        <img th:src="@{'/febs/images/CZ_'+${entries.code} + '.png'}" height="30" width="101" th:class="${entries.code}">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="layui-form-item">-->
+<!--                            <div class="layui-input-block">-->
+<!--                                <label class="layui-form-label">充值方式：</label>-->
+<!--                                <div class="layui-input-inline">-->
+<!--                                    <sys:dict sortCode="NetwayCode" name="netwayCode" lay-verify="required" class="layui-form-label layui-form-label-sm"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <label class="layui-form-label">验证码：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" maxlength="4" name="verifyCode" lay-verify="required"
+                                           placeholder="验证码" class="layui-input" autocomplete="off">
+                                </div>
+                                <div class="layui-col-xs5">
+                                    <img class="codeimg" id="codeimg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <label class="layui-form-label"></label>
+                                <button class="layui-btn layui-btn-normal" type="submit" lay-submit="" lay-filter="rechargeOrder-add-form-submit">
+                                    提交
+                                </button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['febs', 'form', 'validate', 'layer' ,'jquery','qrcode'], function () {
+        var $ = layui.jquery,
+            validate = layui.validate,
+            form = layui.form,
+            febs = layui.febs,
+            layer = layui.layer,
+            $view = $('#rechargeOrder-add'),
+            qrcode = layui.qrcode;
+        form.verify(validate);
+        initCode();
+        function initCode() {
+            $view.find('#codeimg').attr("src", ctx + "images/captcha?data=" + new Date().getTime());
+        }
+
+        $view.find('#codeimg').on('click', function () {
+            initCode();
+        });
+
+        $view.on("click",".radioItem",function () {
+             var self = $(this);
+             self.find('.layui-unselect').triggerHandler('click');
+        })
+
+        function showQrcode(url){
+            var _qrCodeTag = $('#qrCodeImg');
+            _qrCodeTag.attr('href', url);
+            qrcode.qrcode(document.getElementById("qrCodeImg"),{
+                width: 200,
+                height: 200,
+                text: url
+            });
+        }
+        form.render();
+        form.on('submit(rechargeOrder-add-form-submit)', function (data) {
+            layer.load();
+            data.field.rechargeAmount = (parseFloat(data.field.rechargeAmount)*100).toFixed(0);
+            febs.post(ctx + 'rechargeOrder/add', data.field, function (r) {
+                initCode();
+                layer.closeAll();
+                if(r.code == 200){
+                    if(r.payUrlType == 'scan'){
+                        layer.open({
+                            type: 1,
+                            title:"支付二维码",
+                            time: 120000,
+                            content: '<div style="padding:20px 20px 0 20px;">\n' +
+                                '<div style="text-align:center;font-size:22px;padding-bottom:20px;">扫一扫，支付马上完成！</div>\n' +
+                                '<div style="width:200px;height:200px;margin:0 auto 20px;"><a id="qrCodeImg" ></a></div>\n' +
+                                '<div style="text-align:center;padding-bottom:20px;">\n' +
+                                '<span class="qrCodeTital">\n' +
+                                '请使用对应方式扫码支付(如网银或快捷方式可使用手机浏览器扫码或点击二维码在线支付)\n' +
+                                '</span>\n' +
+                                '</div>\n' +
+                                '</div>' //这里content是一个普通的String
+                        });
+                        showQrcode(r.payUrl);
+                        form.render();
+                        return false;
+                    }else if (r.payUrlType == 'jump'){
+                        window.open(r.payUrl,"_blank");
+                        return false;
+                    }else {
+                        febs.alert.warn(r.message);
+                        return false;
+                    }
+                }
+                febs.alert.warn('提交失败，请稍后重新尝试');
+            },function (r) {
+                layer.closeAll();
+            });
+            return false;
+        });
+    });
+</script>

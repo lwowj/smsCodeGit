@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "febs",
+      "type": "com.hero.sms.common.properties.FebsProperties",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "febs.auto-open-browser",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    },
+    {
+      "name": "febs.code",
+      "type": "com.hero.sms.common.properties.ValidateCodeProperties",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    },
+    {
+      "name": "febs.max-batch-insert-num",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    },
+    {
+      "name": "febs.shiro",
+      "type": "com.hero.sms.common.properties.ShiroProperties",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    },
+    {
+      "name": "febs.swagger",
+      "type": "com.hero.sms.common.properties.SwaggerProperties",
+      "sourceType": "com.hero.sms.common.properties.FebsProperties"
+    }
+  ],
+  "hints": []
+}

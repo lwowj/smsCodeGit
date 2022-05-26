@@ -1,0 +1,142 @@
+2022-03-27 01:14:35 INFO  main com.hero.sms.SmsApplication Starting SmsApplication on LAPTOP-L07PL5KH with PID 272212 (C:\work\workspaceSmsBfSvn\sms\sms-admin\target\classes started by payBoo in C:\work\workspaceSmsBfSvn\sms\sms-admin)
+2022-03-27 01:14:35 INFO  main com.hero.sms.SmsApplication The following profiles are active: test
+2022-03-27 01:14:39 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-27 01:14:39 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-03-27 01:14:40 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 947ms. Found 0 repository interfaces.
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$68355f8c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'febsProperties' of type [com.hero.sms.common.properties.FebsProperties$$EnhancerBySpringCGLIB$$22f727d7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroConfig' of type [com.hero.sms.common.authentication.ShiroConfig$$EnhancerBySpringCGLIB$$e1c10ac4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatisPlusConfigure' of type [com.hero.sms.common.configure.MybatisPlusConfigure$$EnhancerBySpringCGLIB$$f44a7f48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$3c6f5b55] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceCreator' of type [com.baomidou.dynamic.datasource.DynamicDataSourceCreator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceProvider' of type [com.baomidou.dynamic.datasource.provider.YmlDynamicDataSourceProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:41 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource detect P6SPY plugin and enabled it
+2022-03-27 01:14:41 INFO  main com.zaxxer.hikari.HikariDataSource base - Starting...
+2022-03-27 01:14:42 INFO  main com.zaxxer.hikari.HikariDataSource base - Start completed.
+2022-03-27 01:14:42 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Starting...
+2022-03-27 01:14:42 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Start completed.
+2022-03-27 01:14:42 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [quartz] success
+2022-03-27 01:14:42 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [base] success
+2022-03-27 01:14:42 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource initial loaded [2] datasource,primary datasource named [base]
+2022-03-27 01:14:42 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dataSource' of type [com.baomidou.dynamic.datasource.DynamicRoutingDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:42 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:42 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [com.sun.proxy.$Proxy120] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [com.sun.proxy.$Proxy121] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleServiceImpl' of type [com.hero.sms.system.service.impl.UserRoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userServiceImpl' of type [com.hero.sms.system.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [com.sun.proxy.$Proxy124] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [com.sun.proxy.$Proxy125] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuServiceImpl' of type [com.hero.sms.system.service.impl.RoleMenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleServiceImpl' of type [com.hero.sms.system.service.impl.RoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [com.sun.proxy.$Proxy128] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuServiceImpl' of type [com.hero.sms.system.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:46 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroRealm' of type [com.hero.sms.common.authentication.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:47 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'redisSessionDAO' of type [org.crazycake.shiro.RedisSessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:47 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:47 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:47 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-27 01:14:48 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8088 (http)
+2022-03-27 01:14:48 INFO  main org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8088"]
+2022-03-27 01:14:48 INFO  main org.apache.catalina.core.StandardService Starting service [Tomcat]
+2022-03-27 01:14:48 INFO  main org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.27]
+2022-03-27 01:14:49 INFO  main org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+2022-03-27 01:14:49 INFO  main org.springframework.web.context.ContextLoader Root WebApplicationContext: initialization completed in 13785 ms
+2022-03-27 01:14:50 INFO  main com.hero.sms.common.xss.XssFilter ------------ xss filter init ------------
+2022-03-27 01:14:54 INFO  main org.quartz.impl.StdSchedulerFactory Using default implementation for ThreadExecutor
+2022-03-27 01:14:54 INFO  main org.quartz.core.SchedulerSignalerImpl Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-03-27 01:14:54 INFO  main org.quartz.core.QuartzScheduler Quartz Scheduler v.2.3.2 created.
+2022-03-27 01:14:54 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore Using db table-based data access locking (synchronization).
+2022-03-27 01:14:54 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore JobStoreCMT initialized.
+2022-03-27 01:14:54 INFO  main org.quartz.core.QuartzScheduler Scheduler meta-data: Quartz Scheduler (v2.3.2) 'FEBS_Scheduler' with instanceId 'LAPTOP-L07PL5KH1648314894149'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2022-03-27 01:14:54 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler 'FEBS_Scheduler' initialized from an externally provided properties instance.
+2022-03-27 01:14:54 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler version: 2.3.2
+2022-03-27 01:14:54 INFO  main org.quartz.core.QuartzScheduler JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@74844f8a
+2022-03-27 01:14:54 INFO  main p6spy 2022-03-27 01:14:54 | 耗时 6 ms | SQL 语句：
+SELECT job_id jobId, bean_name beanName, method_name methodName, params, cron_expression cronExpression, status, remark, create_time createTime FROM t_job ORDER BY job_id;
+2022-03-27 01:14:56 INFO  main org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-03-27 01:14:56 INFO  main springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-03-27 01:14:56 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService
+2022-03-27 01:14:56 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService 'febsAsyncThreadPool'
+2022-03-27 01:14:57 INFO  main org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping Adding welcome page template: index
+2022-03-27 01:14:58 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Context refreshed
+2022-03-27 01:14:58 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Found 1 custom documentation plugin(s)
+2022-03-27 01:14:58 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Skipping initializing disabled plugin bean swagger v2.0
+2022-03-27 01:14:58 INFO  main org.springframework.scheduling.quartz.SchedulerFactoryBean Will start Quartz Scheduler [FEBS_Scheduler] in 1 seconds
+2022-03-27 01:14:58 INFO  main org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8088"]
+2022-03-27 01:14:58 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8088 (http) with context path ''
+2022-03-27 01:14:58 INFO  main com.hero.sms.SmsApplication Started SmsApplication in 24.078 seconds (JVM running for 27.175)
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 开始缓存字典
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 6 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存代理信息
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 4 ms | SQL 语句：
+SELECT Id, Google_Key, Cash_Amount, Description, Remark, Agent_Password, Last_Login_IP, Level_Code, Available_Amount, Login_IP, EMail, Need_Bind_Google_Key, Create_Date, QQ, Up_Agent_Id, Agent_Account, Amount, Quota_Amount, Agent_Name, Login_Faild_Count, Data_MD5, Last_Login_Time, Phone_Number, Day_Limit, Send_Sms_Total, Create_User, State_Code, Pay_Password FROM t_agent;
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存商户信息
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 4 ms | SQL 语句：
+SELECT Id, Agent_Id, Sms_Approve_type, Cash_Amount, Description, Remark, interface_type, Available_Amount, Contact, Md5_Key, Sms_Sign, EMail, Create_Date, Settlement_type, Contact_Mobile, Amount, Address, Organization_Name, charges_type, Business_User_Id, Data_MD5, Bind_IP, Approve_State_Code, Organization_Code, Web_Url, Send_Sms_Total, notify_url, Create_User, Status FROM t_organization;
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存短信通道信息
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 4 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel;
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存支付通道信息
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 3 ms | SQL 语句：
+SELECT id, key1, key2, min_amount, cost, key5, key3, key4, weight, remark, encrypt_key, impl_full_class, netway_code, create_time, merch_no, request_url, state_code, sign_key, callBack_url, channel_name, pay_code, max_amount FROM t_pay_channel;
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存IP黑名单信息
+2022-03-27 01:14:58 INFO  main p6spy 2022-03-27 01:14:58 | 耗时 2 ms | SQL 语句：
+SELECT Id, Black_Ip, IsAvailability, LImit_Project, Description, Create_User, Remark, Create_Date FROM t_black_ip_config WHERE (IsAvailability = '1');
+2022-03-27 01:14:58 INFO  main com.hero.sms.common.DatabaseCache 缓存手机号段区域信息
+2022-03-27 01:14:59 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.SchedulerFactoryBean Starting Quartz Scheduler now, after delay of 1 seconds
+2022-03-27 01:14:59 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.LocalDataSourceJobStore ClusterManager: detected 1 failed or restarted instances.
+2022-03-27 01:14:59 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.LocalDataSourceJobStore ClusterManager: Scanning for instance "LAPTOP-L07PL5KH1648280462469"'s failed in-progress jobs.
+2022-03-27 01:14:59 INFO  Quartz Scheduler [FEBS_Scheduler] org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1648314894149 started.
+2022-03-27 01:15:00 INFO  main p6spy 2022-03-27 01:15:00 | 耗时 1529 ms | SQL 语句：
+SELECT Id, MobileNumber, MobileArea, Province_Code, PostCode, AreaCode, Create_Date, MobileType FROM mobile_area;
+2022-03-27 01:15:06 INFO  main com.hero.sms.common.DatabaseCache 缓存手机号码黑名单信息
+2022-03-27 01:15:06 INFO  main p6spy 2022-03-27 01:15:06 | 耗时 2 ms | SQL 语句：
+SELECT area, number FROM t_mobile_black;
+2022-03-27 01:15:06 INFO  main com.hero.sms.common.DatabaseCache 缓存网关类型信息
+2022-03-27 01:15:06 INFO  main com.hero.sms.common.DatabaseCache Begin-缓存地区列表
+2022-03-27 01:15:06 INFO  main p6spy 2022-03-27 01:15:06 | 耗时 2 ms | SQL 语句：
+SELECT id, extend, create_time, area_name, area_coding, out_area, in_area, order_num FROM t_area_code ORDER BY order_num ASC;
+2022-03-27 01:15:06 INFO  main com.hero.sms.common.DatabaseCache End-地区列表缓存完成
+2022-03-27 01:15:06 INFO  main com.hero.sms.common.DatabaseCache 字典缓存完成
+2022-03-27 01:15:06 INFO  main io.lettuce.core.EpollProvider Starting without optional epoll library
+2022-03-27 01:15:06 INFO  main io.lettuce.core.KqueueProvider Starting without optional kqueue library
+2022-03-27 01:15:20 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner  __    ___   _      ___   _     ____ _____  ____ 
+2022-03-27 01:15:20 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner / /`  / / \ | |\/| | |_) | |   | |_   | |  | |_  
+2022-03-27 01:15:20 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner \_\_, \_\_/ |_|  | |_|   |_|__ |_|__  |_|  |_|__ 
+2022-03-27 01:15:20 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner                                                       
+2022-03-27 01:15:20 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner 短信平台启动完毕，地址：http://192.168.189.1:8088/login
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin Application shutdown requested.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1648314894149 paused.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Shutting down ExecutorService 'febsAsyncThreadPool'
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.quartz.SchedulerFactoryBean Shutting down Quartz Scheduler
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1648314894149 shutting down.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1648314894149 paused.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1648314894149 shutdown complete.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource start closing ....
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown initiated...
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown completed.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown initiated...
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown completed.
+2022-03-27 01:15:23 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource all closed success,bye

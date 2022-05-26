@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.agent.AgentMapper">
+    <resultMap id="agentExt" type="com.hero.sms.entity.agent.ext.AgentExt">
+        <id property="id" column="Id"/>
+        <result property="upAgentId" column="Up_Agent_Id"/>
+        <result property="agentName" column="Agent_Name"/>
+        <result property="agentPassword" column="Agent_Password"/>
+        <result property="lastLoginIp" column="Last_Login_IP"/>
+        <result property="lastLoginTime" column="Last_Login_Time"/>
+        <result property="amount" column="Amount"/>
+        <result property="quotaAmount" column="Quota_Amount"/>
+        <result property="availableAmount" column="Available_Amount"/>
+        <result property="cashAmount" column="Cash_Amount"/>
+        <result property="sendSmsTotal" column="Send_Sms_Total"/>
+        <result property="dayLimit" column="Day_Limit"/>
+        <result property="stateCode" column="State_Code"/>
+        <result property="phoneNumber" column="Phone_Number"/>
+        <result property="email" column="EMail"/>
+        <result property="qq" column="QQ"/>
+        <result property="dataMd5" column="Data_MD5"/>
+        <result property="description" column="Description"/>
+        <result property="remark" column="Remark"/>
+        <result property="createUser" column="Create_User"/>
+        <result property="createDate" column="Create_Date"/>
+
+        <collection property="costs" ofType="com.hero.sms.entity.agent.AgentCost">
+            <id property="id" column="Cost_Id"/>
+            <result property="agentId" column="Cost_Agent_Id"/>
+            <result property="smsType" column="sms_type"/>
+            <result property="name" column="Cost_Name"/>
+            <result property="value" column="Cost_Value"/>
+            <result property="operator" column="Cost_Operator"/>
+            <result property="description" column="Cost_Description"/>
+            <result property="remark" column="Cost_Remark"/>
+            <result property="createDate" column="Cost_Create_Date"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryAgentExtById" parameterType="integer"
+            resultMap="agentExt">
+        select agent.*,
+            cost.Id as cost_Id,
+            cost.Agent_Id as Cost_Agent_Id,
+            cost.sms_type,
+            cost.Name as Cost_Name,
+            cost.Value as Cost_Value,
+            cost.Operator as Cost_Operator,
+            cost.Description as Cost_Description,
+            cost.Remark as Cost_Remark,
+            cost.Create_Date as Cost_Create_Date
+        from t_agent agent
+        left join t_agent_cost cost on agent.Id = cost.Agent_Id
+        where agent.Id = #{id}
+    </select>
+
+</mapper>

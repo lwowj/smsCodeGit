@@ -1,0 +1,168 @@
+<style>
+    #returnSmsOrder-add {
+        padding: 20px 25px 25px 20px;
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+    #returnSmsOrder-add .infoView {
+        width: 100%;
+        margin: 1rem;
+    }
+    #returnSmsOrder-add .infoView .number {
+        padding-top: .8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1890ff
+    }
+    #returnSmsOrder-add .infoView .text {
+        padding-top: .8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #0b0c0f
+    }
+</style>
+<div class="layui-fluid" id="returnSmsOrder-add">
+    <div class=" layui-card">
+        <div class="layui-card-body">
+            <form class="layui-form" action="" lay-filter="returnSmsOrder-add-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">批次号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sendCode" class="layui-input" data-th-value="${sendCode}" disabled>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">短信条数：</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="smsNum" id="smsNum" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">最大不能超过[[ ${maxReturnNum} ]]条</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="remark" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item febs-hide">
+                    <button class="layui-btn" lay-submit="" lay-filter="returnSmsOrder-add-form-submit" id="submit"></button>
+                    <button type="reset" class="layui-btn" id="reset"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--    <div class="layui-card">
+        <div class="layui-card-header">发件箱信息</div>
+        <div class="layui-card-body">
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <span>批次号： [[ ${sendCode}]]</span> <span style="padding-left: 30px">有效短信数： [[ ${maxReturnNum}]]</span>
+                <br><span>金额信息：</span>
+            </blockquote>
+        </div>
+    </div>-->
+    <div class="layui-card">
+        <div class="layui-card-header">退还预览</div>
+        <div class="layui-card-body">
+            <div >
+                <table class="infoView">
+                    <tr>
+                        <td></td>
+                        <td>名&#8195;&#8195;称</td>
+                        <td>单位费用/利润</td>
+                        <td>退还金额/利润</td>
+                    </tr>
+                    <tr>
+                        <td class="text">企&#8195;&#8195;业</td>
+                        <td id="orgName" class="text">
+                            [[ ${orgName} ]]
+                        </td>
+                        <td class="number" id="orgCost">
+                            0
+                        </td>
+                        <td class="number" id="orgReturn">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text">代&#8195;&#8195;理</td>
+                        <td id="agentName" class="text">
+                            [[ ${agentName} ]]
+                        </td>
+                        <td class="number" id="agentCost">
+                            0
+                        </td>
+                        <td class="number" id="agentReturn">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text">上级代理</td>
+                        <td id="upAgentName" class="text">
+                            [( ${upAgentName} )]
+                        </td>
+                        <td class="number" id="upAgentCost">
+                            0
+                        </td>
+                        <td class="number" id="upAgentReturn">
+                            0
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            orgIncomeUnit = [[ ${orgIncomeUnit}]],
+            agentIncomeUnit = [[ ${agentIncomeUnit}]],
+            upAgentIncomeUnit = [[ ${upAgentIncomeUnit}]],
+            maxReturnNum = [[ ${maxReturnNum}]],
+            agentReturnAmount = 0,
+            upAgentReturnAmount = 0,
+            orgReturnAmount = 0,
+            $view = $('#returnSmsOrder-add'),
+            validate = layui.validate;
+
+        $(function(){
+            var orgIncomeUnit2Fixed = (orgIncomeUnit/100).toFixed(2),
+                agentIncomeUnit2Fixed = (agentIncomeUnit/100).toFixed(2),
+                upAgentIncomeUnit2Fixed = (upAgentIncomeUnit/100).toFixed(2);
+            $view.find('#orgCost').text(orgIncomeUnit2Fixed);
+            $view.find('#agentCost').text(agentIncomeUnit2Fixed);
+            $view.find('#upAgentCost').text(upAgentIncomeUnit2Fixed);
+            //输入框的值改变时触发
+            $("#smsNum").on("input",function(e){
+                //获取input输入的值
+                var num = e.delegateTarget.value;
+                if (num > maxReturnNum){
+                    num = maxReturnNum;
+                    $view.find('#smsNum').val(num);
+                }
+                if (num < 0){
+                    num = 0;
+                    $view.find('#smsNum').val(num);
+                }
+                $view.find('#orgReturn').text('+' + (orgIncomeUnit2Fixed * num).toFixed(2));
+                $view.find('#agentReturn').text('-' + (agentIncomeUnit2Fixed * num).toFixed(2));
+                $view.find('#upAgentReturn').text('-' + (upAgentIncomeUnit2Fixed * num).toFixed(2));
+
+
+            });
+        });
+        form.verify(validate);
+        form.render();
+        form.on('submit(returnSmsOrder-add-form-submit)', function (data) {
+            febs.post(ctx + 'returnSmsOrder', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('退还成功！');
+                $('#febs-returnSmsOrder').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

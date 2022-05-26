@@ -1,0 +1,93 @@
+<style>
+    #numberPool-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #numberPool-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="numberPool-update">
+    <form class="layui-form" action="" lay-filter="numberPool-update-form">
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">号码池ID：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">手机号码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="phoneNumber" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">池组</label>
+            <div class="layui-input-block">
+                <select name="groupId" lay-verify="required">
+                    <option value=""></option>
+                    <option th:each="enum:${groupList}"
+                            th:value ="${enum.id}"
+                            th:text="${enum.name}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">状态：</label>
+            <div class="layui-input-block">
+                <select name="state" lay-verify="required">
+                    <option value=""></option>
+                    <option th:each="enum:${switchEnums}"
+                            th:value ="${enum.code}"
+                            th:text="${enum.name}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="numberPool-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            formSelects = layui.formSelects,
+            treeSelect = layui.treeSelect,
+            form = layui.form,
+            numberPool = [[${numberPool}]],
+            $view = $('#numberPool-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initnumberPoolValue();
+
+        function initnumberPoolValue() {
+            form.val("numberPool-update-form", {
+                "id": numberPool.id,
+                "phoneNumber": numberPool.phoneNumber,
+                "state":numberPool.state,
+                "groupId":numberPool.groupId
+            });
+        }
+
+        form.on('submit(numberPool-update-form-submit)', function (data) {
+            if (febs.nativeEqual(data.field, numberPool)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'numberPool/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                $('#febs-numberPool').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

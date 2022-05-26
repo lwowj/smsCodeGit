@@ -1,0 +1,177 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-numberPoolGroup" lay-title="池组管理">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">名称</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm layui-btn-primary table-action" id="query">
+                                    <i class="layui-icon">&#xe848;</i>
+                                </div>
+                                <div class="layui-btn layui-btn-sm layui-btn-primary table-action" id="reset">
+                                    <i class="layui-icon">&#xe79b;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="numberPoolGroupTable" lay-data="{id: 'numberPoolGroupTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="numberPoolGroup-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add" shiro:hasAnyPermissions="numberPoolGroup:add">新增</button>
+        <!--<button class="layui-btn layui-btn-sm febs-bg-volcano" lay-event="del" shiro:hasAnyPermissions="numberPoolGroup:delete">删除</button>-->
+    </div>
+</script>
+<script type="text/html" id="numberPoolGroup-option">
+    <span shiro:lacksPermission="numberPoolGroup:delete">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <a lay-event="del" shiro:hasPermission="numberPoolGroup:delete"><i class="layui-icon febs-edit-area febs-red" title="删除">&#xe7f9;</i></a>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-numberPoolGroup'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+
+        // laydate.render({
+        //     elem: '#numberPoolGroup-createTime',
+        //     range: true,
+        //     trigger: 'click'
+        // });
+
+        //头工具栏事件
+        table.on('toolbar(numberPoolGroupTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'add':
+                    febs.modal.open('新增信息', 'numberPoolGroup/add', {
+                        btn: ['提交', '重置'],
+                        area: ['600px','350px'],
+                        yes: function(index, layero) {
+                            $('#numberPoolGroup-add').find('#submit').trigger('click');
+                        },
+                        btn2: function() {
+                            $('#numberPoolGroup-add').find('#reset').trigger('click');
+                            return false;
+                        }
+                    });
+                    break;
+                case 'del':
+                    if (!checkStatus.data.length) {
+                        febs.alert.warn('请选择需要删除的记录');
+                    } else {
+                        febs.modal.confirm('删除记录', '确定删除该记录？', function() {
+                            var numberPoolGroupIds = [];
+                            layui.each(checkStatus.data, function(key, item) {
+                                numberPoolGroupIds.push(item.numberPoolGroupId)
+                            });
+                            deletenumberPoolGroups(numberPoolGroupIds.join(','));
+                        });
+                    }
+                    break;
+            };
+        });
+
+        table.on('tool(numberPoolGroupTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'del') {
+                febs.modal.confirm('删除记录', '确定删除该记录？', function() {
+                    febs.get(ctx + 'numberPoolGroup/delete',data, function () {
+                        febs.alert.success('删除成功');
+                        $query.click();
+                    });
+                });
+            }
+        });
+
+        table.on('sort(numberPoolGroupTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                skin: 'row ',
+                even: false,
+                id: 'numberPoolGroupTable',
+                url: ctx + 'numberPoolGroup/list',
+                toolbar: '#numberPoolGroup-toolbar',
+                cols: [[
+                    {field: 'name', title: '名称(点击单元格可直接修改)',edit: 'text',align:'center'},
+                    {field: 'description', title: '描述(点击单元格可直接修改)',edit:'text',align:'center'},
+                    {title: '操作',fixed:'right', toolbar: '#numberPoolGroup-option', align:'center'}
+                ]]
+            });
+        }
+
+        //监听单元格编辑
+        table.on('edit(numberPoolGroupTable)', function(obj){
+            febs.post(ctx + 'numberPoolGroup/update', obj.data, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                return false;
+            });
+            $('#febs-numberPoolGroup').find('#query').click();
+            return false;
+        });
+        function getQueryParams() {
+            return {
+                name: $searchForm.find('input[name="name"]').val().trim(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deletenumberPoolGroups(numberPoolGroupIds) {
+            febs.get(ctx + 'numberPoolGroup/delete/' + numberPoolGroupIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

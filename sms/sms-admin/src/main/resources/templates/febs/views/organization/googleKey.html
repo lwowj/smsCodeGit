@@ -1,0 +1,25 @@
+<div class="layui-card-body" style="text-align: -webkit-center">
+    <input type="hidden" id="userQrcodeUrl" data-th-value="${googleQrcode}"/>
+    <span data-th-text="${userAccount}"></span>
+    <div class="layui-row" id="userShowQrcodeImg" style="align: center;line-height: 200px;font-size:16px;"></div>
+</div>
+
+<script>
+    layui.use(['jquery', 'qrcode'], function () {
+        var $ = layui.jquery,
+            qrcode = layui.qrcode;
+
+        var qrcodeUrl = $("#userQrcodeUrl").val();
+        if(qrcodeUrl == "null"){
+            $("#userShowQrcodeImg").html("未绑定谷歌码！");
+        }else{
+            qrcode.qrcode(document.getElementById("userShowQrcodeImg"),{
+                width: 200,
+                height: 200,
+                text: qrcodeUrl
+            });
+        }
+    });
+
+
+</script>

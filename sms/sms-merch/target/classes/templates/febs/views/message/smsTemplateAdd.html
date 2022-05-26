@@ -1,0 +1,57 @@
+<style>
+    #smsTemplate-add {
+        padding: 20px 25px 25px 0;
+    }
+    #smsTemplate-add .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="smsTemplate-add">
+    <form class="layui-form" action="" lay-filter="smsTemplate-add-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">模板名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="templateName" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">模板内容：</label>
+            <div class="layui-input-block">
+                <textarea name="templateContent" class="layui-textarea" lay-verify="required"></textarea>
+                <div class="layui-form-mid layui-word-aux"><font color="red">格式说明：您的验证码:{0},请勿告知他人!失效时间{1}分钟</font></div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <textarea  name="description" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="smsTemplate-add-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#smsTemplate-add'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+        form.on('submit(smsTemplate-add-form-submit)', function (data) {
+            febs.post(ctx + 'smsTemplate', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据新增成功！');
+                $('#febs-smsTemplate').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

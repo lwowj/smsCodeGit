@@ -1,0 +1,253 @@
+2021-04-24 14:39:53 INFO  main com.hero.sms.SmsApplication Starting SmsApplication on LAPTOP-L07PL5KH with PID 3312 (C:\work\workspaceSmsUs\sms\sms-admin\target\classes started by payBoo in C:\work\workspaceSmsUs\sms\sms-admin)
+2021-04-24 14:39:53 INFO  main com.hero.sms.SmsApplication The following profiles are active: test
+2021-04-24 14:39:56 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-24 14:39:56 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-04-24 14:39:56 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 529ms. Found 0 repository interfaces.
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$f74486f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'febsProperties' of type [com.hero.sms.common.properties.FebsProperties$$EnhancerBySpringCGLIB$$ca3610ba] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroConfig' of type [com.hero.sms.common.authentication.ShiroConfig$$EnhancerBySpringCGLIB$$88fff3a7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatisPlusConfigure' of type [com.hero.sms.common.configure.MybatisPlusConfigure$$EnhancerBySpringCGLIB$$9b89682b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$e3ae4438] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceCreator' of type [com.baomidou.dynamic.datasource.DynamicDataSourceCreator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceProvider' of type [com.baomidou.dynamic.datasource.provider.YmlDynamicDataSourceProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:57 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource detect P6SPY plugin and enabled it
+2021-04-24 14:39:57 INFO  main com.zaxxer.hikari.HikariDataSource base - Starting...
+2021-04-24 14:39:58 INFO  main com.zaxxer.hikari.HikariDataSource base - Start completed.
+2021-04-24 14:39:58 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Starting...
+2021-04-24 14:39:58 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Start completed.
+2021-04-24 14:39:58 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [quartz] success
+2021-04-24 14:39:58 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [base] success
+2021-04-24 14:39:58 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource initial loaded [2] datasource,primary datasource named [base]
+2021-04-24 14:39:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dataSource' of type [com.baomidou.dynamic.datasource.DynamicRoutingDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:39:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [com.sun.proxy.$Proxy120] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [com.sun.proxy.$Proxy121] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleServiceImpl' of type [com.hero.sms.system.service.impl.UserRoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userServiceImpl' of type [com.hero.sms.system.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [com.sun.proxy.$Proxy124] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [com.sun.proxy.$Proxy125] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuServiceImpl' of type [com.hero.sms.system.service.impl.RoleMenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleServiceImpl' of type [com.hero.sms.system.service.impl.RoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [com.sun.proxy.$Proxy128] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuServiceImpl' of type [com.hero.sms.system.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroRealm' of type [com.hero.sms.common.authentication.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:01 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'redisSessionDAO' of type [org.crazycake.shiro.RedisSessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:01 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:01 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:01 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 14:40:02 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8808 (http)
+2021-04-24 14:40:02 INFO  main org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8808"]
+2021-04-24 14:40:02 INFO  main org.apache.catalina.core.StandardService Starting service [Tomcat]
+2021-04-24 14:40:02 INFO  main org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.27]
+2021-04-24 14:40:02 INFO  main org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+2021-04-24 14:40:02 INFO  main org.springframework.web.context.ContextLoader Root WebApplicationContext: initialization completed in 8708 ms
+2021-04-24 14:40:03 INFO  main com.hero.sms.common.xss.XssFilter ------------ xss filter init ------------
+2021-04-24 14:40:05 INFO  main org.quartz.impl.StdSchedulerFactory Using default implementation for ThreadExecutor
+2021-04-24 14:40:05 INFO  main org.quartz.core.SchedulerSignalerImpl Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-04-24 14:40:05 INFO  main org.quartz.core.QuartzScheduler Quartz Scheduler v.2.3.2 created.
+2021-04-24 14:40:05 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore Using db table-based data access locking (synchronization).
+2021-04-24 14:40:05 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore JobStoreCMT initialized.
+2021-04-24 14:40:05 INFO  main org.quartz.core.QuartzScheduler Scheduler meta-data: Quartz Scheduler (v2.3.2) 'FEBS_Scheduler' with instanceId 'LAPTOP-L07PL5KH1619246405702'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2021-04-24 14:40:05 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler 'FEBS_Scheduler' initialized from an externally provided properties instance.
+2021-04-24 14:40:05 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler version: 2.3.2
+2021-04-24 14:40:05 INFO  main org.quartz.core.QuartzScheduler JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@17344d7
+2021-04-24 14:40:05 INFO  main p6spy 2021-04-24 14:40:05 | 耗时 2 ms | SQL 语句：
+SELECT job_id jobId, bean_name beanName, method_name methodName, params, cron_expression cronExpression, status, remark, create_time createTime FROM t_job ORDER BY job_id;
+2021-04-24 14:40:06 INFO  main org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-24 14:40:07 INFO  main springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-24 14:40:07 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService
+2021-04-24 14:40:07 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService 'febsAsyncThreadPool'
+2021-04-24 14:40:07 INFO  main org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping Adding welcome page template: index
+2021-04-24 14:40:07 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Context refreshed
+2021-04-24 14:40:07 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Found 1 custom documentation plugin(s)
+2021-04-24 14:40:07 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Skipping initializing disabled plugin bean swagger v2.0
+2021-04-24 14:40:07 INFO  main org.springframework.scheduling.quartz.SchedulerFactoryBean Will start Quartz Scheduler [FEBS_Scheduler] in 1 seconds
+2021-04-24 14:40:08 INFO  main org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8808"]
+2021-04-24 14:40:08 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8808 (http) with context path ''
+2021-04-24 14:40:08 INFO  main com.hero.sms.SmsApplication Started SmsApplication in 14.917 seconds (JVM running for 17.307)
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 开始缓存字典
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存代理信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT Id, Google_Key, Cash_Amount, Description, Remark, Agent_Password, Last_Login_IP, Level_Code, Available_Amount, Login_IP, EMail, Need_Bind_Google_Key, Create_Date, QQ, Up_Agent_Id, Agent_Account, Amount, Quota_Amount, Agent_Name, Login_Faild_Count, Data_MD5, Last_Login_Time, Phone_Number, Day_Limit, Send_Sms_Total, Create_User, State_Code, Pay_Password FROM t_agent;
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存商户信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT Id, Agent_Id, Sms_Approve_type, Cash_Amount, Description, Remark, interface_type, Available_Amount, Contact, Md5_Key, Sms_Sign, EMail, Create_Date, Settlement_type, Contact_Mobile, Amount, Address, Organization_Name, charges_type, Business_User_Id, Data_MD5, Bind_IP, Approve_State_Code, Organization_Code, Web_Url, Send_Sms_Total, notify_url, Create_User, Status FROM t_organization;
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存短信通道信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel;
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存支付通道信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT id, key1, key2, min_amount, cost, key5, key3, key4, weight, remark, encrypt_key, impl_full_class, netway_code, create_time, merch_no, request_url, state_code, sign_key, callBack_url, channel_name, pay_code, max_amount FROM t_pay_channel;
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存IP黑名单信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 2 ms | SQL 语句：
+SELECT Id, Black_Ip, IsAvailability, LImit_Project, Description, Create_User, Remark, Create_Date FROM t_black_ip_config WHERE (IsAvailability = '1');
+2021-04-24 14:40:08 INFO  main com.hero.sms.common.DatabaseCache 缓存手机号段区域信息
+2021-04-24 14:40:08 INFO  main p6spy 2021-04-24 14:40:08 | 耗时 460 ms | SQL 语句：
+SELECT Id, MobileNumber, MobileArea, Province_Code, PostCode, AreaCode, Create_Date, MobileType FROM mobile_area;
+2021-04-24 14:40:08 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.SchedulerFactoryBean Starting Quartz Scheduler now, after delay of 1 seconds
+2021-04-24 14:40:09 INFO  Quartz Scheduler [FEBS_Scheduler] org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1619246405702 started.
+2021-04-24 14:40:12 INFO  main com.hero.sms.common.DatabaseCache 缓存手机号码黑名单信息
+2021-04-24 14:40:12 INFO  main p6spy 2021-04-24 14:40:12 | 耗时 2 ms | SQL 语句：
+SELECT area, number FROM t_mobile_black;
+2021-04-24 14:40:12 INFO  main com.hero.sms.common.DatabaseCache 缓存网关类型信息
+2021-04-24 14:40:12 INFO  main com.hero.sms.common.DatabaseCache 字典缓存完成
+2021-04-24 14:40:12 INFO  main io.lettuce.core.EpollProvider Starting without optional epoll library
+2021-04-24 14:40:12 INFO  main io.lettuce.core.KqueueProvider Starting without optional kqueue library
+2021-04-24 14:40:23 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner  __    ___   _      ___   _     ____ _____  ____ 
+2021-04-24 14:40:23 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner / /`  / / \ | |\/| | |_) | |   | |_   | |  | |_  
+2021-04-24 14:40:23 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner \_\_, \_\_/ |_|  | |_|   |_|__ |_|__  |_|  |_|__ 
+2021-04-24 14:40:23 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner                                                       
+2021-04-24 14:40:23 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner 短信平台启动完毕，地址：http://169.254.130.216:8808/login
+2021-04-24 14:40:46 INFO  http-nio-8808-exec-1 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-24 14:40:46 INFO  http-nio-8808-exec-1 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+2021-04-24 14:40:46 INFO  http-nio-8808-exec-1 org.springframework.web.servlet.DispatcherServlet Completed initialization in 14 ms
+2021-04-24 14:40:46 INFO  http-nio-8808-exec-1 org.apache.shiro.session.mgt.AbstractValidatingSessionManager Enabling session validation scheduler...
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-3 com.hero.sms.common.aspect.LimitAspect IP:169.254.130.216 第 1 次访问key为 [limit_login169.254.130.216]，描述为 [登录接口] 的接口
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:41:03 | 耗时 8 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:41:03 | 耗时 0 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:41:03 | 耗时 2 ms | SQL 语句：
+UPDATE t_user SET GOOGLE_KEY = 'EJ5QP4YTYV47JOQG', DESCRIPTION = '', PASSWORD = '8d8391e727c59f18b08fcfe6a045150d', MODIFY_TIME = '2020-08-25T21:48:51.000+0800', THEME = 'white', EMAIL = 'admin@qq.com', SSEX = '2', MOBILE = '18888888888', DEPT_ID = 1, AVATAR = 'gaOngJwsRYRaVAuXXcmB.png', LOGIN_FAILD_COUNT = 0, LAST_LOGIN_TIME = '2021-04-21T23:04:30.000+0800', CREATE_TIME = '2020-03-04T17:26:18.000+0800', IS_TAB = '1', STATUS = '1', USERNAME = 'admin' WHERE USER_ID = 8;
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:41:03 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_login_log (`SYSTEM`, LOGIN_TIME, BROWSER, IP, LOCATION, USERNAME) VALUES ('Windows 10', '2021-04-24T14:41:03.631+0800', 'Chrome 89', '169.254.130.216', '内网IP|0|0|内网IP|内网IP', 'admin');
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:41:03 | 耗时 0 ms | SQL 语句：
+SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin';
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:41:03 | 耗时 7 ms | SQL 语句：
+SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'admin' AND m.perms IS NOT NULL AND m.perms <> '';
+2021-04-24 14:41:03 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:41:03 | 耗时 0 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2021-04-24 14:41:08 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:41:08 | 耗时 0 ms | SQL 语句：
+SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin';
+2021-04-24 14:41:08 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:41:08 | 耗时 1 ms | SQL 语句：
+SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'admin' AND m.perms IS NOT NULL AND m.perms <> '';
+2021-04-24 14:41:08 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 14:41:08 | 耗时 4 ms | SQL 语句：
+SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin') ORDER BY m.order_num;
+2021-04-24 14:41:08 INFO  http-nio-8808-exec-1 p6spy 2021-04-24 14:41:08 | 耗时 3 ms | SQL 语句：
+SELECT id, message_type, message_contact, org_code, picture_url, create_User, remark, merch_read_status, admin_read_status, create_Date FROM t_message WHERE (admin_read_status = '2');
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 1 ms | SQL 语句：
+UPDATE t_user SET LAST_LOGIN_TIME = '2021-04-24T14:41:09.141+0800' WHERE (USERNAME = 'admin');
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 1 ms | SQL 语句：
+SELECT count(1) FROM t_login_log;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 0 ms | SQL 语句：
+SELECT count(1) FROM t_login_log WHERE datediff(login_time, now()) = 0;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 1 ms | SQL 语句：
+SELECT count(DISTINCT (ip)) FROM t_login_log WHERE datediff(login_time, now()) = 0;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 1 ms | SQL 语句：
+SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 GROUP BY days;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-5 p6spy 2021-04-24 14:41:09 | 耗时 1 ms | SQL 语句：
+SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 AND l.username = 'admin' GROUP BY days;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:41:09 | 耗时 4 ms | SQL 语句：
+SELECT count(1) AS `value`, t.sms_number_operator AS operator FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.sms_number_operator ORDER BY `value` DESC;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-1 p6spy 2021-04-24 14:41:09 | 耗时 4 ms | SQL 语句：
+SELECT count(1) AS `value`, t.org_code AS orgCode FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.org_code ORDER BY `value` DESC LIMIT 10;
+2021-04-24 14:41:09 INFO  http-nio-8808-exec-7 p6spy 2021-04-24 14:41:09 | 耗时 0 ms | SQL 语句：
+SELECT count(1) AS `value`, t.sms_number_province AS province FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.sms_number_province ORDER BY `value` DESC;
+2021-04-24 14:41:12 INFO  http-nio-8808-exec-4 p6spy 2021-04-24 14:41:12 | 耗时 5 ms | SQL 语句：
+SELECT COUNT(1) FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id;
+2021-04-24 14:41:12 INFO  http-nio-8808-exec-4 p6spy 2021-04-24 14:41:12 | 耗时 1 ms | SQL 语句：
+SELECT * FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id ORDER BY cnl.id DESC LIMIT 0,10;
+2021-04-24 14:41:15 INFO  http-nio-8808-exec-6 p6spy 2021-04-24 14:41:15 | 耗时 4 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:41:15 INFO  http-nio-8808-exec-6 p6spy 2021-04-24 14:41:15 | 耗时 3 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:41:20 INFO  http-nio-8808-exec-7 p6spy 2021-04-24 14:41:20 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:41:20 INFO  http-nio-8808-exec-7 p6spy 2021-04-24 14:41:20 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:41:28 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 14:41:28 | 耗时 6 ms | SQL 语句：
+DELETE FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:41:28 INFO  Febs-Async-Thread1 p6spy 2021-04-24 14:41:28 | 耗时 5 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.channel.SmsChannelPropertyController.updateSmsChannelProperties()', '2021-04-24T14:41:28.872+0800', '169.254.130.216', '内网IP|0|0|内网IP|内网IP', 59, ' smsChannelProperties: "[SmsChannelProperty(id=646, smsChannelId=10, propertyType=null, name=host, value=103.156.178.25, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=647, smsChannelId=10, propertyType=null, name=port, value=63456, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=648, smsChannelId=10, propertyType=null, name=systemId, value=20200331160443FKDW, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=649, smsChannelId=10, propertyType=null, name=password, value=kPA5JrqM, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=650, smsChannelId=10, propertyType=null, name=systemType, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=651, smsChannelId=10, propertyType=null, name=version, value=52, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=652, smsChannelId=10, propertyType=null, name=addrTon, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=653, smsChannelId=10, propertyType=null, name=addrNpi, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=654, smsChannelId=10, propertyType=null, name=maxChannels, value=4, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=655, smsChannelId=10, propertyType=null, name=writeLimit, value=100, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=656, smsChannelId=10, propertyType=null, name=readLimit, value=100, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=657, smsChannelId=10, propertyType=null, name=speed, value=10, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=658, smsChannelId=10, propertyType=null, name=openNumberPool, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021), SmsChannelProperty(id=659, smsChannelId=10, propertyType=null, name=numberPoolGroup, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:41:28 CST 2021)]"', '修改SmsChannelProperty', 'admin');
+2021-04-24 14:41:32 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:41:32 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:41:32 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:41:32 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:42:06 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:42:06 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:42:06 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:42:06 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:42:12 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 14:42:12 | 耗时 11 ms | SQL 语句：
+DELETE FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:42:12 INFO  Febs-Async-Thread2 p6spy 2021-04-24 14:42:12 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.channel.SmsChannelPropertyController.updateSmsChannelProperties()', '2021-04-24T14:42:12.938+0800', '169.254.130.216', '内网IP|0|0|内网IP|内网IP', 52, ' smsChannelProperties: "[SmsChannelProperty(id=660, smsChannelId=10, propertyType=null, name=host, value=103.156.178.25, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=661, smsChannelId=10, propertyType=null, name=port, value=63456, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=662, smsChannelId=10, propertyType=null, name=systemId, value=20200331160443FKDW, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=663, smsChannelId=10, propertyType=null, name=password, value=kPA5JrqM, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=664, smsChannelId=10, propertyType=null, name=systemType, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=665, smsChannelId=10, propertyType=null, name=version, value=52, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=666, smsChannelId=10, propertyType=null, name=addrTon, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=667, smsChannelId=10, propertyType=null, name=addrNpi, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=668, smsChannelId=10, propertyType=null, name=maxChannels, value=4, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=669, smsChannelId=10, propertyType=null, name=writeLimit, value=10, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=670, smsChannelId=10, propertyType=null, name=readLimit, value=50, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=671, smsChannelId=10, propertyType=null, name=speed, value=20, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=672, smsChannelId=10, propertyType=null, name=openNumberPool, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021), SmsChannelProperty(id=673, smsChannelId=10, propertyType=null, name=numberPoolGroup, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:42:12 CST 2021)]"', '修改SmsChannelProperty', 'admin');
+2021-04-24 14:43:04 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 14:43:04 | 耗时 1 ms | SQL 语句：
+SELECT COUNT(1) FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id;
+2021-04-24 14:43:04 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 14:43:04 | 耗时 1 ms | SQL 语句：
+SELECT * FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id ORDER BY cnl.id DESC LIMIT 0,10;
+2021-04-24 14:43:06 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:43:06 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:43:06 INFO  http-nio-8808-exec-2 p6spy 2021-04-24 14:43:06 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:43:16 INFO  http-nio-8808-exec-8 p6spy 2021-04-24 14:43:16 | 耗时 3 ms | SQL 语句：
+DELETE FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:43:16 INFO  Febs-Async-Thread3 p6spy 2021-04-24 14:43:16 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.channel.SmsChannelPropertyController.updateSmsChannelProperties()', '2021-04-24T14:43:16.588+0800', '169.254.130.216', '内网IP|0|0|内网IP|内网IP', 36, ' smsChannelProperties: "[SmsChannelProperty(id=674, smsChannelId=10, propertyType=null, name=host, value=103.156.178.25, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=675, smsChannelId=10, propertyType=null, name=port, value=63456, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=676, smsChannelId=10, propertyType=null, name=systemId, value=20200331160443FKDW, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=677, smsChannelId=10, propertyType=null, name=password, value=kPA5JrqM, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=678, smsChannelId=10, propertyType=null, name=systemType, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=679, smsChannelId=10, propertyType=null, name=version, value=52, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=680, smsChannelId=10, propertyType=null, name=addrTon, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=681, smsChannelId=10, propertyType=null, name=addrNpi, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=682, smsChannelId=10, propertyType=null, name=maxChannels, value=4, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=683, smsChannelId=10, propertyType=null, name=speed, value=100, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=684, smsChannelId=10, propertyType=null, name=writeLimit, value=50, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=685, smsChannelId=10, propertyType=null, name=readLimit, value=20, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=686, smsChannelId=10, propertyType=null, name=openNumberPool, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021), SmsChannelProperty(id=687, smsChannelId=10, propertyType=null, name=numberPoolGroup, value=, description=, remark=admin添加, createTime=Sat Apr 24 14:43:16 CST 2021)]"', '修改SmsChannelProperty', 'admin');
+2021-04-24 14:43:21 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:43:21 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:43:21 INFO  http-nio-8808-exec-10 p6spy 2021-04-24 14:43:21 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:43:50 INFO  http-nio-8808-exec-4 p6spy 2021-04-24 14:43:50 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:43:50 INFO  http-nio-8808-exec-4 p6spy 2021-04-24 14:43:50 | 耗时 1 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 14:44:49 INFO  http-nio-8808-exec-6 p6spy 2021-04-24 14:44:49 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 14:44:50 INFO  http-nio-8808-exec-6 p6spy 2021-04-24 14:44:50 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 15:20:07 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 15:20:07 | 耗时 1 ms | SQL 语句：
+SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin';
+2021-04-24 15:20:07 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 15:20:07 | 耗时 3 ms | SQL 语句：
+SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'admin' AND m.perms IS NOT NULL AND m.perms <> '';
+2021-04-24 15:20:07 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 15:20:07 | 耗时 2 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 9);
+2021-04-24 15:20:07 INFO  http-nio-8808-exec-3 p6spy 2021-04-24 15:20:07 | 耗时 2 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 15:20:11 INFO  http-nio-8808-exec-1 p6spy 2021-04-24 15:20:11 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 8);
+2021-04-24 15:20:11 INFO  http-nio-8808-exec-1 p6spy 2021-04-24 15:20:11 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 15:20:22 INFO  http-nio-8808-exec-7 p6spy 2021-04-24 15:20:22 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 8);
+2021-04-24 15:20:22 INFO  http-nio-8808-exec-7 p6spy 2021-04-24 15:20:22 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 15:20:35 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 15:20:35 | 耗时 0 ms | SQL 语句：
+SELECT id, create_time, property_type, name, sms_channel_id, description, remark, value FROM t_sms_channel_property WHERE (sms_channel_id = 10);
+2021-04-24 15:20:35 INFO  http-nio-8808-exec-9 p6spy 2021-04-24 15:20:35 | 耗时 0 ms | SQL 语句：
+SELECT id, name, description FROM t_number_pool_group;
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin Application shutdown requested.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1619246405702 paused.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Shutting down ExecutorService 'febsAsyncThreadPool'
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.quartz.SchedulerFactoryBean Shutting down Quartz Scheduler
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1619246405702 shutting down.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1619246405702 paused.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1619246405702 shutdown complete.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource start closing ....
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown initiated...
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown completed.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown initiated...
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown completed.
+2021-04-24 15:20:40 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource all closed success,bye

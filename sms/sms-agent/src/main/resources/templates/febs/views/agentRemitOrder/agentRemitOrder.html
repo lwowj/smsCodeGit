@@ -1,0 +1,251 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-agentRemitOrder" lay-title="代理提现订单">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">订单编号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="orderNo" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">银行名称</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="Bank" name="bankCode" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">银行卡号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="bankAccountNo" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">提现金额</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="remitAmount" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">审核状态</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="status">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${AuditStateEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">提交时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createStartTime" class="layui-input" id="createStartTime1">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createEndTime" class="layui-input" id="createEndTime1" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="agentRemitOrderTable" lay-data="{id: 'agentRemitOrderTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="agentRemitOrder-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add" shiro:hasAnyPermissions="agentRemitOrder:add">提现</button>
+        <button class="layui-btn layui-btn-sm" lay-event="transfer" shiro:hasAnyPermissions="agentRemitOrder:transfer">转至额度</button>
+    </div>
+</script>
+<script th:inline="javascript"  type="text/html" id="agent-remit-order-bankCode">
+    {{#
+    var state = {[# th:each="enum : ${BankEnums}"]
+    [( ${enum.code} )]:{title: '[( ${enum.name} )]' },
+    [/]}[d.bankCode];
+    }}
+    <span>{{ state.title }}</span>
+</script>
+<script th:inline="javascript"  type="text/html" id="agent-remit-order-status">
+    {{#
+    var state = {[# th:each="enum : ${AuditStateEnums}"]
+    [( ${enum.code} )]:{title: '[( ${enum.name} )]' , color : '[( ${enum.color} )]' },
+    [/]}[d.status];
+    }}
+    <span class="layui-badge febs-tag-{{state.color}}">{{ state.title }}</span>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs','moment'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-agentRemitOrder'),
+            $query = $view.find('#query'),
+            $searchForm = $view.find('form'),
+            moment = layui.moment,
+            sortObject = {field: 'createTime', type: null},
+            initGetBanksData,
+            tableIns;
+
+        form.render();
+
+        initTable();
+        laydate.render({
+            elem: '#createStartTime1' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 00:00:00")
+        });
+        laydate.render({
+            elem: '#createEndTime1' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 23:59:59")
+        });
+
+        //头工具栏事件
+        table.on('toolbar(agentRemitOrderTable)', function(obj){
+            switch(obj.event){
+                case 'add':
+                    febs.modal.open('提现', 'agentRemitOrder/add', {
+                        btn: ['提交', '重置'],
+                        area: ["500px","520px"],
+                        yes: function(index, layero) {
+                            $('#agentRemitOrder-add').find('#submit').trigger('click');
+                        },
+                        btn2: function() {
+                            $('#agentRemitOrder-add').find('#reset').trigger('click');
+                            return false;
+                        }
+                    });
+                    break;
+                case 'transfer':
+                    febs.modal.open('转至额度', 'agentRemitOrder/transfer', {
+                        btn: ['提交', '重置'],
+                        area: ["400px","350px"],
+                        yes: function(index, layero) {
+                            $('#agentRemitOrder-transfer').find('#submit').trigger('click');
+                        },
+                        btn2: function() {
+                            $('#agentRemitOrder-transfer').find('#reset').trigger('click');
+                            return false;
+                        }
+                    });
+                    break;
+            };
+        });
+
+        table.on('tool(agentRemitOrderTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if(layEvent === 'showImg'){
+                layer.photos({
+                    photos:{
+                        "title": "平台LOGO", //相册标题
+                        "data": [   //相册包含的图片，数组格式
+                            {
+                                "src": data.remitPictureUrl, //原图地址
+                            }
+                        ]
+                    }
+                    ,anim: 5
+                });
+            }
+        });
+
+        table.on('sort(agentRemitOrderTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            initGetBanks();
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        function initGetBanks(){
+            var data = [];
+            febs.ajax({
+                url:ctx + 'agentRemitOrder/getBanks',
+                async:false,
+                success:function (res) {
+                    if(res.code == 200){
+                        initGetBanksData = res.data;
+                    }
+                }
+            });
+            return data;
+        }
+
+        function initTable() {
+            initGetBanks();
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'agentRemitOrderTable',
+                url: ctx + 'agentRemitOrder/list',
+                toolbar: '#agentRemitOrder-toolbar',
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'orderNo', title: '订单编号'},
+                    {field: 'bankCode', title: '银行名称',
+                        templet: function (d) {
+                            var name = "";
+                            layui.each(initGetBanksData,function (index,item) {
+                                if(Object.keys(item) == d.bankCode){
+                                    name = Object.values(item);
+                                }
+                            });
+                            return name;
+                        }},
+                    {field: 'bankAccountName', title: '姓名'},
+                    {field: 'bankAccountNo', title: '银行卡号'},
+                    {field: 'bankBranch', title: '支行名称'},
+                    {field: 'remitPictureUrl', title: '转账凭证',templet: function(d){
+                            if(!d.remitPictureUrl) return "<p>暂无</p>";
+                            return "<a lay-event=\"showImg\" ><img style='height: 100%' src='"+d.remitPictureUrl + "'/></a>";
+                        }},
+                    {field: 'remitAmount', title: '提现金额',templet: function(d){ return d.remitAmount/100 }},
+                    {field: 'availableAmount', title: '可用利润',templet: function(d){ return d.availableAmount/100 }},
+                    {field: 'status', title: '审核状态', templet: "#agent-remit-order-status"},
+                    {field: 'createTime', title: '提交时间'}
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                orderNo: $searchForm.find('input[name="orderNo"]').val().trim(),
+                bankCode: $searchForm.find('select[name="bankCode"]').val().trim(),
+                bankAccountNo: $searchForm.find('input[name="bankAccountNo"]').val().trim(),
+                status: $searchForm.find('select[name="status"]').val().trim(),
+                remitAmount: $searchForm.find('input[name="remitAmount"]').val().trim(),
+                createStartTime:moment($searchForm.find('input[name="createStartTime"]').val())._d,
+                createEndTime: moment($searchForm.find('input[name="createEndTime"]').val())._d,
+                invalidate_ie_cache: new Date()
+            };
+        }
+    })
+</script>

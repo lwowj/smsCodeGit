@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:sys="">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${session.sysConfig.platformName + '【代理后台】'}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/febs.css}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/eleTree.css}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/apexcharts.min.css}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/formSelects-v4.css}" media="all">
+<!--    <link rel="icon" th:href="@{febs/images/favicon.ico}" type="image/x-icon"/>-->
+</head>
+<body>
+<div id="febs"></div>
+<script th:src="@{layui/layui.js}"></script>
+<script th:inline="javascript">
+    var ctx = [[@{/}]];
+    var currentUser = [[${user}]];
+    var platformName = [[${session.sysConfig.platformName}]];
+    var logoPath = [[${session.sysConfig.logoPath}]];
+    var agentPwStrong = [[${agentPwStrong}]];
+    currentUser.permissionSet = [[${permissions}]];
+    layui.config({
+        base: './febs/',
+        version: new Date().getTime(), //上线版本号 根据真实版本号填写
+        debug: true
+    }).extend({
+        formSelects: 'lay/extends/formSelects-v4.min',
+        treeSelect: 'lay/extends/treeSelect',
+        apexcharts: 'lay/extends/apexcharts.min',
+        jqueryForm: 'lay/extends/jquery-form',
+        moment:'lay/extends/moment',
+        eleTree: 'lay/extends/eleTree',
+        qrcode:'lay/extends/qrcode'
+    }).use(['index']);
+</script>
+</body>
+</html>

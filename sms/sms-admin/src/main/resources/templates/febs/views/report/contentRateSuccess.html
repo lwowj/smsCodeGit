@@ -1,0 +1,210 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-contentRateSuccess" lay-title="内容成功率">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-card-header layui-word-aux">仅统计SMPP提交的短信</div>
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">内容</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="smsContent" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">代理商</label>
+                                        <div class="layui-input-block">
+                                            <sys:data dataType="agent" name="agentId" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">商户名称</label>
+                                        <div class="layui-input-block">
+                                            <sys:data dataType="org" name="orgCode" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">运营商</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="PhoneOperator" name="smsNumberOperator"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createStartTime" class="layui-input" id="createStartTime8">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createEndTime" class="layui-input" id="createEndTime8" >
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">分组</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="OrgGroup" name="groupId"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="contentRateSuccessTable" lay-data="{id: 'contentRateSuccessTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="contentRateSuccess-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="export" shiro:hasAnyPermissions="sendRecord:exportContentRateSuccess">导出</button>
+    </div>
+</script>
+<script type="text/html" id="contentRateSuccess-option">
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-contentRateSuccess'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            todayStart = [[${todayStart}]],
+            todayEnd = [[${todayEnd}]],
+            tableIns;
+
+        form.render();
+
+        initTable();
+        var start =  laydate.render({
+            elem: '#createStartTime8',
+            type: 'datetime',
+            min:"1970-1-1",
+            max:todayEnd,
+            value: todayStart,
+            done: function (value,date) {
+
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+        var end = laydate.render({
+            elem: '#createEndTime8',
+            type: 'datetime',
+            min:todayStart,
+            max:"2099-12-31",
+            value: todayEnd,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+        //头工具栏事件
+        table.on('toolbar(contentRateSuccessTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'export':
+                    febs.download(ctx + 'sendRecord/exportContentRateSuccess', getQueryParams(), '内容成功率.xlsx');
+                    break;
+            };
+        });
+
+        table.on('tool(contentRateSuccessTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+        });
+
+        table.on('sort(contentRateSuccessTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'contentRateSuccessTable',
+                url: ctx + 'sendRecord/contentRateSuccess',
+                toolbar: '#contentRateSuccess-toolbar',
+                where: {
+                    "createStartTime": todayStart,
+                    "createEndTime": todayEnd
+                },
+                cols: [ [
+                    {type: 'checkbox'},
+                    {field: 'agentName', title: '代理'},
+                    {field: 'orgName', title: '商户名称'},
+                    {field: 'smsContent', title: '消息内容'},
+                    {field: 'total', title: '提交成功（条）'},
+                    {field: 'receiptSuccess', title: '接收成功（条）'},
+                    {field: 'receiptFail', title: '接收失败（条）'},
+                    {field: '', title: '成功率（%）',templet:function (d) {
+                            if (d.total === 0){
+                                return 0;
+                            } else {
+                                return ((d.receiptSuccess/d.total) * 100).toFixed(2);
+                            }
+
+                        }}
+                ] ]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+            	smsContent: $searchForm.find('input[name="smsContent"]').val().trim(),
+                createStartTime: $searchForm.find('input[name="createStartTime"]').val(),
+                createEndTime: $searchForm.find('input[name="createEndTime"]').val(),
+                smsNumberOperator: $searchForm.find('select[name="smsNumberOperator"]').val(),
+                agentId: $searchForm.find('select[name="agentId"]').val(),
+                orgCode: $searchForm.find('select[name="orgCode"]').val(),
+                groupId: $searchForm.find('select[name="groupId"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+    })
+</script>

@@ -1,0 +1,750 @@
+2022-05-03 12:12:51 INFO  main com.hero.sms.SmsApplication Starting SmsApplication on LAPTOP-L07PL5KH with PID 60124 (C:\work\workspaceSmsBfSvn\sms\sms-admin\target\classes started by payBoo in C:\work\workspaceSmsBfSvn\sms\sms-admin)
+2022-05-03 12:12:51 INFO  main com.hero.sms.SmsApplication The following profiles are active: test
+2022-05-03 12:12:54 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-03 12:12:54 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-05-03 12:12:55 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 673ms. Found 0 repository interfaces.
+2022-05-03 12:12:55 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:55 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$c3895c65] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'febsProperties' of type [com.hero.sms.common.properties.FebsProperties$$EnhancerBySpringCGLIB$$7e4b24b0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroConfig' of type [com.hero.sms.common.authentication.ShiroConfig$$EnhancerBySpringCGLIB$$3d15079d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatisPlusConfigure' of type [com.hero.sms.common.configure.MybatisPlusConfigure$$EnhancerBySpringCGLIB$$4f9e7c21] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$97c3582e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceCreator' of type [com.baomidou.dynamic.datasource.DynamicDataSourceCreator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceProvider' of type [com.baomidou.dynamic.datasource.provider.YmlDynamicDataSourceProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource detect P6SPY plugin and enabled it
+2022-05-03 12:12:56 INFO  main com.zaxxer.hikari.HikariDataSource base - Starting...
+2022-05-03 12:12:56 INFO  main com.zaxxer.hikari.HikariDataSource base - Start completed.
+2022-05-03 12:12:56 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Starting...
+2022-05-03 12:12:56 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Start completed.
+2022-05-03 12:12:56 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [quartz] success
+2022-05-03 12:12:56 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [base] success
+2022-05-03 12:12:56 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource initial loaded [2] datasource,primary datasource named [base]
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dataSource' of type [com.baomidou.dynamic.datasource.DynamicRoutingDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:56 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [com.sun.proxy.$Proxy120] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [com.sun.proxy.$Proxy121] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleServiceImpl' of type [com.hero.sms.system.service.impl.UserRoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:58 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userServiceImpl' of type [com.hero.sms.system.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [com.sun.proxy.$Proxy124] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [com.sun.proxy.$Proxy125] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuServiceImpl' of type [com.hero.sms.system.service.impl.RoleMenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleServiceImpl' of type [com.hero.sms.system.service.impl.RoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [com.sun.proxy.$Proxy128] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuServiceImpl' of type [com.hero.sms.system.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:12:59 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroRealm' of type [com.hero.sms.common.authentication.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:13:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'redisSessionDAO' of type [org.crazycake.shiro.RedisSessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:13:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:13:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:13:00 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 12:13:00 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8088 (http)
+2022-05-03 12:13:00 INFO  main org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8088"]
+2022-05-03 12:13:00 INFO  main org.apache.catalina.core.StandardService Starting service [Tomcat]
+2022-05-03 12:13:00 INFO  main org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.27]
+2022-05-03 12:13:00 INFO  main org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+2022-05-03 12:13:00 INFO  main org.springframework.web.context.ContextLoader Root WebApplicationContext: initialization completed in 9303 ms
+2022-05-03 12:13:01 INFO  main com.hero.sms.common.xss.XssFilter ------------ xss filter init ------------
+2022-05-03 15:07:38 INFO  main com.hero.sms.SmsApplication Starting SmsApplication on LAPTOP-L07PL5KH with PID 58796 (C:\work\workspaceSmsBfSvn\sms\sms-admin\target\classes started by payBoo in C:\work\workspaceSmsBfSvn\sms\sms-admin)
+2022-05-03 15:07:38 INFO  main com.hero.sms.SmsApplication The following profiles are active: test
+2022-05-03 15:07:42 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-03 15:07:42 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-05-03 15:07:43 INFO  main org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 977ms. Found 0 repository interfaces.
+2022-05-03 15:07:44 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$ab0bc584] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'febsProperties' of type [com.hero.sms.common.properties.FebsProperties$$EnhancerBySpringCGLIB$$65cd8dcf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroConfig' of type [com.hero.sms.common.authentication.ShiroConfig$$EnhancerBySpringCGLIB$$249770bc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'mybatisPlusConfigure' of type [com.hero.sms.common.configure.MybatisPlusConfigure$$EnhancerBySpringCGLIB$$3720e540] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$7f45c14d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceCreator' of type [com.baomidou.dynamic.datasource.DynamicDataSourceCreator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dynamicDataSourceProvider' of type [com.baomidou.dynamic.datasource.provider.YmlDynamicDataSourceProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource detect P6SPY plugin and enabled it
+2022-05-03 15:07:45 INFO  main com.zaxxer.hikari.HikariDataSource base - Starting...
+2022-05-03 15:07:45 INFO  main com.zaxxer.hikari.HikariDataSource base - Start completed.
+2022-05-03 15:07:45 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Starting...
+2022-05-03 15:07:45 INFO  main com.zaxxer.hikari.HikariDataSource quartz - Start completed.
+2022-05-03 15:07:45 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [quartz] success
+2022-05-03 15:07:45 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource - load a datasource named [base] success
+2022-05-03 15:07:45 INFO  main com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource initial loaded [2] datasource,primary datasource named [base]
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'dataSource' of type [com.baomidou.dynamic.datasource.DynamicRoutingDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:45 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userMapper' of type [com.sun.proxy.$Proxy120] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleMapper' of type [com.sun.proxy.$Proxy121] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userRoleServiceImpl' of type [com.hero.sms.system.service.impl.UserRoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'userServiceImpl' of type [com.hero.sms.system.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMapper' of type [com.sun.proxy.$Proxy124] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuMapper' of type [com.sun.proxy.$Proxy125] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleMenuServiceImpl' of type [com.hero.sms.system.service.impl.RoleMenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'roleServiceImpl' of type [com.hero.sms.system.service.impl.RoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuMapper' of type [com.sun.proxy.$Proxy128] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'menuServiceImpl' of type [com.hero.sms.system.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:49 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'shiroRealm' of type [com.hero.sms.common.authentication.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:50 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'redisSessionDAO' of type [org.crazycake.shiro.RedisSessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:50 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:50 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:50 INFO  main org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-03 15:07:50 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8088 (http)
+2022-05-03 15:07:51 INFO  main org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8088"]
+2022-05-03 15:07:51 INFO  main org.apache.catalina.core.StandardService Starting service [Tomcat]
+2022-05-03 15:07:51 INFO  main org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.27]
+2022-05-03 15:07:51 INFO  main org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+2022-05-03 15:07:51 INFO  main org.springframework.web.context.ContextLoader Root WebApplicationContext: initialization completed in 12602 ms
+2022-05-03 15:07:52 INFO  main com.hero.sms.common.xss.XssFilter ------------ xss filter init ------------
+2022-05-03 15:07:54 INFO  main org.quartz.impl.StdSchedulerFactory Using default implementation for ThreadExecutor
+2022-05-03 15:07:54 INFO  main org.quartz.core.SchedulerSignalerImpl Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-05-03 15:07:54 INFO  main org.quartz.core.QuartzScheduler Quartz Scheduler v.2.3.2 created.
+2022-05-03 15:07:55 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore Using db table-based data access locking (synchronization).
+2022-05-03 15:07:55 INFO  main org.springframework.scheduling.quartz.LocalDataSourceJobStore JobStoreCMT initialized.
+2022-05-03 15:07:55 INFO  main org.quartz.core.QuartzScheduler Scheduler meta-data: Quartz Scheduler (v2.3.2) 'FEBS_Scheduler' with instanceId 'LAPTOP-L07PL5KH1651561674921'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2022-05-03 15:07:55 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler 'FEBS_Scheduler' initialized from an externally provided properties instance.
+2022-05-03 15:07:55 INFO  main org.quartz.impl.StdSchedulerFactory Quartz scheduler version: 2.3.2
+2022-05-03 15:07:55 INFO  main org.quartz.core.QuartzScheduler JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@63614cdd
+2022-05-03 15:07:55 INFO  main p6spy 2022-05-03 15:07:55 | 耗时 3 ms | SQL 语句：
+SELECT job_id jobId, bean_name beanName, method_name methodName, params, cron_expression cronExpression, status, remark, create_time createTime FROM t_job ORDER BY job_id;
+2022-05-03 15:07:56 INFO  main org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-05-03 15:07:56 INFO  main springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-05-03 15:07:56 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService
+2022-05-03 15:07:56 INFO  main org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Initializing ExecutorService 'febsAsyncThreadPool'
+2022-05-03 15:07:56 INFO  main org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping Adding welcome page template: index
+2022-05-03 15:07:57 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Context refreshed
+2022-05-03 15:07:57 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Found 1 custom documentation plugin(s)
+2022-05-03 15:07:57 INFO  main springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Skipping initializing disabled plugin bean swagger v2.0
+2022-05-03 15:07:57 INFO  main org.springframework.scheduling.quartz.SchedulerFactoryBean Will start Quartz Scheduler [FEBS_Scheduler] in 1 seconds
+2022-05-03 15:07:57 INFO  main org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8088"]
+2022-05-03 15:07:57 INFO  main org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8088 (http) with context path ''
+2022-05-03 15:07:57 INFO  main com.hero.sms.SmsApplication Started SmsApplication in 20.117 seconds (JVM running for 23.693)
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 开始缓存字典
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存代理信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT Id, Google_Key, Cash_Amount, Description, Remark, Agent_Password, Last_Login_IP, Level_Code, Available_Amount, Login_IP, EMail, Need_Bind_Google_Key, Create_Date, QQ, Up_Agent_Id, Agent_Account, Amount, Quota_Amount, Agent_Name, Login_Faild_Count, Data_MD5, Last_Login_Time, Phone_Number, Day_Limit, Send_Sms_Total, Create_User, State_Code, Pay_Password FROM t_agent;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存商户信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 1 ms | SQL 语句：
+SELECT Id, Agent_Id, Sms_Approve_type, Cash_Amount, Description, Remark, interface_type, Available_Amount, Contact, Md5_Key, Sms_Sign, EMail, Create_Date, Settlement_type, Contact_Mobile, Amount, Address, Organization_Name, charges_type, Business_User_Id, Data_MD5, Bind_IP, Approve_State_Code, Organization_Code, Web_Url, Send_Sms_Total, notify_url, Create_User, Status FROM t_organization;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存短信通道信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存支付通道信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT id, key1, key2, min_amount, cost, key5, key3, key4, weight, remark, encrypt_key, impl_full_class, netway_code, create_time, merch_no, request_url, state_code, sign_key, callBack_url, channel_name, pay_code, max_amount FROM t_pay_channel;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存IP黑名单信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT Id, Black_Ip, IsAvailability, LImit_Project, Description, Create_User, Remark, Create_Date FROM t_black_ip_config WHERE (IsAvailability = '1');
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存手机号码黑名单信息
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT area, number FROM t_mobile_black;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 缓存网关类型信息
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache Begin-缓存地区列表
+2022-05-03 15:07:57 INFO  main p6spy 2022-05-03 15:07:57 | 耗时 0 ms | SQL 语句：
+SELECT id, extend, create_time, area_name, area_coding, out_area, in_area, order_num FROM t_area_code ORDER BY order_num ASC;
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache End-地区列表缓存完成
+2022-05-03 15:07:57 INFO  main com.hero.sms.common.DatabaseCache 字典缓存完成
+2022-05-03 15:07:58 INFO  main io.lettuce.core.EpollProvider Starting without optional epoll library
+2022-05-03 15:07:58 INFO  main io.lettuce.core.KqueueProvider Starting without optional kqueue library
+2022-05-03 15:07:58 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.SchedulerFactoryBean Starting Quartz Scheduler now, after delay of 1 seconds
+2022-05-03 15:07:58 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.LocalDataSourceJobStore ClusterManager: detected 1 failed or restarted instances.
+2022-05-03 15:07:58 INFO  Quartz Scheduler [FEBS_Scheduler] org.springframework.scheduling.quartz.LocalDataSourceJobStore ClusterManager: Scanning for instance "LAPTOP-L07PL5KH1651503777965"'s failed in-progress jobs.
+2022-05-03 15:07:58 INFO  Quartz Scheduler [FEBS_Scheduler] org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1651561674921 started.
+2022-05-03 15:08:06 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner  __    ___   _      ___   _     ____ _____  ____ 
+2022-05-03 15:08:06 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner / /`  / / \ | |\/| | |_) | |   | |_   | |  | |_  
+2022-05-03 15:08:06 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner \_\_, \_\_/ |_|  | |_|   |_|__ |_|__  |_|  |_|__ 
+2022-05-03 15:08:06 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner                                                       
+2022-05-03 15:08:06 INFO  main com.hero.sms.common.runner.FebsStartedUpRunner 短信平台启动完毕，地址：http://192.168.189.1:8088/login
+2022-05-03 15:08:53 INFO  http-nio-8088-exec-1 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-03 15:08:53 INFO  http-nio-8088-exec-1 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+2022-05-03 15:08:53 INFO  http-nio-8088-exec-1 org.springframework.web.servlet.DispatcherServlet Completed initialization in 27 ms
+2022-05-03 15:08:53 INFO  http-nio-8088-exec-1 org.apache.shiro.session.mgt.AbstractValidatingSessionManager Enabling session validation scheduler...
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-5 com.hero.sms.common.aspect.LimitAspect IP:192.168.189.1 第 1 次访问key为 [limit_login192.168.189.1]，描述为 [登录接口] 的接口
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:13 | 耗时 3 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:13 | 耗时 1 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:13 | 耗时 2 ms | SQL 语句：
+UPDATE t_user SET GOOGLE_KEY = 'EJ5QP4YTYV47JOQG', DESCRIPTION = '', PASSWORD = '8d8391e727c59f18b08fcfe6a045150d', MODIFY_TIME = '2020-08-25T21:48:51.000+0800', THEME = 'white', EMAIL = 'admin@qq.com', SSEX = '2', MOBILE = '18888888888', DEPT_ID = 1, AVATAR = 'gaOngJwsRYRaVAuXXcmB.png', LOGIN_FAILD_COUNT = 0, LAST_LOGIN_TIME = '2022-05-02T22:05:18.000+0800', CREATE_TIME = '2020-03-04T17:26:18.000+0800', IS_TAB = '1', STATUS = '1', USERNAME = 'admin' WHERE USER_ID = 8;
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:13 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_login_log (`SYSTEM`, LOGIN_TIME, BROWSER, IP, LOCATION, USERNAME) VALUES ('Windows 10', '2022-05-03T15:09:13.781+0800', 'Chrome 10', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 'admin');
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:09:13 | 耗时 0 ms | SQL 语句：
+SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin';
+2022-05-03 15:09:13 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:09:13 | 耗时 4 ms | SQL 语句：
+SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'admin' AND m.perms IS NOT NULL AND m.perms <> '';
+2022-05-03 15:09:14 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:09:14 | 耗时 1 ms | SQL 语句：
+SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.google_key, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, u.LOGIN_FAILD_COUNT, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'admin' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.google_key, u.avatar, u.theme, u.is_tab;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:09:15 | 耗时 0 ms | SQL 语句：
+SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin';
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:09:15 | 耗时 1 ms | SQL 语句：
+SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'admin' AND m.perms IS NOT NULL AND m.perms <> '';
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:09:15 | 耗时 7 ms | SQL 语句：
+SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'admin') ORDER BY m.order_num;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:09:15 | 耗时 2 ms | SQL 语句：
+SELECT id, message_type, message_contact, org_code, picture_url, create_User, remark, merch_read_status, admin_read_status, create_Date FROM t_message WHERE (admin_read_status = '2');
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 2 ms | SQL 语句：
+UPDATE t_user SET LAST_LOGIN_TIME = '2022-05-03T15:09:15.639+0800' WHERE (USERNAME = 'admin');
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 1 ms | SQL 语句：
+SELECT count(1) FROM t_login_log;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 2 ms | SQL 语句：
+SELECT count(1) FROM t_login_log WHERE datediff(login_time, now()) = 0;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 1 ms | SQL 语句：
+SELECT count(DISTINCT (ip)) FROM t_login_log WHERE datediff(login_time, now()) = 0;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 4 ms | SQL 语句：
+SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 GROUP BY days;
+2022-05-03 15:09:15 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:15 | 耗时 2 ms | SQL 语句：
+SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 AND l.username = 'admin' GROUP BY days;
+2022-05-03 15:09:16 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:09:16 | 耗时 30 ms | SQL 语句：
+SELECT count(1) AS `value`, t.org_code AS orgCode FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.org_code ORDER BY `value` DESC LIMIT 10;
+2022-05-03 15:09:16 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:09:16 | 耗时 87 ms | SQL 语句：
+SELECT count(1) AS `value`, t.sms_number_operator AS operator FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.sms_number_operator ORDER BY `value` DESC;
+2022-05-03 15:09:16 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:09:16 | 耗时 115 ms | SQL 语句：
+SELECT count(1) AS `value`, t.sms_number_province AS province FROM t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(), '%Y-%m-%d 00:00:00') GROUP BY t.sms_number_province ORDER BY `value` DESC;
+2022-05-03 15:09:48 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:09:48 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:09:48 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:09:48 | 耗时 26 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-03T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:09:51 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:09:51 | 耗时 3 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:09:51 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:09:51 | 耗时 31 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:10:11 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:10:11 | 耗时 12 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:10:11 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:10:11 | 耗时 49 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:10:19 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:10:19 | 耗时 3 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:10:19 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:10:19 | 耗时 1 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:10:19 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:10:19 | 耗时 6 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:10:19 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:10:19 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:10:20 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:10:20 | 耗时 6 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:10:20.911+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 1081, ' sendRecordIds: "140130"', '批量重发SendRecord', 'admin');
+2022-05-03 15:10:51 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:10:51 | 耗时 9 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:10:51 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:10:51 | 耗时 40 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:10:54 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:10:54 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140130'));
+2022-05-03 15:10:54 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:10:54 | 耗时 0 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0503151054' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:10:54 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:10:54 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceUnLock()', '2022-05-03T15:10:54.820+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 16, ' sendRecordIds: "140130"', '批量强制解锁SendRecord', 'admin');
+2022-05-03 15:11:51 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:11:51 | 耗时 21 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:11:59 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:11:59 | 耗时 26 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:12:26 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:12:26 | 耗时 8 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:12:31 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:12:31 | 耗时 45 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:12:39 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:12:39 | 耗时 5 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:12:39.485+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 55619, ' sendRecordIds: "140130"', '批量重发SendRecord', 'admin');
+2022-05-03 15:13:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:13:59 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:13:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:13:59 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:13:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:13:59 | 耗时 1 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:13:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:13:59 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:13:59 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:13:59 | 耗时 11 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:13:59.379+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 3396, ' sendRecordIds: "140130"', '批量重发SendRecord', 'admin');
+2022-05-03 15:14:12 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:14:12 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:14:12 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:14:12 | 耗时 5 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:14:12 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:14:12 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:14:12 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:14:12 | 耗时 8 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceReSend()', '2022-05-03T15:14:12.368+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 35, ' sendRecordIds: "140130"', '批量强制重发SendRecord', 'admin');
+2022-05-03 15:14:25 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:14:25 | 耗时 4 ms | SQL 语句：
+SELECT COUNT(1) FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id LEFT JOIN (SELECT scc.sms_channel_id, GROUP_CONCAT(ac.in_area SEPARATOR ',') AS areaCodes, GROUP_CONCAT(ac.area_name SEPARATOR ',') AS areaNames FROM (SELECT sms_channel_id, `name` AS areaCode FROM t_sms_channel_cost GROUP BY sms_channel_id, `name`) scc, t_area_code ac WHERE scc.areaCode = ac.in_area GROUP BY scc.sms_channel_id) channelCost ON channelCost.sms_channel_id = cnl.id LEFT JOIN (SELECT sms_channel_id AS property_channel_id, `name` AS property_name, `value` AS property_value FROM t_sms_channel_property WHERE `name` = 'reqUrl' OR `name` = 'host') channelProperty ON channelProperty.property_channel_id = cnl.id;
+2022-05-03 15:14:25 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:14:25 | 耗时 4 ms | SQL 语句：
+SELECT * FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id LEFT JOIN (SELECT scc.sms_channel_id, GROUP_CONCAT(ac.in_area SEPARATOR ',') AS areaCodes, GROUP_CONCAT(ac.area_name SEPARATOR ',') AS areaNames FROM (SELECT sms_channel_id, `name` AS areaCode FROM t_sms_channel_cost GROUP BY sms_channel_id, `name`) scc, t_area_code ac WHERE scc.areaCode = ac.in_area GROUP BY scc.sms_channel_id) channelCost ON channelCost.sms_channel_id = cnl.id LEFT JOIN (SELECT sms_channel_id AS property_channel_id, `name` AS property_name, `value` AS property_value FROM t_sms_channel_property WHERE `name` = 'reqUrl' OR `name` = 'host') channelProperty ON channelProperty.property_channel_id = cnl.id ORDER BY cnl.id DESC LIMIT 0,10;
+2022-05-03 15:14:31 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:14:31 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE id = 11;
+2022-05-03 15:14:31 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:14:31 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE id = 11;
+2022-05-03 15:14:31 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:14:31 | 耗时 2 ms | SQL 语句：
+UPDATE t_sms_channel SET state = 1 WHERE (id = 11);
+2022-05-03 15:14:34 INFO  http-nio-8088-exec-5 com.hero.sms.common.DatabaseCache Begin-缓存短信通道信息
+2022-05-03 15:14:34 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:14:34 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel;
+2022-05-03 15:14:34 INFO  http-nio-8088-exec-5 com.hero.sms.common.DatabaseCache End-短信通道信息缓存完成
+2022-05-03 15:14:34 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:14:34 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.channel.SmsChannelController.smsChannelSwitch()', '2022-05-03T15:14:34.472+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 3231, ' channelIds: "11" state: "1"', '网关开/关', 'admin');
+2022-05-03 15:14:34 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:14:34 | 耗时 2 ms | SQL 语句：
+SELECT COUNT(1) FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id LEFT JOIN (SELECT scc.sms_channel_id, GROUP_CONCAT(ac.in_area SEPARATOR ',') AS areaCodes, GROUP_CONCAT(ac.area_name SEPARATOR ',') AS areaNames FROM (SELECT sms_channel_id, `name` AS areaCode FROM t_sms_channel_cost GROUP BY sms_channel_id, `name`) scc, t_area_code ac WHERE scc.areaCode = ac.in_area GROUP BY scc.sms_channel_id) channelCost ON channelCost.sms_channel_id = cnl.id LEFT JOIN (SELECT sms_channel_id AS property_channel_id, `name` AS property_name, `value` AS property_value FROM t_sms_channel_property WHERE `name` = 'reqUrl' OR `name` = 'host') channelProperty ON channelProperty.property_channel_id = cnl.id;
+2022-05-03 15:14:34 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:14:34 | 耗时 3 ms | SQL 语句：
+SELECT * FROM t_sms_channel cnl LEFT JOIN (SELECT temp.channelId, GROUP_CONCAT(temp.`name` SEPARATOR ',') AS groupNames, GROUP_CONCAT(temp.groupId SEPARATOR ',') AS groupIds FROM (SELECT gro.group_id groupId, gro.sms_channel_id channelId, c.`NAME` AS `name` FROM t_sms_channel_group gro LEFT JOIN `code` c ON c.SORT_CODE = 'OrgGroup' AND c.`CODE` = gro.group_id) temp GROUP BY temp.channelId) channelGroup ON channelGroup.channelId = cnl.id LEFT JOIN (SELECT scc.sms_channel_id, GROUP_CONCAT(ac.in_area SEPARATOR ',') AS areaCodes, GROUP_CONCAT(ac.area_name SEPARATOR ',') AS areaNames FROM (SELECT sms_channel_id, `name` AS areaCode FROM t_sms_channel_cost GROUP BY sms_channel_id, `name`) scc, t_area_code ac WHERE scc.areaCode = ac.in_area GROUP BY scc.sms_channel_id) channelCost ON channelCost.sms_channel_id = cnl.id LEFT JOIN (SELECT sms_channel_id AS property_channel_id, `name` AS property_name, `value` AS property_value FROM t_sms_channel_property WHERE `name` = 'reqUrl' OR `name` = 'host') channelProperty ON channelProperty.property_channel_id = cnl.id ORDER BY cnl.id DESC LIMIT 0,10;
+2022-05-03 15:15:53 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:15:53 | 耗时 15 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:15:53 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:15:53 | 耗时 74 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:16:27 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:16:27 | 耗时 8 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:16:27 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:16:27 | 耗时 33 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:16:38 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:16:38 | 耗时 31 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:16:40 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:16:40 | 耗时 25 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:16:43 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:16:43 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:16:43 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:16:43 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:16:43.252+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 12721, ' sendRecordIds: "140130"', '批量重发SendRecord', 'admin');
+2022-05-03 15:17:06 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:17:06 | 耗时 20 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:17:06 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:17:06 | 耗时 49 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:17:13 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:17:13 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:17:13 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:17:13 | 耗时 9 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:17:13 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:17:13 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:17:13 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:17:13 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceReSend()', '2022-05-03T15:17:13.709+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 29, ' sendRecordIds: "140130"', '批量强制重发SendRecord', 'admin');
+2022-05-03 15:17:30 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:17:30 | 耗时 11 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:17:30 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:17:30 | 耗时 41 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:17:50 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:17:50 | 耗时 18 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:17:50 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:17:50 | 耗时 43 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:17:53 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:17:53 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:17:53 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:17:53 | 耗时 21 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:17:54 INFO  http-nio-8088-exec-5 com.hero.sms.controller.message.SendRecordController A批量重发reSend：号码【15590478565】解锁异常
+2022-05-03 15:17:54 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:17:54 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:17:54 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:17:54 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceReSend()', '2022-05-03T15:17:54.081+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 115, ' sendRecordIds: "140130"', '批量强制重发SendRecord', 'admin');
+2022-05-03 15:18:03 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:18:03 | 耗时 21 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:18:03 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:18:03 | 耗时 43 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:18:06 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:18:06 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140130'));
+2022-05-03 15:18:06 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:18:06 | 耗时 1 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0503151806' WHERE (send_record_id IN (140130) AND state = 1);
+2022-05-03 15:18:06 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:18:06 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceUnLock()', '2022-05-03T15:18:06.685+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 12, ' sendRecordIds: "140130"', '批量强制解锁SendRecord', 'admin');
+2022-05-03 15:18:17 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:18:17 | 耗时 9 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:18:17 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:18:17 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140130') AND res_msgid IS NULL);
+2022-05-03 15:18:17 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:18:17 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:18:17 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:18:17 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:18:17.917+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 1124, ' sendRecordIds: "140130"', '批量重发SendRecord', 'admin');
+2022-05-03 15:18:25 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:18:25 | 耗时 15 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:18:25 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:18:25 | 耗时 38 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:18:45 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:18:45 | 耗时 9 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:18:45 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:18:45 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:18:46 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:18:46 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = '1000';
+2022-05-03 15:18:47 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:18:47 | 耗时 1 ms | SQL 语句：
+SELECT ID, DESCREPTION, CODE, CREATE_TIME, PARENT_CODE, NAME, REMARK FROM code_sort;
+2022-05-03 15:18:50 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:18:50 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = 1000;
+2022-05-03 15:18:50 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:18:50 | 耗时 1 ms | SQL 语句：
+UPDATE code SET CODE = 'sendRecordCheckInfoWay', PARENT_CODE = '', NAME = '0', DESCRIPTION = '', REMARK = '1、通过记录id校验； 0或其他 通过批次号与号码校验', SORT_CODE = 'System' WHERE ID = 1000;
+2022-05-03 15:18:50 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:18:50 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.updateCode()', '2022-05-03T15:18:50.435+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 17, ' code: Code(id=1000, sortCode=System, code=sendRecordCheckInfoWay, name=0, parentCode=, orderLevel=null, isDelete=null, description=, remark=1、通过记录id校验； 0或其他 通过批次号与号码校验, createTime=null)', '修改Code', 'admin');
+2022-05-03 15:18:50 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:18:50 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:18:50 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:18:50 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:19:04 INFO  http-nio-8088-exec-4 com.hero.sms.common.DatabaseCache Begin-缓存字典
+2022-05-03 15:19:04 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:19:04 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:19:04 INFO  http-nio-8088-exec-4 com.hero.sms.common.DatabaseCache End-字典缓存完成
+2022-05-03 15:19:07 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:19:07 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.loadReladCodeCache()', '2022-05-03T15:19:07.543+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2616, '', '刷新字典模块缓存', 'admin');
+2022-05-03 15:19:07 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:19:07 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:19:07 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:19:07 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:19:19 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:19:19 | 耗时 1 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:19:19 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:19:19 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:19:19 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:19:19 | 耗时 7 ms | SQL 语句：
+UPDATE t_send_record_checkinfo tsrc, t_send_record tsr SET tsrc.state = '0' WHERE tsrc.state = 1 AND tsrc.send_code = tsr.send_code AND tsrc.sms_number = tsr.sms_number AND tsr.Id IN (140131);
+2022-05-03 15:19:19 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:19:19 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:19:19 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:19:19 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:19:19.958+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2220, ' sendRecordIds: "140131"', '批量重发SendRecord', 'admin');
+2022-05-03 15:19:25 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:19:25 | 耗时 10 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:19:26 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:19:26 | 耗时 47 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:19:46 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:19:46 | 耗时 12 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:19:46 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:19:46 | 耗时 33 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:19:50 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:19:50 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:19:50 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:19:50 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:19:50 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:19:50 | 耗时 2 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:19:50 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:19:50 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:19:50.779+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 1251, ' sendRecordIds: "140131"', '批量重发SendRecord', 'admin');
+2022-05-03 15:19:58 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:19:58 | 耗时 11 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:19:58 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:19:58 | 耗时 40 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:20:04 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:20:04 | 耗时 1 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:20:04 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:20:04 | 耗时 2 ms | SQL 语句：
+UPDATE t_send_record_checkinfo tsrc, t_send_record tsr SET tsrc.state = '0' WHERE tsrc.state = 1 AND tsrc.send_code = tsr.send_code AND tsrc.sms_number = tsr.sms_number AND tsr.Id IN (140131);
+2022-05-03 15:20:04 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:20:04 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:20:05 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:20:05 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceReSend()', '2022-05-03T15:20:04.991+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 30, ' sendRecordIds: "140131"', '批量强制重发SendRecord', 'admin');
+2022-05-03 15:20:13 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:20:13 | 耗时 12 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:20:13 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:20:13 | 耗时 63 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:20:25 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:20:25 | 耗时 1 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140131'));
+2022-05-03 15:20:25 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:20:25 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceUnLock()', '2022-05-03T15:20:25.439+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 7, ' sendRecordIds: "140131"', '批量强制解锁SendRecord', 'admin');
+2022-05-03 15:20:39 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:20:39 | 耗时 16 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:20:39 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:20:39 | 耗时 35 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:20:42 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:20:42 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state IN (2, 8) AND id IN ('140131'));
+2022-05-03 15:20:42 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:20:42 | 耗时 11 ms | SQL 语句：
+UPDATE t_send_record_checkinfo tsrc, t_send_record tsr SET tsrc.state = '0503152042' WHERE tsrc.state = 1 AND tsrc.send_code = tsr.send_code AND tsrc.sms_number = tsr.sms_number AND tsr.Id IN (140131);
+2022-05-03 15:20:42 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:20:42 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.forceUnLock()', '2022-05-03T15:20:42.111+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 26, ' sendRecordIds: "140131"', '批量强制解锁SendRecord', 'admin');
+2022-05-03 15:20:51 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:20:51 | 耗时 3 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 2 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:20:51 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:20:51 | 耗时 0 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (state = 8 AND id IN ('140131') AND res_msgid IS NULL);
+2022-05-03 15:20:51 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:20:51 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:20:51 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:20:51 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.controller.message.SendRecordController.reSend()', '2022-05-03T15:20:51.212+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 1356, ' sendRecordIds: "140131"', '批量重发SendRecord', 'admin');
+2022-05-03 15:20:56 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:20:56 | 耗时 8 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:20:56 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:20:56 | 耗时 39 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:21:50 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:21:50 | 耗时 11 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:21:50 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:21:50 | 耗时 35 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:23:02 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:23:02 | 耗时 1 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:23:02 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:23:02 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,150;
+2022-05-03 15:23:04 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:23:04 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = '965';
+2022-05-03 15:23:05 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:23:05 | 耗时 1 ms | SQL 语句：
+SELECT ID, DESCREPTION, CODE, CREATE_TIME, PARENT_CODE, NAME, REMARK FROM code_sort;
+2022-05-03 15:23:41 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:23:41 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = 965;
+2022-05-03 15:23:41 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:23:41 | 耗时 10 ms | SQL 语句：
+UPDATE code SET CODE = 'sendRecordStartTimeInt', PARENT_CODE = '', NAME = '-1800', DESCRIPTION = 'SendRecordTask定时任务：自动重新提交超时或提交失败的发送记录', REMARK = '单位：分；用于计算查询开始时间前N分钟（负数为前，正数为后）', SORT_CODE = 'System' WHERE ID = 965;
+2022-05-03 15:23:41 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:23:41 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.updateCode()', '2022-05-03T15:23:41.275+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 23, ' code: Code(id=965, sortCode=System, code=sendRecordStartTimeInt, name=-1800, parentCode=, orderLevel=null, isDelete=null, description=SendRecordTask定时任务：自动重新提交超时或提交失败的发送记录, remark=单位：分；用于计算查询开始时间前N分钟（负数为前，正数为后）, createTime=null)', '修改Code', 'admin');
+2022-05-03 15:23:41 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:23:41 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:23:41 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:23:41 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,150;
+2022-05-03 15:23:53 INFO  http-nio-8088-exec-2 com.hero.sms.common.DatabaseCache Begin-缓存字典
+2022-05-03 15:23:53 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:23:53 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:23:53 INFO  http-nio-8088-exec-2 com.hero.sms.common.DatabaseCache End-字典缓存完成
+2022-05-03 15:23:55 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:23:55 | 耗时 10 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.loadReladCodeCache()', '2022-05-03T15:23:55.427+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2120, '', '刷新字典模块缓存', 'admin');
+2022-05-03 15:23:55 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:23:55 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:23:55 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:23:55 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,150;
+2022-05-03 15:23:59 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:23:59 | 耗时 10 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:23:59 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:23:59 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:24:07 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:24:07 | 耗时 1 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:24:07 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:24:07 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:24:07.280+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 19, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:24:07 INFO  FEBS_Scheduler_Worker-1 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:24:07 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:24:07 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:24:07 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:24:07 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:24:21 INFO  pool-3-thread-1 p6spy 2022-05-03 15:24:21 | 耗时 75 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:24:10.866+0800' AND create_time <= '2022-05-03T15:14:12.297+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:24:25 INFO  pool-3-thread-1 p6spy 2022-05-03 15:24:25 | 耗时 22 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:24:47 INFO  pool-3-thread-1 p6spy 2022-05-03 15:24:47 | 耗时 8 ms | SQL 语句：
+UPDATE t_send_record_checkinfo tsrc, t_send_record tsr SET tsrc.state = '0' WHERE tsrc.state = 1 AND tsrc.send_code = tsr.send_code AND tsrc.sms_number = tsr.sms_number AND tsr.Id IN (140132);
+2022-05-03 15:25:00 INFO  pool-3-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:25:00 INFO  FEBS_Scheduler_Worker-1 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：53336 毫秒
+2022-05-03 15:25:00 INFO  FEBS_Scheduler_Worker-1 p6spy 2022-05-03 15:25:00 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 53336, '2022-05-03T15:24:07.322+0800', 'sendRecordTask', '0');
+2022-05-03 15:25:53 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:25:53 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:25:53 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:25:53 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:25:53.748+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 17, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:25:53 INFO  FEBS_Scheduler_Worker-2 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:25:53 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:25:53 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:25:53 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:25:53 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:26:00 INFO  pool-4-thread-1 p6spy 2022-05-03 15:26:00 | 耗时 63 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:25:57.956+0800' AND create_time <= '2022-05-03T15:15:57.956+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:26:03 INFO  pool-4-thread-1 p6spy 2022-05-03 15:26:03 | 耗时 20 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:26:18 INFO  pool-4-thread-1 p6spy 2022-05-03 15:26:18 | 耗时 4 ms | SQL 语句：
+UPDATE t_send_record_checkinfo tsrc, t_send_record tsr SET tsrc.state = '0' WHERE tsrc.state = 1 AND tsrc.send_code = tsr.send_code AND tsrc.sms_number = tsr.sms_number AND tsr.Id IN (140132);
+2022-05-03 15:26:18 INFO  pool-4-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:26:18 INFO  FEBS_Scheduler_Worker-2 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：24440 毫秒
+2022-05-03 15:26:18 INFO  FEBS_Scheduler_Worker-2 p6spy 2022-05-03 15:26:18 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 24440, '2022-05-03T15:25:53.767+0800', 'sendRecordTask', '0');
+2022-05-03 15:26:31 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:26:31 | 耗时 11 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:26:31 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:26:31 | 耗时 66 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:26:39 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:26:39 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = '1000';
+2022-05-03 15:26:40 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:26:40 | 耗时 0 ms | SQL 语句：
+SELECT ID, DESCREPTION, CODE, CREATE_TIME, PARENT_CODE, NAME, REMARK FROM code_sort;
+2022-05-03 15:26:42 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:26:42 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = 1000;
+2022-05-03 15:26:42 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:26:42 | 耗时 1 ms | SQL 语句：
+UPDATE code SET CODE = 'sendRecordCheckInfoWay', PARENT_CODE = '', NAME = '1', DESCRIPTION = '', REMARK = '1、通过记录id校验； 0或其他 通过批次号与号码校验', SORT_CODE = 'System' WHERE ID = 1000;
+2022-05-03 15:26:42 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:26:42 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.updateCode()', '2022-05-03T15:26:42.388+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 12, ' code: Code(id=1000, sortCode=System, code=sendRecordCheckInfoWay, name=1, parentCode=, orderLevel=null, isDelete=null, description=, remark=1、通过记录id校验； 0或其他 通过批次号与号码校验, createTime=null)', '修改Code', 'admin');
+2022-05-03 15:26:42 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:26:42 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:26:42 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:26:42 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,150;
+2022-05-03 15:26:45 INFO  http-nio-8088-exec-8 com.hero.sms.common.DatabaseCache Begin-缓存字典
+2022-05-03 15:26:45 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:26:45 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:26:45 INFO  http-nio-8088-exec-8 com.hero.sms.common.DatabaseCache End-字典缓存完成
+2022-05-03 15:26:47 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:26:47 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.loadReladCodeCache()', '2022-05-03T15:26:47.416+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2083, '', '刷新字典模块缓存', 'admin');
+2022-05-03 15:26:47 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:26:47 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:26:47 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:26:47 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,150;
+2022-05-03 15:27:04 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:27:04 | 耗时 2 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:27:04 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:27:04 | 耗时 4 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:27:04.593+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 20, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:27:04 INFO  FEBS_Scheduler_Worker-3 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:27:04 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:27:04 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:27:04 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:27:04 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:27:10 INFO  pool-5-thread-1 p6spy 2022-05-03 15:27:10 | 耗时 55 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:27:09.358+0800' AND create_time <= '2022-05-03T15:17:09.358+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:27:10 INFO  pool-5-thread-1 p6spy 2022-05-03 15:27:10 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:27:10 INFO  pool-5-thread-1 p6spy 2022-05-03 15:27:10 | 耗时 1 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140132) AND state = 1);
+2022-05-03 15:27:10 INFO  pool-5-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:27:10 INFO  FEBS_Scheduler_Worker-3 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：6221 毫秒
+2022-05-03 15:27:10 INFO  FEBS_Scheduler_Worker-3 p6spy 2022-05-03 15:27:10 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 6221, '2022-05-03T15:27:04.615+0800', 'sendRecordTask', '0');
+2022-05-03 15:27:26 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:27:26 | 耗时 19 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:27:26 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:27:26 | 耗时 47 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:27:45 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:27:45 | 耗时 13 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:27:45 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:27:45 | 耗时 38 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:27:57 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:27:57 | 耗时 3 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:27:57 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:27:57 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:27:57.629+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 18, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:27:57 INFO  FEBS_Scheduler_Worker-4 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:27:57 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:27:57 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:27:57 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:27:57 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:28:00 INFO  pool-6-thread-1 p6spy 2022-05-03 15:28:00 | 耗时 53 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:27:57.686+0800' AND create_time <= '2022-05-03T15:17:57.686+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:28:00 INFO  pool-6-thread-1 p6spy 2022-05-03 15:28:00 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:28:00 INFO  pool-6-thread-1 p6spy 2022-05-03 15:28:00 | 耗时 2 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140132) AND state = 1);
+2022-05-03 15:28:00 INFO  pool-6-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:28:00 INFO  FEBS_Scheduler_Worker-4 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：2673 毫秒
+2022-05-03 15:28:00 INFO  FEBS_Scheduler_Worker-4 p6spy 2022-05-03 15:28:00 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 2673, '2022-05-03T15:27:57.648+0800', 'sendRecordTask', '0');
+2022-05-03 15:28:12 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:28:12 | 耗时 17 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:28:12 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:28:12 | 耗时 67 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:28:26 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:28:26 | 耗时 12 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:28:26 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:28:26 | 耗时 39 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:28:31 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:28:31 | 耗时 2 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:28:31 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:28:31 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:28:31.853+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 16, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:28:31 INFO  FEBS_Scheduler_Worker-5 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:28:31 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:28:31 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:28:31 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:28:31 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:28:34 INFO  pool-7-thread-1 p6spy 2022-05-03 15:28:34 | 耗时 54 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:28:31.871+0800' AND create_time <= '2022-05-03T15:18:31.871+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:28:34 INFO  pool-7-thread-1 p6spy 2022-05-03 15:28:34 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:28:34 INFO  pool-7-thread-1 p6spy 2022-05-03 15:28:34 | 耗时 2 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0' WHERE (send_record_id IN (140132) AND state = 1);
+2022-05-03 15:28:34 INFO  pool-7-thread-1 com.hero.sms.job.task.SendRecordTask B-SendRecordTask：号码【18959918987】解锁异常
+2022-05-03 15:28:34 INFO  pool-7-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:28:34 INFO  FEBS_Scheduler_Worker-5 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：2577 毫秒
+2022-05-03 15:28:34 INFO  FEBS_Scheduler_Worker-5 p6spy 2022-05-03 15:28:34 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 2577, '2022-05-03T15:28:31.871+0800', 'sendRecordTask', '0');
+2022-05-03 15:28:39 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:28:39 | 耗时 21 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:28:39 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:28:39 | 耗时 80 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:28:52 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:28:52 | 耗时 9 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:28:52 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:28:52 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:28:54 INFO  http-nio-8088-exec-4 p6spy 2022-05-03 15:28:54 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = '998';
+2022-05-03 15:28:55 INFO  http-nio-8088-exec-2 p6spy 2022-05-03 15:28:55 | 耗时 1 ms | SQL 语句：
+SELECT ID, DESCREPTION, CODE, CREATE_TIME, PARENT_CODE, NAME, REMARK FROM code_sort;
+2022-05-03 15:28:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:28:59 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = 998;
+2022-05-03 15:28:59 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:28:59 | 耗时 3 ms | SQL 语句：
+UPDATE code SET CODE = 'isForceReSendSwitch', PARENT_CODE = '', NAME = 'ON', DESCRIPTION = '', REMARK = '任务重发是否强制解锁', SORT_CODE = 'System' WHERE ID = 998;
+2022-05-03 15:28:59 INFO  Febs-Async-Thread4 p6spy 2022-05-03 15:28:59 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.updateCode()', '2022-05-03T15:28:59.091+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 14, ' code: Code(id=998, sortCode=System, code=isForceReSendSwitch, name=ON, parentCode=, orderLevel=null, isDelete=null, description=, remark=任务重发是否强制解锁, createTime=null)', '修改Code', 'admin');
+2022-05-03 15:28:59 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:28:59 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:28:59 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:28:59 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:29:00 INFO  http-nio-8088-exec-10 com.hero.sms.common.DatabaseCache Begin-缓存字典
+2022-05-03 15:29:00 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:29:00 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:29:00 INFO  http-nio-8088-exec-10 com.hero.sms.common.DatabaseCache End-字典缓存完成
+2022-05-03 15:29:02 INFO  Febs-Async-Thread5 p6spy 2022-05-03 15:29:02 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.loadReladCodeCache()', '2022-05-03T15:29:02.754+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2106, '', '刷新字典模块缓存', 'admin');
+2022-05-03 15:29:02 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:29:02 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:29:02 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:29:02 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:29:08 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:29:08 | 耗时 9 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:29:08 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:29:08 | 耗时 42 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:29:14 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:29:14 | 耗时 2 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job WHERE JOB_ID = 4;
+2022-05-03 15:29:14 INFO  Febs-Async-Thread1 p6spy 2022-05-03 15:29:14 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.job.controller.JobController.runJob()', '2022-05-03T15:29:14.610+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 14, ' jobIds: "4"', '执行定时任务', 'admin');
+2022-05-03 15:29:14 INFO  FEBS_Scheduler_Worker-6 com.hero.sms.job.util.ScheduleJob 任务准备执行，任务ID：4
+2022-05-03 15:29:14 INFO  pool-8-thread-1 p6spy 2022-05-03 15:29:14 | 耗时 14 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T09:29:14.628+0800' AND create_time <= '2022-05-03T15:19:14.628+0800' AND channel_id IS NOT NULL AND consume_amount IS NOT NULL AND consume_amount <> 0 AND state IN (8) AND res_msgid IS NULL) ORDER BY create_time ASC;
+2022-05-03 15:29:14 INFO  pool-8-thread-1 p6spy 2022-05-03 15:29:14 | 耗时 0 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:29:14 INFO  pool-8-thread-1 p6spy 2022-05-03 15:29:14 | 耗时 2 ms | SQL 语句：
+UPDATE t_send_record_checkinfo_plan SET state = '0503152914' WHERE (send_record_id IN (140132) AND state = 1);
+2022-05-03 15:29:14 INFO  pool-8-thread-1 com.hero.sms.job.task.SendRecordTask SendRecordTask成功重发1条记录
+2022-05-03 15:29:14 INFO  FEBS_Scheduler_Worker-6 com.hero.sms.job.util.ScheduleJob 任务执行完毕，任务ID：4 总共耗时：36 毫秒
+2022-05-03 15:29:14 INFO  FEBS_Scheduler_Worker-6 p6spy 2022-05-03 15:29:14 | 耗时 1 ms | SQL 语句：
+INSERT INTO t_job_log (method_name, params, job_id, times, create_time, bean_name, status) VALUES ('run', '', 4, 36, '2022-05-03T15:29:14.627+0800', 'sendRecordTask', '0');
+2022-05-03 15:29:14 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:29:14 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM t_job;
+2022-05-03 15:29:14 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:29:14 | 耗时 0 ms | SQL 语句：
+SELECT JOB_ID, cron_expression, create_time, method_name, remark, bean_name, params, status FROM t_job ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:29:17 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:29:17 | 耗时 9 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:29:17 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:29:17 | 耗时 71 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-02T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:36:42 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:36:42 | 耗时 16 ms | SQL 语句：
+SELECT COUNT(1) FROM t_send_record WHERE (create_time >= '2022-05-03T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800');
+2022-05-03 15:36:42 INFO  http-nio-8088-exec-1 p6spy 2022-05-03 15:36:42 | 耗时 1 ms | SQL 语句：
+SELECT id, support_area, code, weight, description, create_user_name, remark, protocol_type, impl_full_class, day_limit, create_time, area_regex, name, state, is_del, area_operator_regex, operator_regex FROM t_sms_channel WHERE (is_del = 0);
+2022-05-03 15:36:42 INFO  http-nio-8088-exec-7 p6spy 2022-05-03 15:36:42 | 耗时 91 ms | SQL 语句：
+SELECT id, agent_id, sms_number_province, send_code, sms_number, sms_number_area, sms_number_operator, receipt_time, org_code, res_msgid, channel_cost_amount, agent_income_amount, sms_content, sms_type, state, channel_id, up_agent_id, consume_amount, state_desc, sms_count, income_amount, source_number, submit_time, create_time, sms_words, sub_type, up_agent_income_amount FROM t_send_record WHERE (create_time >= '2022-05-03T00:00:00.000+0800' AND create_time <= '2022-05-03T23:59:59.000+0800') ORDER BY create_time DESC LIMIT 0,10;
+2022-05-03 15:37:07 INFO  http-nio-8088-exec-10 p6spy 2022-05-03 15:37:07 | 耗时 1 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = '1000';
+2022-05-03 15:37:07 INFO  http-nio-8088-exec-8 p6spy 2022-05-03 15:37:07 | 耗时 10 ms | SQL 语句：
+SELECT ID, DESCREPTION, CODE, CREATE_TIME, PARENT_CODE, NAME, REMARK FROM code_sort;
+2022-05-03 15:37:10 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:37:10 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE ID = 1000;
+2022-05-03 15:37:10 INFO  http-nio-8088-exec-9 p6spy 2022-05-03 15:37:10 | 耗时 10 ms | SQL 语句：
+UPDATE code SET CODE = 'sendRecordCheckInfoWay', PARENT_CODE = '', NAME = '0', DESCRIPTION = '', REMARK = '1、通过记录id校验； 0或其他 通过批次号与号码校验', SORT_CODE = 'System' WHERE ID = 1000;
+2022-05-03 15:37:10 INFO  Febs-Async-Thread2 p6spy 2022-05-03 15:37:10 | 耗时 3 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.updateCode()', '2022-05-03T15:37:10.255+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 20, ' code: Code(id=1000, sortCode=System, code=sendRecordCheckInfoWay, name=0, parentCode=, orderLevel=null, isDelete=null, description=, remark=1、通过记录id校验； 0或其他 通过批次号与号码校验, createTime=null)', '修改Code', 'admin');
+2022-05-03 15:37:10 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:37:10 | 耗时 1 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:37:10 INFO  http-nio-8088-exec-5 p6spy 2022-05-03 15:37:10 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:37:12 INFO  http-nio-8088-exec-3 com.hero.sms.common.DatabaseCache Begin-缓存字典
+2022-05-03 15:37:12 INFO  http-nio-8088-exec-3 p6spy 2022-05-03 15:37:12 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code WHERE (IS_DELETE = '0');
+2022-05-03 15:37:12 INFO  http-nio-8088-exec-3 com.hero.sms.common.DatabaseCache End-字典缓存完成
+2022-05-03 15:37:14 INFO  Febs-Async-Thread3 p6spy 2022-05-03 15:37:14 | 耗时 2 ms | SQL 语句：
+INSERT INTO t_log (METHOD, CREATE_TIME, IP, LOCATION, TIME, PARAMS, OPERATION, USERNAME) VALUES ('com.hero.sms.system.controller.CodeController.loadReladCodeCache()', '2022-05-03T15:37:14.132+0800', '192.168.189.1', '内网IP|0|0|内网IP|内网IP', 2067, '', '刷新字典模块缓存', 'admin');
+2022-05-03 15:37:14 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:37:14 | 耗时 0 ms | SQL 语句：
+SELECT COUNT(1) FROM code;
+2022-05-03 15:37:14 INFO  http-nio-8088-exec-6 p6spy 2022-05-03 15:37:14 | 耗时 0 ms | SQL 语句：
+SELECT ID, CODE, CREATE_TIME, ORDER_LEVEL, PARENT_CODE, IS_DELETE, NAME, DESCRIPTION, REMARK, SORT_CODE FROM code ORDER BY CREATE_TIME DESC LIMIT 0,10;
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin Application shutdown requested.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1651561674921 paused.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Shutting down ExecutorService 'febsAsyncThreadPool'
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.springframework.scheduling.quartz.SchedulerFactoryBean Shutting down Quartz Scheduler
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1651561674921 shutting down.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1651561674921 paused.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 org.quartz.core.QuartzScheduler Scheduler FEBS_Scheduler_$_LAPTOP-L07PL5KH1651561674921 shutdown complete.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource start closing ....
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown initiated...
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource quartz - Shutdown completed.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown initiated...
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.zaxxer.hikari.HikariDataSource base - Shutdown completed.
+2022-05-03 15:37:53 INFO  RMI TCP Connection(2)-127.0.0.1 com.baomidou.dynamic.datasource.DynamicRoutingDataSource dynamic-datasource all closed success,bye

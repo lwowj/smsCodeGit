@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.organization.OrganizationMapper">
+
+    <resultMap id="organizationExt" type="com.hero.sms.entity.organization.ext.OrganizationExt">
+        <id property="id" column="Id"/>
+        <result property="agentId" column="Agent_Id"/>
+        <result property="organizationName" column="Organization_Name"/>
+        <result property="organizationCode" column="Organization_Code"/>
+        <result property="contact" column="Contact"/>
+        <result property="contactMobile" column="Contact_Mobile"/>
+        <result property="email" column="EMail"/>
+        <result property="address" column="Address"/>
+        <result property="webUrl" column="Web_Url"/>
+        <result property="amount" column="Amount"/>
+        <result property="availableAmount" column="Available_Amount"/>
+        <result property="cashAmount" column="Cash_Amount"/>
+        <result property="sendSmsTotal" column="Send_Sms_Total"/>
+        <result property="status" column="Status"/>
+        <result property="approveStateCode" column="Approve_State_Code"/>
+        <result property="smsSign" column="Sms_Sign"/>
+        <result property="chargesType" column="charges_type"/>
+        <result property="settlementType" column="Settlement_type"/>
+        <result property="smsApproveType" column="Sms_Approve_type"/>
+        <result property="md5Key" column="Md5_Key"/>
+        <result property="bindIp" column="Bind_IP"/>
+        <result property="notifyUrl" column="notify_url"/>
+        <result property="dataMd5" column="Data_MD5"/>
+        <result property="description" column="Description"/>
+        <result property="remark" column="Remark"/>
+        <result property="createUser" column="Create_User"/>
+        <result property="createDate" column="Create_Date"/>
+
+        <collection property="costs" ofType="com.hero.sms.entity.organization.OrganizationCost">
+            <id property="id" column="Cost_Id"/>
+            <result property="organizationCode" column="Cost_Organization_Code"/>
+            <result property="smsType" column="sms_type"/>
+            <result property="costName" column="Cost_Name"/>
+            <result property="costValue" column="Cost_Value"/>
+            <result property="state" column="Cost_State"/>
+            <result property="channelId" column="Cost_Channel_Id"/>
+            <result property="operator" column="Cost_Operator"/>
+            <result property="description" column="Cost_Description"/>
+            <result property="remark" column="Cost_Remark"/>
+            <result property="createDate" column="Cost_Create_Date"/>
+        </collection>
+
+    </resultMap>
+
+
+
+    <select id="queryOrganizationExtByOrgCode" parameterType="String"
+            resultMap="organizationExt">
+        select org.*,
+            cost.Id as cost_Id,
+            cost.Organization_Code as cost_Organization_Code,
+            cost.sms_type,
+            cost.Cost_Name as Cost_Name,
+            cost.Cost_Value as Cost_Value,
+            cost.State as Cost_State,
+            cost.Channel_Id as Cost_Channel_Id,
+            cost.Operator as Cost_Operator,
+            cost.Description as Cost_Description,
+            cost.Remark as Cost_Remark,
+            cost.Create_Date as Cost_Create_Date
+        from t_organization org
+            left join t_organization_cost cost on org.Organization_Code = cost.Organization_Code
+            where org.organization_code = #{orgCode}
+    </select>
+
+    <select id="queryOrganizationByUserAccount" parameterType="String"
+            resultType="com.hero.sms.entity.organization.Organization">
+        select org.*
+        from t_organization org
+            left join t_organization_user u on org.Organization_Code = u.Organization_Code
+            where u.User_Account = #{userAccount}
+    </select>
+
+    <delete id="deleteOrganizationUserByOrganization">
+        delete
+           u
+        FROM
+            t_organization o
+        left join t_organization_user u ON o.Organization_Code = u.Organization_Code
+            ${ew.customSqlSegment}
+
+    </delete>
+
+
+	<resultMap type="com.hero.sms.entity.organization.ext.OrganizationExt" id="findListContainPropertyResult">
+		<id column="id" property="id" javaType="int"/>
+		<result column="Agent_Id" property="agentId" javaType="int"/>
+		<result column="Organization_Name" property="organizationName" javaType="String"/>
+		<result column="Organization_Code" property="organizationCode" javaType="String"/>
+		<result column="Contact" property="contact" javaType="String"/>
+		<result column="Contact_Mobile" property="contactMobile" javaType="String"/>
+		<result column="Amount" property="amount" javaType="Long"/>
+		<result column="Available_Amount" property="availableAmount" javaType="Long"/>
+		<result column="Cash_Amount" property="cashAmount" javaType="Long"/>
+		<result column="Send_Sms_Total" property="sendSmsTotal" javaType="Long"/>
+		<result column="Status" property="status" javaType="String"/>
+		<result column="interface_type" property="interfaceType" javaType="int"/>
+		<result column="Md5_Key" property="md5Key" javaType="String"/>
+		<result column="Bind_IP" property="bindIp" javaType="String"/>
+		<result column="notify_url" property="notifyUrl" javaType="String"/>
+		<result column="Data_MD5" property="dataMd5" javaType="String"/>
+		<result column="Description" property="description" javaType="String"/>
+		<result column="remark" property="remark" javaType="String"/>
+		<result column="Create_Date" property="createDate" javaType="Date"/>
+		<collection property="propertys" column="Organization_Code" select="findPropertyByOrgCode"></collection>
+	</resultMap>
+	
+	<resultMap type="com.hero.sms.entity.organization.OrganizationProperty" id="findPropertyByOrgCodeResult">
+		<id column="id" property="id" javaType="int"/>
+		<result column="organization_code" property="organizationCode" javaType="String"/>
+		<result column="property_type" property="propertyType" javaType="int"/>
+		<result column="name" property="name" javaType="String"/>
+		<result column="value" property="value" javaType="String"/>
+		<result column="description" property="description" javaType="String"/>
+		<result column="remark" property="remark" javaType="String"/>
+	</resultMap>
+	
+	<select id="findListContainProperty" resultMap="findListContainPropertyResult">
+		select *
+		from t_organization
+		<where>
+			<if test="organizationCode != null">
+			and Organization_Code = #{organizationCode}
+			</if>
+			<if test="status != null">
+			and Status = #{status}
+			</if>
+			<if test="approveStateCode != null">
+			and Approve_State_Code = #{approveStateCode}
+			</if>
+			<if test="interfaceType != null">
+			and interface_type<![CDATA[&]]>${interfaceType}=${interfaceType}
+			</if>
+		</where>
+	</select>
+
+	<select id="findContainPropertyById" resultMap="findListContainPropertyResult">
+		select * from t_organization where id = #{id}
+	</select>
+
+	<select id="findContainPropertyByCode" resultMap="findListContainPropertyResult">
+		select * from t_organization where organization_code = #{organizationCode}
+	</select>
+	
+	<select id="findPropertyByOrgCode" resultMap="findPropertyByOrgCodeResult">
+		select * from t_organization_property where organization_code = #{organizationCode}
+	</select>
+
+
+    <resultMap id="organizationExtGroup" type="com.hero.sms.entity.organization.ext.OrganizationExtGroup">
+        <id property="id" column="Id"/>
+        <result property="agentId" column="Agent_Id"/>
+        <result property="organizationName" column="Organization_Name"/>
+        <result property="organizationCode" column="Organization_Code"/>
+        <result property="contact" column="Contact"/>
+        <result property="contactMobile" column="Contact_Mobile"/>
+        <result property="email" column="EMail"/>
+        <result property="address" column="Address"/>
+        <result property="webUrl" column="Web_Url"/>
+        <result property="amount" column="Amount"/>
+        <result property="availableAmount" column="Available_Amount"/>
+        <result property="cashAmount" column="Cash_Amount"/>
+        <result property="sendSmsTotal" column="Send_Sms_Total"/>
+        <result property="status" column="Status"/>
+        <result property="approveStateCode" column="Approve_State_Code"/>
+        <result property="smsSign" column="Sms_Sign"/>
+        <result property="chargesType" column="charges_type"/>
+        <result property="settlementType" column="Settlement_type"/>
+        <result property="smsApproveType" column="Sms_Approve_type"/>
+        <result property="md5Key" column="Md5_Key"/>
+        <result property="bindIp" column="Bind_IP"/>
+        <result property="notifyUrl" column="notify_url"/>
+        <result property="dataMd5" column="Data_MD5"/>
+        <result property="description" column="Description"/>
+        <result property="remark" column="Remark"/>
+        <result property="createUser" column="Create_User"/>
+        <result property="createDate" column="Create_Date"/>
+        <result property="groupIds" column="groupIds"/>
+        <result property="groupNames" column="groupNames"/>
+    </resultMap>
+
+    <select id="findListContainsGroup" resultMap="organizationExtGroup">
+        SELECT *
+            FROM t_organization org
+            LEFT JOIN
+            (
+                SELECT
+                    temp.orgCode,
+                    GROUP_CONCAT(temp.`name` SEPARATOR ',') as groupNames ,
+                    GROUP_CONCAT(temp.groupId SEPARATOR ',') as groupIds
+                FROM
+                    (   SELECT gro.group_id groupId,gro.org_code orgCode,c.`NAME` as `name`
+                            FROM t_organization_group gro
+                            LEFT JOIN `code` c on c.SORT_CODE = 'OrgGroup' and c.`CODE` = gro.group_id
+                    ) temp GROUP BY temp.orgCode
+            ) orgGroup on orgGroup.orgCode = org.Organization_Code
+        <where>
+            <if test="oq.businessUserId != null">
+                AND org.Business_User_Id = #{oq.businessUserId}
+            </if>
+            <if test="oq.agentId != null">
+                AND org.Agent_Id = #{oq.agentId}
+            </if>
+            <if test="oq.organizationName != null and oq.organizationName != ''">
+                AND org.Organization_Name = #{oq.organizationName}
+            </if>
+            <if test="oq.organizationCode != null and oq.organizationCode != ''">
+                AND org.Organization_Code = #{oq.organizationCode}
+            </if>
+            <if test="oq.status != null and oq.status != ''">
+                AND org.Status = #{oq.status}
+            </if>
+            <if test="oq.approveStateCode != null and oq.approveStateCode != ''">
+                AND org.Approve_State_Code = #{oq.approveStateCode}
+            </if>
+            <if test="oq.groupId != null and oq.groupId != ''">
+                AND FIND_IN_SET(#{oq.groupId},orgGroup.groupIds)
+            </if>
+        </where>
+            ORDER BY org.id DESC
+    </select>
+    <select id="statisticOrganizationInfo" resultType="java.util.Map">
+         SELECT
+            COUNT(1) as total,
+            COUNT(IF(Status = 1 ,1,NULL)) as normalCount,
+            COUNT(IF(Status = 0 ,1,NULL)) as lockCount,
+            COUNT(IF(Status = 2 ,1,NULL)) as invalidCount,
+            COUNT(IF(Approve_State_Code = 1 ,1,NULL)) as unverifiedCount,
+            COUNT(IF(Approve_State_Code = 2 ,1,NULL)) as successCount,
+            COUNT(IF(Approve_State_Code = 3 ,1,NULL)) as failCount,
+            COALESCE(SUM(Amount),0) as totalRechargeAmount,
+            COALESCE(SUM(Available_Amount),0) as totalAvailableAmount,
+            COALESCE(SUM(Cash_Amount ),0) as totalCashAmount
+		FROM t_organization
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+</mapper>

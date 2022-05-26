@@ -1,0 +1,108 @@
+<div class="layui-fluid" id="agentSystemConfig-add" lay-title="系统配置">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header"></div>
+                <div class="layui-card-body" pad15="">
+                    <form class="layui-form" id="agentSystemConfig-add-form" action="" lay-filter="agentSystemConfig-add-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">平台名称：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="systemName"  lay-verify="required" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">平台LOGO：</label>
+                            <div class="layui-input-inline">
+                                <input type="file" name="logoFile" id="logoFile" lay-verify="required" lay-reqText="平台LOGO" class="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">域名地址：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="systemUrl"  lay-verify="required|domain" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">备注：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="remark" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-normal" type="submit" lay-submit="" lay-filter="agentSystemConfig-add-form-submit">
+                                    提交
+                                </button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['febs', 'form', 'validate','jqueryForm'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#agentSystemConfig-add'),
+            remark = '[[ ${remark} ]]',
+            platformName = '[[ ${platformName} ]]',
+            domain = '[[ ${domain} ]]',
+            validate = layui.validate;
+
+        form.verify(validate);
+        initagentSystemConfigValue();
+        form.render();
+
+        function initagentSystemConfigValue() {
+            form.val("agentSystemConfig-add-form", {
+                "systemName": platformName,
+                "systemUrl": domain,
+                "remark": remark
+            });
+        }
+
+
+        form.on('submit(agentSystemConfig-add-form-submit)', function (data) {
+            var self = $(this);
+            if(self.data('loading')){
+                return false;
+            }
+            self.data('loading',true);
+            var data = $("#agentSystemConfig-add-form").val();
+            $("#agentSystemConfig-add-form").ajaxSubmit({
+                type: 'post',
+                url: ctx + 'agentSystemConfig',
+                dataType: 'json',
+                data: data,
+                success: function(d) {
+                    self.data('loading',false);
+                    if (d.code === 200) {
+                        $("#agentSystemConfig-add-form")[0].reset();
+                        layer.alert(d.message, {icon: 1});
+                    } else if (d.code === 401) {
+                        febs.modal.info('登录失效', '登录已失效，请重新登录', function () {
+                            window.location.href = ctx + 'login';
+                        });
+                    } else if (d.code === 403) {
+                        febs.alert.warn('对不起，您暂无该操作权限');
+                    }else{
+                        layer.alert(d.message, {icon: 2});
+                    }
+                },
+                error: function(d) {
+                    self.data('loading',false);
+                    layer.alert(d.message, {icon: 2});
+                }
+            })
+            return false;
+        });
+    });
+</script>

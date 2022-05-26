@@ -1,0 +1,339 @@
+<style>
+    #febs-index .welcome-info {
+        border: 1px solid #f1f1f1;
+        margin-bottom: .5rem;
+        padding: .5rem;
+    }
+
+    #febs-index .welcome-info-wrapper {
+        padding: .2rem;
+        display: inline-block
+    }
+
+    #febs-index .welcome-info-wrapper .user-header {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-header img {
+        width: 5rem;
+        margin: .5rem 1rem;
+        border-radius: 50%
+    }
+
+    #febs-index .welcome-info-wrapper .user-info {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .random-message {
+        font-size: 1rem;
+        margin-bottom: .2rem;
+        max-width: 21rem
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .user-dept, #febs-index .welcome-info-wrapper .user-info .user-login-info {
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    #febs-index .login-count-table {
+        width: 100%;
+        margin: 1rem;
+    }
+
+    #febs-index .login-count-table .count {
+        padding-top: .8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1890ff
+    }
+
+    #febs-index .project-table {
+        padding: .5rem;
+        border: 1px solid #f1f1f1;
+        width: 100%
+    }
+
+    #febs-index .project-table-td {
+        padding: .5rem 0.7rem;
+        border: 1px solid #f1f1f1;
+    }
+
+    #febs-index .project-table-td a {
+        color: #42b983;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+    #febs-index .project-desc {
+        color: rgba(0, 0, 0, 0.45);
+    }
+    .layuiadmin-card-list p.layuiadmin-big-font {
+        font-size: 36px;
+        color: #666;
+        line-height: 36px;
+        padding: 5px 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+    }
+    .layuiadmin-badge {
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        right: 15px;
+        color: #01AAED;
+    }
+    #febs-index .layui-badge {
+        height: 18px;
+        line-height: 18px;
+        padding: 3px 9px;
+    }
+    .layuiadmin-span-color {
+        font-size: 14px;
+        position: absolute;
+        right: 15px;
+    }
+</style>
+<div class="layui-fluid layui-anim febs-anim-up" id="febs-index" lay-title="系统首页">
+    <div class="layui-row layui-col-space8 febs-container">
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card layui-col-space15">
+            	<div class="layui-col-sm6 layui-col-md3" style="width: 50%" >
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                         上次登录信息
+                             <span class="layui-badge layui-bg-green layuiadmin-badge">记录</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                       	登录时间&nbsp;：<span id="last-login-time"></span><br/>
+                                           登录&nbsp;I&nbsp; P&nbsp;：<span id="today-ip"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                           发送总数（条）
+                            <span class="layui-badge layui-bg-blue layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="send_sms_total">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                          商户数量
+                            <span class="layui-badge layui-bg-blue layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="orgCount">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card layui-col-space15">
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            可用额度（元）
+                            <span class="layui-badge layui-bg-blue layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list"  style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="quota_amount">0</p>
+                            <p>
+                                充值总额
+                                <span class="layuiadmin-span-color" ><span  id="amount"></span> <span class="layui-icon layui-icon-Dollar"></span></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            可用利润（元）
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="available_amount">0</p>
+                            <p>
+                                消费总额
+                                <span class="layuiadmin-span-color"><span  id="cash_amount"></span> <span class="layui-icon layui-icon-Dollar"></span></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            短信数量（条）
+                            <span class="layui-badge layui-bg-green layuiadmin-badge">当天</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="total">0</p>
+                            <p>
+                                成功数
+                                <span class="layuiadmin-span-color"><span  id="successTotal"></span> <span class="layui-icon layui-icon-message"></span></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            利润（元）
+                            <span class="layui-badge layui-bg-orange layuiadmin-badge">当天</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list" style="padding:10px 10px">
+                            <p class="layuiadmin-big-font" id="successAmount">0</p>
+                            <p>
+                                成本
+                                <span class="layuiadmin-span-color"><span  id="consumeAmount"></span> <span class="layui-icon layui-icon-Dollar"></span></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12" style="width: 100%;">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-card-header">当日商户短信发送量排行</div>
+                    <div id="basicColumnChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{febs/lay/data/dataSeries.js}"></script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['apexcharts', 'febs', 'jquery', 'util'], function () {
+        var $ = layui.jquery,
+            util = layui.util,
+            $view = $('#febs-index'),
+            febs = layui.febs;
+        $(function () {
+            if('EASY'==agentPwStrong)
+            {
+            	pwStrongNotify();
+            }
+        })
+        
+        febs.get(ctx + 'index/' + currentUser.agentAccount, null, function (r) {
+            handleSuccess(r.data);
+        });
+        febs.get(ctx + 'sumOrgcode', null, function (r) {
+            sumOrgcode(r.data);
+        });
+        function sumOrgcode(data) {
+            var data =  JSON.parse(data);
+            $view.find('#orgCount').text(data.orgCount).end()
+                .find('#total').text(data.total).end()
+                .find('#quota_amount').text(data.agent.quotaAmount/100).end()
+                .find('#amount').text(data.agent.amount/100).end()
+                .find('#available_amount').text(data.agent.availableAmount/100).end()
+                .find('#cash_amount').text(data.agent.cashAmount/100).end()
+                .find('#send_sms_total').text(data.agent.sendSmsTotal).end()
+                .find('#successTotal').text(data.successTotal).end()
+                .find('#successAmount').text(data.successAmount/100).end()
+                .find('#consumeAmount').text(data.consumeAmount/100).end();
+            var seriesData = [];
+            var categoriesData = [];
+            for (let i = 0; i < data.data.length; i++) {
+                seriesData[i] = data.data[i].total;
+                categoriesData[i] = data.data[i].orgName;
+            }
+
+            var options = {
+                series: [{
+                    name: '短信数量',
+                    data: seriesData
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '50%'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    width: 2
+                },
+                // grid: {
+                //     row: {
+                //         colors: ['#fff', '#f2f2f2']
+                //     }
+                // },
+                xaxis: {
+                    labels: {
+                        rotate: -45
+                    },
+                    categories: categoriesData,
+                    tickPlacement: 'on'
+                },
+                yaxis: {
+                    title: {
+                        text: '短  信  数  量'
+                    },
+                }
+                // fill: {
+                //     type: 'gradient',
+                //     gradient: {
+                //         shade: 'light',
+                //         type: "horizontal",
+                //         shadeIntensity: 0.25,
+                //         gradientToColors: undefined,
+                //         inverseColors: true,
+                //         opacityFrom: 0.85,
+                //         opacityTo: 0.85,
+                //         stops: [50, 0, 100]
+                //     },
+                // }
+            };
+
+            new ApexCharts(document.querySelector("#basicColumnChart"), options).render();
+        }
+
+        function handleSuccess(data) {
+            var hour = new Date().getHours();
+            var time = hour < 6 ? '早上好' : (hour <= 11 ? '上午好' : (hour <= 13 ? '中午好' : (hour <= 18 ? '下午好' : '晚上好')));
+            var index = "欢迎登录";
+            var welcomeMessage = time + '，<a id="febs-index-user">' + currentUser.agentName + '</a>，' + index;
+            $view.find('#today-ip').text(currentUser.lastLoginIp).end()
+                .find('#last-login-time').text(currentUser.lastLoginTime).end()
+                .find('#welcome-message').html(welcomeMessage).end();
+        }
+        
+        function pwStrongNotify() {
+            layer.open({
+                type: 1
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: '300px;'
+                ,shade: 0
+                ,id: 'passwordStrong_notify' //设定一个id，防止重复弹出
+                ,resize: false
+                ,btn: [ '知道了']
+                ,btnAlign: 'c'
+                ,offset:'rb'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">温馨提示：<br>尊敬的用户，您的密码强度很低，为保障账户安全，请及时前往【账户中心】-【密码修改】进行修改！谢谢使用！</div>'
+            });
+        }
+    });
+</script>

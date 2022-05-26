@@ -1,0 +1,93 @@
+<style>
+    #codeSort-update {
+        padding: 20px 25px 25px 0;
+    }
+</style>
+<div class="layui-fluid" id="codeSort-update">
+    <form class="layui-form" action="" lay-filter="codeSort-update-form">
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">字典分类id：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" data-th-value="${codeSort.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">分类名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" minlength="2" maxlength="10" lay-verify="name"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类代码：</label>
+            <div class="layui-input-block">
+                <input type="tel" name="code" lay-verify="code" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">上级代码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="parentCode" lay-verify="parentCode" maxlength="50" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <input type="text" name="description" lay-verify="description" maxlength="1024" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注：</label>
+            <div class="layui-input-block">
+                <textarea name="remark" maxlength="1024" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="codeSort-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            codeSort = [[${codeSort}]],
+            $view = $('#codeSort-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initCodeSortValue();
+
+
+        function initCodeSortValue() {
+            form.val("codeSort-update-form", {
+                "name": codeSort.name,
+                "code": codeSort.code,
+                "parentCode": codeSort.parentCode,
+                "description": codeSort.description,
+                "remark": codeSort.remark
+            });
+        }
+
+        form.on('submit(codeSort-update-form-submit)', function (data) {
+            debugger
+            if (febs.nativeEqual(data.field, codeSort)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'codeSort/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功');
+                $('#codeSort-update').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

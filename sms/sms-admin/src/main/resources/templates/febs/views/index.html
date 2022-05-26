@@ -1,0 +1,214 @@
+<style>
+    #febs-index .welcome-info {
+        border: 1px solid #f1f1f1;
+        margin-bottom: .5rem;
+        padding: .5rem;
+    }
+
+    #febs-index .welcome-info-wrapper {
+        padding: .2rem;
+        display: inline-block
+    }
+
+    #febs-index .welcome-info-wrapper .user-header {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-header img {
+        width: 5rem;
+        margin: .5rem 1rem;
+        border-radius: 50%
+    }
+
+    #febs-index .welcome-info-wrapper .user-info {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .random-message {
+        font-size: 1rem;
+        margin-bottom: .2rem;
+        max-width: 21rem
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .user-dept, #febs-index .welcome-info-wrapper .user-info .user-login-info {
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    #febs-index .login-count-table {
+        width: 100%;
+        margin: 1rem;
+    }
+
+    #febs-index .login-count-table .count {
+        padding-top: .8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1890ff
+    }
+
+    #febs-index .project-table {
+        padding: .5rem;
+        border: 1px solid #f1f1f1;
+        width: 100%
+    }
+
+    #febs-index .project-table-td {
+        padding: .5rem 0.7rem;
+        border: 1px solid #f1f1f1;
+    }
+
+    #febs-index .project-table-td a {
+        color: #42b983;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+    #febs-index .project-desc {
+        color: rgba(0, 0, 0, 0.45);
+    }
+    .layuiadmin-btn-group {
+        position: absolute;
+        right: 15px;
+    }
+    .layuiadmin-card-list {
+        padding: 15px;
+    }
+    .layuiadmin-card-list p.layuiadmin-normal-font {
+        padding-bottom: 10px;
+        font-size: 20px;
+        color: #666;
+        line-height: 24px;
+    }
+    .noData{
+        display: none;
+        height:300px;
+        line-height: 300px;
+        font-size: 16px;
+        text-align: center
+    }
+</style>
+<div class="layui-fluid layui-anim febs-anim-up" id="febs-index" lay-title="系统首页">
+    <div class="layui-row layui-col-space8 febs-container">
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body layui-anim layui-anim-fadein">
+                    <div class="layui-row welcome-info">
+                        <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                            <div class="layui-row welcome-info-wrapper">
+                                <div class="user-header">
+                                    <img alt="头像" id="user-avatar" data-th-src="@{febs/images/avatar/empty.jpg}">
+                                </div>
+                                <div class="user-info">
+                                    <div class="layui-row">
+                                        <div class="random-message">
+                                            <span id="welcome-message"></span>
+                                        </div>
+                                        <div class="user-dept">
+                                            <span id="user-dept"></span> | <span id="user-role"></span>
+                                        </div>
+                                        <div class="user-login-info">
+                                            上次登录时间：<span id="last-login-time">2019-05-23 18:45:12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                            <div class="layui-col-md-offset5">
+                                <table class="login-count-table">
+                                    <tr>
+                                        <td>今日IP</td>
+                                        <td>今日访问</td>
+                                        <td>总访问量</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="count" id="today-ip">
+                                            0
+                                        </td>
+                                        <td class="count" id="today-visit-count">
+                                            0
+                                        </td>
+                                        <td class="count" id="total-visit-count">
+                                            0
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    发送量
+<!--                    <div class="layui-btn-group layuiadmin-btn-group">-->
+<!--                        <button class="layui-btn layui-btn-primary layui-btn-xs">top</button>-->
+<!--                    </div>-->
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-col-md7 layui-col-sm7 layui-col-xs12">
+                            <div class="noData">
+                                无数据
+                            </div>
+                            <div id="myChart1" style="height: 300px;">
+                            </div>
+                        </div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs12">
+                            <div id="myChart2" style="height: 300px"></div>
+                            <div class="noData">
+                                无数据
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">用户全国分布</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs12">
+                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>地区</th>
+                                    <th>人数</th>
+                                </tr>
+                                </thead>
+                                <tbody id="mapDataView">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-col-md8 layui-col-sm8 layui-col-xs12">
+                            <div id="myChart3" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="mapData" type="text/html">
+    {{# if(d.length == 0){ }}
+        <tr>
+            <td colspan="3" style="text-align: center">无数据</td>
+        </tr>
+    {{# } }}
+    {{#  layui.each(d, function(index, item){ }}
+        <tr>
+            <td>{{ index+1 }}</td>
+            <td>{{ item.provinceName }}</td>
+            <td>{{ item.value }}</td>
+        </tr>
+    {{#  }); }}
+</script>
+<script>
+    layui.use('home', layui.factory('home'));
+</script>

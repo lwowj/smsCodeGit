@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.organization.OrganizationUserMapper">
+
+    <select id="selectLeftOrganizationPage" resultType="com.hero.sms.entity.organization.OrganizationUser">
+        select u.*
+            from t_organization_user u
+            left join t_organization o
+                on ( o.Organization_Code = u.Organization_Code )
+             ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectIdsLeftOrganization" resultType="integer">
+        select u.id
+            from t_organization_user u
+            left join t_organization o
+                on ( o.Organization_Code = u.Organization_Code )
+             ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectLeftOrganization" resultType="com.hero.sms.entity.organization.OrganizationUser">
+        select u.*
+            from t_organization_user u
+            left join t_organization o
+                on ( o.Organization_Code = u.Organization_Code )
+             ${ew.customSqlSegment}
+    </select>
+
+</mapper>

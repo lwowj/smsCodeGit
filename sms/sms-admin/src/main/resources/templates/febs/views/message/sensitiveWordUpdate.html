@@ -1,0 +1,66 @@
+<style>
+    #sensitiveWord-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #sensitiveWord-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="sensitiveWord-update">
+    <form class="layui-form" action="" lay-filter="sensitiveWord-update-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">敏感词：</label>
+            <div class="layui-input-block">
+                <input type="text" name="word" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="sensitiveWord-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            formSelects = layui.formSelects,
+            treeSelect = layui.treeSelect,
+            form = layui.form,
+            sensitiveWord = [[${sensitiveWord}]],
+            $view = $('#sensitiveWord-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initsensitiveWordValue();
+
+        function initsensitiveWordValue() {
+            form.val("sensitiveWord-update-form", {
+                //"mobile": sensitiveWord.mobile
+            });
+        }
+
+        form.on('submit(sensitiveWord-update-form-submit)', function (data) {
+            if (febs.nativeEqual(data.field, sensitiveWord)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'sensitiveWord/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                $('#febs-sensitiveWord').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

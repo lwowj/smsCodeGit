@@ -1,0 +1,313 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-statisticalOrgcode" lay-title="商户日报表">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+<!--                <div id="statisticalOrgcodeChart" style="width:100%;height:400px; "></div>-->
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">代理商</label>
+                                        <div class="layui-input-inline">
+                                            <sys:data name="agentId" datatype="agent"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">商务</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="Business" name="businessUserId" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">商户</label>
+                                        <div class="layui-input-inline">
+                                            <sys:data name="orgCode" datatype="org"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">统计日期</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="statisticalStartTime" class="layui-input" id="statisticalStartTime1" placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="statisticalEndTime" class="layui-input" id="statisticalEndTime1" placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="statisticalOrgcodeTable" lay-data="{id: 'statisticalOrgcodeTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="statisticalOrgcode-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="export" shiro:hasAnyPermissions="statisticalOrgcode:export">导出</button>
+    </div>
+</script>
+<script type="text/html" id="statisticalOrgcode-business">
+    {{#  if(!isNaN(d.businessUserId)) { }}
+    <sys:template fieldname="businessUserId" sortCode="Business" emptyValue="0"/>
+    {{#  } }}
+</script>
+<script type="text/html" id="statisticalOrgcode-option">
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs','echarts','moment'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            echarts = layui.echarts,
+            moment = layui.moment,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-statisticalOrgcode'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            starttime = [[${dateStart}]],
+            endtime = [[${dateEnd}]],
+          /*  statisticalOrgcodeChart,*/
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+/*        function getChart() {
+            $view.find("#statisticalOrgcodeChart").html("");
+            statisticalOrgcodeChart = echarts.init(document.getElementById('statisticalOrgcodeChart'));
+            return statisticalOrgcodeChart;
+        }
+        window.addEventListener('resize',function () {
+            statisticalOrgcodeChart.resize();
+        })*/
+        var start =  laydate.render({
+            elem: '#statisticalStartTime1',
+            type: 'date',
+            min:"1970-1-1",
+            max: endtime,
+            value: starttime,
+            done: function (value,date) {
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date
+                }
+            }
+        });
+        var end = laydate.render({
+            elem: '#statisticalEndTime1',
+            type: 'date',
+            min: starttime,
+            max:"2099-12-31",
+            value: endtime,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date
+                }
+            }
+        });
+
+        initTable();
+
+        // laydate.render({
+        //     elem: '#statisticalOrgcode-createTime',
+        //     range: true,
+        //     trigger: 'click'
+        // });
+
+        //头工具栏事件
+        table.on('toolbar(statisticalOrgcodeTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'export':
+                    febs.download(ctx + 'statisticalOrgcode/excel', getQueryParams(), '日报表统计.xlsx');
+                    break;
+
+            };
+        });
+
+        table.on('tool(statisticalOrgcodeTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'system/statisticalOrgcode/update/' + data.statisticalOrgcodename, {
+                    area: $(window).width() <= 750 ? '90%' : '50%',
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#statisticalOrgcode-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        });
+
+        table.on('sort(statisticalOrgcodeTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function loadingEcharts(){
+            var myChart = echarts.init(document.getElementById('myChart'));
+            myChart.showLoading({
+                text: '加载中...',
+                color: '#4cbbff',
+                textStyle: { color: '#444' },
+                effectOption: {backgroundColor: 'rgba(0, 0, 0, 0.2)'}
+            });
+            return false;
+        }
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'statisticalOrgcodeTable',
+                totalRow: true,
+                url: ctx + 'statisticalOrgcode/list',
+                where:{
+                    statisticalStartTime: starttime,
+                    statisticalEndTime:endtime
+                },
+                totalRow: true,
+                toolbar: '#statisticalOrgcode-toolbar',
+                cols: [
+                    [
+                        {type: 'checkbox',totalRowText: '合计'},
+                        { field: 'businessUserId', title: '商务', templet: '#statisticalOrgcode-business'},
+                        {field: 'orgName', title: '商户名称'},
+                        {field: 'totalCount', title: '总数',totalRow: true},
+                        {field: 'sortingFailCount', title: '分拣失败',totalRow: true},
+                       /*  {field: 'waitReqCount', title: '待发送'}, */
+                        {field: 'realReqSuccessCount', title: '提交成功',totalRow: true},
+                        /* {field: 'reqFailCount', title: '提交失败'},
+                        {field: 'receiptSuccessCount', title: '接收成功'},
+                        {field: 'receiptFailCount', title: '接收失败'},
+                        {field: 'rateSuccess', title: '成功率',templet:function (d) {
+                                if (d.realReqSuccessCount == 0){
+                                    return '0.00%';
+                                }
+                                var rate = d.receiptSuccessCount * 100 /d.realReqSuccessCount;
+                                rate = rate.toFixed(2);
+                                return rate + "%";
+                            }}, */
+                        {field: 'consumeAmount', title: '消费金额',templet:function (d) {
+                                return d.consumeAmount?d.consumeAmount/100:0;
+                            },totalRow: true},
+                        {field: 'agentIncomeAmount', title: '代理利润',templet:function (d) {
+                                return d.agentIncomeAmount?d.agentIncomeAmount/100:0;
+                            },totalRow: true}
+                        ,{field: 'channelCostAmount', title: '通道成本',templet:function (d) {
+                                return d.channelCostAmount?d.channelCostAmount/100:0;
+                            },totalRow: true}
+                        ,{field: 'incomeAmount', title: '利润',templet:function (d) {
+                                return d.incomeAmount?d.incomeAmount/100:0;
+                            },totalRow: true},
+                        {field: 'costValue', title: '国内资费',templet:function (d) {
+                            return d.costValue?d.costValue/100:0;
+                        }},
+                        {field: 'smsNum', title: '短信退还数',totalRow: true},
+                        {field: 'statisticalDate', title: '日期',templet:function (d) {
+                                if(d.statisticalDate != 'NaN') {
+                                    return moment(d.statisticalDate).format('YYYY-MM-DD')
+                                }
+                            }}/*,
+                        {title: '操作',fixed:'right', toolbar: 'statisticalOrgcode-option'}*/
+                    ]
+                ]
+                /*,
+                done:function (res) {
+                    var data = res.data;
+                    var xAxisData = [];
+                    var seriesData = [];
+                    layui.each(data,function (index,item) {
+                        xAxisData.push(moment(item.statisticalDate).format('MM-DD'));
+                        seriesData.push(item.totalCount);
+                    })
+
+                    option = {
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        noDataLoadingOption: {
+                            text: '无数据',
+                            effect: 'bubble',
+                            effectOption: {
+                                effect: {
+                                    n: 0
+                                }
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: xAxisData.reverse(),
+                            axisLabel: {
+                                interval: 0,//横轴信息全部显示
+                                rotate: -10,//-10度角倾斜显示
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name:"总数（条）"
+                        },
+                        series: [{
+                            name:'总数（条）',
+                            data: seriesData.reverse(),
+                            type: 'line'
+                        }]
+                    };
+                    getChart().setOption(option);
+                }*/
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                statisticalEndTime: $searchForm.find('input[name="statisticalEndTime"]').val(),
+                statisticalStartTime: $searchForm.find('input[name="statisticalStartTime"]').val(),
+                orgCode: $searchForm.find('select[name="orgCode"]').val(),
+                agentId: $searchForm.find('select[name="agentId"]').val(),
+                businessUserId: $searchForm.find('select[name="businessUserId"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deletestatisticalOrgcodes(statisticalOrgcodeIds) {
+            febs.get(ctx + 'statisticalOrgcode/delete/' + statisticalOrgcodeIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

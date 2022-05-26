@@ -1,0 +1,68 @@
+<style>
+    #areaCode-add {
+        padding: 20px 25px 25px 0;
+    }
+    #areaCode-add .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="areaCode-add">
+    <form class="layui-form" action="" lay-filter="areaCode-add-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">系统区号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="inArea" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">对接区号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="outArea" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地区简写：</label>
+            <div class="layui-input-block">
+                <input type="text" name="areaCoding" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地区名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="areaName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">排序序号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="orderNum" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="areaCode-add-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#areaCode-add'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+        form.on('submit(areaCode-add-form-submit)', function (data) {
+            febs.post(ctx + 'areaCode', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据新增成功！');
+                $('#febs-areaCode').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

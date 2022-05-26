@@ -1,0 +1,216 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-subordinateTimingSendBox" lay-title="下级定时短信"
+     xmlns:sys="http://www.w3.org/1999/html">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">批次号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="sendCode" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+									<div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">所属地域</label>
+                                        <div class="layui-input-inline">
+                                             <select  name="smsNumberArea">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsNumberAreaCodeEnums}"
+                                                         th:value ="${enum.inArea}"
+                                                         th:text="${enum.areaName}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                 <!--   <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">手机号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="smsNumbers" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">消息类型</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="smsType">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsTypeEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="subordinateTimingSendBoxTable" lay-data="{id: 'subordinateTimingSendBoxTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="subordinateTimingSendBox-toolbar">
+
+</script>
+<script type="text/html" id="subordinateTimingSendBox-option">
+</script>
+
+<script th:inline="javascript" type="text/html" id="subordinateTimingSendBox-auditState">
+    {{#
+    var auditState = {[# th:each="enum : ${auditStateEnums}"]
+    [( ${enum.code} )]: {title: '[( ${enum.name} )]'},
+    [/]}[d.auditState];
+    }}
+    <span>{{ auditState.title }}</span>
+</script>
+<script th:inline="javascript" type="text/html" id="subordinateTimingSendBox-smsType">
+    {{#
+    var smsType = {[# th:each="enum : ${smsTypeEnums}"]
+    [( ${enum.code} )]: {title: '[( ${enum.name} )]'},
+    [/]}[d.smsType];
+    }}
+    <span>{{ smsType.title }}</span>
+</script>
+<script th:inline="javascript" type="text/html" id="subordinateTimingSendBox-smsNumberAreaName">
+    {{#
+	var smsNumberAreaType ={[# th:each="enum : ${smsNumberAreaCodeEnums}"]
+    '[( ${enum.inArea} )]': {title: '[( ${enum.areaName} )]'},
+    [/]}[d.smsNumberArea];
+    }}
+    <span>{{ smsNumberAreaType.title }}</span>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-subordinateTimingSendBox'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+
+        //头工具栏事件
+        table.on('toolbar(subordinateTimingSendBoxTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'cancel':
+                    if (!checkStatus.data.length) {
+                        febs.alert.warn('请选择需要取消定时的记录');
+                    } else {
+                        var sendBoxIds = [];
+                        layui.each(checkStatus.data, function(key, item) {
+                            sendBoxIds.push(item.id)
+                        });
+                        febs.modal.confirm('是否立即发送', '<br>确定：立即发送【审核通过的】发件箱<br> 取消：取消定时,不再发送',
+                            function() {
+                                cancelTimings(sendBoxIds.join(','),true);
+                            },
+                            function () {
+                                cancelTimings(sendBoxIds.join(','),false);
+                            });
+                    }
+                    break;
+            };
+        });
+
+        table.on('tool(subordinateTimingSendBoxTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'system/sendBox/update/' + data.sendBoxname, {
+                    area: $(window).width() <= 750 ? '90%' : '50%',
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#subordinateTimingSendBox-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        });
+
+        table.on('sort(subordinateTimingSendBoxTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'subordinateTimingSendBoxTable',
+                url: ctx + 'sendBox/subordinateList',
+                toolbar: '#subordinateTimingSendBox-toolbar',
+                where: {
+                    "isTiming": true
+                },
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'sendCode', title: '批次号'},
+                    {field: 'smsType', title: '消息类型',templet:'#subordinateTimingSendBox-smsType'},
+                    {field: 'auditState', title: '审核状态',templet:'#subordinateTimingSendBox-auditState'},
+                    {field: 'smsContent', title: '消息内容'},
+                    {field: 'smsContent', title: '消息内容'},
+                    {field: 'numberCount', title: '号码数'},
+                    {field: 'smsNumberArea', title: '所属地域',templet:'#subordinateTimingSendBox-smsNumberAreaName', width: 100},
+                    {field: 'timingTime', title: '定时时间'},
+                    {field: 'createUsername', title: '提交人'},
+                    /*{title: '操作',fixed:'right', toolbar: 'subordinateTimingSendBox-option'}*/
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                sendCode: $searchForm.find('input[name="sendCode"]').val().trim(),
+                smsNumberArea: $searchForm.find('select[name="smsNumberArea"]').val(),
+                //smsType: $searchForm.find('select[name="smsType"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function cancelTimings(sendBoxIds,isSendingNow) {
+            febs.post(ctx + 'sendBox/cancelTimings' , {'sendBoxIds':sendBoxIds,'isSendingNow':isSendingNow}, function () {
+                febs.alert.success('取消定时成功');
+                $query.click();
+            });
+        }
+
+    })
+</script>

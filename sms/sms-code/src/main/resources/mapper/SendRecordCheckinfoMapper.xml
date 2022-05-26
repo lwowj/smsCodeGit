@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.message.SendRecordCheckinfoMapper">
+	<update id="updateSendRecordCheckinfoBatch">
+       UPDATE t_send_record_checkinfo tsrc,t_send_record tsr
+       SET tsrc.state = #{srci.states}
+       WHERE tsrc.state = #{srci.state} 
+       	AND tsrc.send_code = tsr.send_code
+        AND tsrc.sms_number = tsr.sms_number
+        AND tsr.Id IN 
+        <foreach collection="srci.idsList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

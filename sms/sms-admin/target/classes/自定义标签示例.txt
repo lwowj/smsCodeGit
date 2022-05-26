@@ -1,0 +1,8 @@
+ 字典标签示例
+ <sys:dict sortCode="SelectEnum" parentCode="001" name="status" class="layui-form-label layui-form-label-sm"/>
+ 等同于
+ <select name="status" class="layui-form-label layui-form-label-sm">
+        <option value=""></option>
+        <option value="0">禁用</option>
+        <option value="1">有效</option>
+ </select>

@@ -1,0 +1,453 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-sendRecordHistory" lay-title="历史发送记录">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">批次号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="sendCode" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">手机号码</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="smsNumber" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">状态</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="state">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${sendRecordStateEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.msg}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">商户</label>
+                                        <div class="layui-input-inline">
+                                            <sys:data name="orgCode" datatype="org"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">代理商</label>
+                                        <div class="layui-input-inline">
+                                            <sys:data name="agentId" datatype="agent"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">通道</label>
+                                        <div class="layui-input-inline">
+                                            <select name="channelId" id="channelId-select"></select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">所属地域</label>
+                                        <div class="layui-input-inline">
+                                             <select  name="smsNumberArea">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsNumberAreaCodeEnums}"
+                                                         th:value ="${enum.inArea}"
+					                					th:text="${enum.areaName}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">运营商</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="PhoneOperator" name="smsNumberOperator"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">归属地区</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="smsNumberProvince">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsNumberAreaProvinceEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">长短信</label>
+                                        <div class="layui-input-inline">
+                                             <select  name="smsCount">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsContentLengthStateEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createStartTime" class="layui-input" id="createStartTime6">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createEndTime" class="layui-input" id="createEndTime6" >
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline" style="width:61px;">
+                                           &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">短信内容</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="smsContent" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">消息标识</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="resMsgid" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">状态说明</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="stateDesc" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">提交时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="submitStartTime" class="layui-input" id="submitStartTime6">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="submitEndTime" class="layui-input" id="submitEndTime6" >
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <fieldset class="layui-elem-field febs-hide" id="sendRecordHistory-statistic">
+                        <legend>统计信息</legend>
+                        <div class="layui-field-box" id="statistic-content">
+
+                        </div>
+                    </fieldset>
+                    <table lay-filter="sendRecordHistoryTable" lay-data="{id: 'sendRecordHistoryTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="sendRecordHistory-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="export" shiro:hasAnyPermissions="sendRecordHistory:export">表格导出</button>
+        <button class="layui-btn layui-btn-sm" lay-event="statistic" shiro:hasAnyPermissions="sendRecordHistory:statistic">查看统计</button>
+    </div>
+</script>
+<script type="text/html" id="sendRecordHistory-option">
+</script>
+
+<script th:inline="javascript" type="text/html" id="sendRecordHistory-state">
+    {{#
+    var state = {[# th:each="enum : ${sendRecordStateEnums}"]
+    [( ${enum.code} )]: {title: '[( ${enum.msg} )]'},
+    [/]}[d.state];
+    }}
+    {{#  if(d.stateDesc && typeof d.stateDesc != undefined && d.stateDesc != '' ){ }}
+    <span>{{ state.title  }}
+        <i class="layui-icon febs-edit-area febs-blue"
+           lay-event="stateDesc">&#xe702;</i>
+    </span>
+    {{#  } else { }}
+    <span>{{ state.title }}</span>
+    {{#  } }}
+</script>
+<script th:inline="javascript" type="text/html" id="sendRecordHistory-smsType">
+    {{#
+    var smsType = {[# th:each="enum : ${smsTypeEnums}"]
+    [( ${enum.code} )]: {title: '[( ${enum.name} )]'},
+    [/]}[d.smsType];
+    }}
+    <span>{{ smsType.title }}</span>
+</script>
+<script type="text/html" id="sendRecordHistory-smsNumberOperator">
+    <sys:template sortCode="PhoneOperator" fieldname="smsNumberOperator"/>
+</script>
+<script th:inline="javascript" type="text/html" id="sendRecordHistory-smsNumberAreaName">
+    {{#
+	var smsNumberAreaType ={[# th:each="enum : ${smsNumberAreaCodeEnums}"]
+	'[( ${enum.inArea} )]': {title: '[( ${enum.areaName} )]'},
+    [/]}[d.smsNumberArea];
+    }}
+    <span>{{ smsNumberAreaType.title }}</span>
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-sendRecordHistory'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            todayStart = [[${todayStart}]],
+            todayEnd = [[${todayEnd}]],
+            tableIns;
+
+        form.render();
+
+        initTable();
+        initChannelSelect();
+        var start =  laydate.render({
+            elem: '#createStartTime6',
+            type: 'datetime',
+            min:"1970-1-1",
+            max:todayEnd,
+            value: todayStart,
+            done: function (value,date) {
+
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date,
+                    hours: date.hours,   
+                    minutes: date.minutes,   
+                    seconds : date.seconds
+                }
+            }
+        });
+
+        var end = laydate.render({
+            elem: '#createEndTime6',
+            type: 'datetime',
+            min:todayStart,
+            max:"2099-12-31",
+            value: todayEnd,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date,
+                    hours: date.hours,   
+                    minutes: date.minutes,   
+                    seconds : date.seconds
+                }
+            }
+        });
+        
+        var submitstart6 =  laydate.render({
+            elem: '#submitStartTime6',
+            type: 'datetime',
+            min:"1970-1-1",
+            max:"2099-12-31",
+            done: function (value,date) {
+            	submitend6.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date,
+                    hours: date.hours,   
+                    minutes: date.minutes,   
+                    seconds : date.seconds
+                }
+            }
+        });
+
+         var submitend6 = laydate.render({
+             elem: '#submitEndTime6',
+             type: 'datetime',
+             min:"1970-1-1",
+             max:"2099-12-31",
+             done: function (value,date) {
+            	 submitstart6.config.max={
+                     year:date.year,
+                     month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                     date: date.date,
+                     hours: date.hours,   
+                     minutes: date.minutes,   
+                     seconds : date.seconds
+                 }
+             }
+         });
+
+        //头工具栏事件
+        table.on('toolbar(sendRecordHistoryTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'export':
+                    febs.download(ctx + 'sendRecordHistory/excel', getQueryParams(), '发送记录信息表.xlsx');
+                    break;
+                case 'statistic':
+                    febs.get(ctx + 'sendRecordHistory/statistic', getQueryParams(), function (res) {
+                        var data = res.data;
+                        var content = '';
+                        var rateSuccess = data.allReqSuccess ===0?0:(data.receiptSuccess * 100/ data.allReqSuccess)
+                        content = '共计：' + data.total + "条 📌"
+                        	+ '有效短信数：' + data.smsCount + "条 📌"
+                            + '分拣失败：' + data.sortingFail + "条 📌"
+                            + '等待提交：' + data.waitReq + "条 📌"
+                            + '提交成功：' + data.reqSuccess + "条 📌"
+                            + '提交失败：' + data.reqFail + "条 📌"
+                            + '接收成功：' + data.receiptSuccess + "条 📌"
+                            + '接收失败：' + data.receiptFail + "条 📌"
+                            + '总请求成功：' + data.allReqSuccess + "条 📌"
+                            + '成功率：' + rateSuccess.toFixed(2) + "% 📌"
+                            + '消费金额：' + data.consumeAmount/100 + "元 📌"
+                            + '通道成本：' + data.channelCost/100 + "元📌"
+                            + '代理利润：' + data.agentIncomeAmount/100 + "元 📌"
+                            + '平台利润：' + data.incomeAmount/100 + "元 📌【注：总请求成功=提交成功+接收成功+接收失败】";
+                        $view.find('#statistic-content').text(content);
+                        $view.find('#sendRecordHistory-statistic').show();
+                    },function (res) {
+                        //提示错误信息
+                    });
+                    break;
+            };
+        });
+
+        table.on('tool(sendRecordHistoryTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'stateDesc'){
+                layer.alert(data.stateDesc,{title:'状态描述'})
+            }
+           /* if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'system/sendRecord/update/' + data.sendRecordname, {
+                    area: $(window).width() <= 750 ? '90%' : '50%',
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#sendRecord-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }*/
+        });
+
+        table.on('sort(sendRecordHistoryTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            $view.find('#sendRecordHistory-statistic').hide();
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $view.find('#sendRecordHistory-statistic').hide();
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'sendRecordHistoryTable',
+                url: ctx + 'sendRecordHistory/list',
+                toolbar: '#sendRecordHistory-toolbar',
+                where: {
+                    "createStartTime": todayStart,
+                    "createEndTime": todayEnd
+                },
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'smsChannelName', title: '通道', minWidth: 120},
+                    {field: 'sendCode', title: '批次号', width: 210},
+                    {field: 'orgCode', title: '商户编号', minWidth: 190,hide:true},
+                    {field: 'orgName', title: '商户名称', minWidth: 120},
+                    {field: 'smsNumber', title: '手机号码', minWidth: 120},
+                    {field: 'smsContent', title: '消息内容', minWidth: 120},
+                    {field: 'smsInfo', title: '短信详情', minWidth: 180},
+                    {field: 'amountInfo', title: '金额详情', minWidth: 120},
+                    {field: 'operatorInfo', title: '运营商', minWidth: 210},
+                    {field: 'smsNumberArea', title: '所属地域',templet:'#sendRecordHistory-smsNumberAreaName', width: 100},
+                   /* {field: 'smsType', title: '短信类型',templet:'#sendRecordHistory-smsType'},*/
+                    {field: 'state', title: '状态',templet:"#sendRecordHistory-state", minWidth: 120},
+                    {field: 'returnTime', title: '回执耗时', minWidth: 140},
+                    {field: 'receiptTime', title: '回执时间', minWidth: 160},
+         /*           {field: 'stateDesc', title: '状态描述'},*/
+                    {field: 'createTime', title: '创建时间', minWidth: 160},
+                    {field: 'submitTime', title: '提交时间', minWidth: 160,hide:true},
+                    {field: 'resMsgid', title: '通道消息标识', minWidth: 140,hide:true}
+                    /* 信息详情： 有效短信数 短信字数*/
+                    /* 运营商详情： 运营商  归属地区*/
+                    /*
+                    {field: 'smsNumberArea', title: '手机号码归属地区'},
+                    {field: 'smsNumberProvince', title: '手机号码归属地(省份)'},
+                    {field: 'smsCount', title: '有效的短信数'},
+                    {field: 'smsWords', title: '短信字数'},
+                    {title: '操作',fixed:'right', toolbar: 'sendRecordHistory-option'}*/
+                ]]
+            });
+        }
+
+        function initChannelSelect() {
+            var url = ctx + "smsChannel",
+                data = {};
+            data.isDel = 0;
+            $.get(url,data,function (res) {
+                var data = res.data;
+                $("#channelId-select").empty();
+                $("#channelId-select").append(new Option("",""));
+                $.each(res.data,function(index,item){
+                    $("#channelId-select").append(new Option(item.name,item.id));
+                });
+                layui.form.render("select");
+            })
+        }
+
+        function getQueryParams() {
+            return {
+                sendCode: $searchForm.find('input[name="sendCode"]').val().trim(),
+                orgCode: $searchForm.find('select[name="orgCode"]').val(),
+                agentId: $searchForm.find('select[name="agentId"]').val(),
+                smsNumber: $searchForm.find('input[name="smsNumber"]').val().trim(),
+                smsContent: $searchForm.find('input[name="smsContent"]').val().trim(),
+                createStartTime: $searchForm.find('input[name="createStartTime"]').val(),
+                createEndTime: $searchForm.find('input[name="createEndTime"]').val(),
+                channelId: $searchForm.find('select[name="channelId"]').val(),
+                state: $searchForm.find('select[name="state"]').val(),
+                smsNumberProvince: $searchForm.find('select[name="smsNumberProvince"]').val(),
+                smsNumberOperator: $searchForm.find('select[name="smsNumberOperator"]').val(),
+                smsCount: $searchForm.find('select[name="smsCount"]').val(),        
+                resMsgid: $searchForm.find('input[name="resMsgid"]').val().trim(),        
+                smsNumberArea: $searchForm.find('select[name="smsNumberArea"]').val(),
+                submitStartTime: $searchForm.find('input[name="submitStartTime"]').val(),
+                submitEndTime: $searchForm.find('input[name="submitEndTime"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+    })
+</script>

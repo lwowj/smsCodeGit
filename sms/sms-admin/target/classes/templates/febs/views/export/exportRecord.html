@@ -1,0 +1,197 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-exportRecord" lay-title="导出下载">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">文件类型</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="type">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${exportTypeEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createStartTime" class="layui-input" id="createStartTime2">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="createEndTime" class="layui-input" id="createEndTime2" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="exportRecordTable" lay-data="{id: 'exportRecordTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="exportRecord-toolbar">
+    <div class="layui-btn-container">
+    </div>
+</script>
+<script type="text/html" id="exportRecord-option">
+    <span shiro:lacksPermission="exportRecord:export">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <a lay-event="download" shiro:hasPermission="exportRecord:export"><i class="layui-icon febs-edit-area febs-blue" title="下载">&#xe82a;</i></a>
+</script>
+
+<script th:inline="javascript" type="text/html" id="exportRecord-type">
+    {{#
+    var type = {[# th:each="enum : ${exportTypeEnums}"]
+    '[( ${enum.code} )]': {title: '[( ${enum.name} )]'},
+    [/]}[d.type];
+    }}
+    <span>{{ type.title }}</span>
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-exportRecord'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            todayStart = [[${todayStart}]],
+            todayEnd = [[${todayEnd}]],
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+
+        var start =  laydate.render({
+            elem: '#createStartTime2',
+            type: 'datetime',
+            min:"1970-1-1",
+            max:todayEnd,
+            value: todayStart,
+            done: function (value,date) {
+
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+        var end = laydate.render({
+            elem: '#createEndTime2',
+            type: 'datetime',
+            min:todayStart,
+            max:"2099-12-31",
+            value: todayEnd,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+        //头工具栏事件
+        table.on('toolbar(exportRecordTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+
+            };
+        });
+
+        table.on('tool(exportRecordTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'download') {
+                febs.modal.confirm('导出下载', '确定下载导出文件？', function () {
+                    febs.download(ctx + 'exportRecord/export/' + data.id, null, data.filename);
+                });
+            }
+        });
+
+        table.on('sort(exportRecordTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'exportRecordTable',
+                url: ctx + 'exportRecord/list',
+                toolbar: '#exportRecord-toolbar',
+                where: {
+                    "createStartTime": todayStart,
+                    "createEndTime": todayEnd
+                },
+                cols: [ [
+                    {field: 'filename', title: '文件名称'},
+                    {field: 'type', title: '文件类型',templet:"#exportRecord-type"},
+                    {field: 'createTime', title: '创建时间'},
+                    {title: '操作', toolbar: '#exportRecord-option'}
+                ] ]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                type: $searchForm.find('select[name="type"]').val(),
+                createStartTime: $searchForm.find('input[name="createStartTime"]').val(),
+                createEndTime: $searchForm.find('input[name="createEndTime"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deleteexportRecords(exportRecordIds) {
+            febs.get(ctx + 'exportRecord/delete/' + exportRecordIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

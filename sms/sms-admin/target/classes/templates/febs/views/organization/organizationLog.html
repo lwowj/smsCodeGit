@@ -1,0 +1,223 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-organizationLog" lay-title="商户用户操作记录">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">操作用户</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">操作内容</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="operation" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">操作方法</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="method" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="organizationLogStartTime" class="layui-input" id="organizationLogStartTime">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="organizationLogEndTime" class="layui-input" id="organizationLogEndTime" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="organizationLogTable" lay-data="{id: 'organizationLogTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="organizationLog-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add" shiro:hasAnyPermissions="organizationLog:add">新增</button>
+        <button class="layui-btn layui-btn-sm febs-bg-volcano" lay-event="del" shiro:hasAnyPermissions="organizationLog:delete">删除</button>
+    </div>
+</script>
+<script type="text/html" id="organizationLog-option">
+    <span shiro:lacksPermission="organizationLog:view,organizationLog:update,organizationLog:delete">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <a lay-event="edit" shiro:hasPermission="organizationLog:update"><i class="layui-icon febs-edit-area febs-blue" title="修改">&#xe7a4;</i></a>
+</script>
+<script type="text/html" id="log-time">
+    <div>
+        {{# if (d.time < 500) { }}
+        <span class="layui-badge febs-tag-green">{{d.time}} ms</span>
+        {{# } else if (d.time < 1000) { }}
+        <span class="layui-badge febs-tag-cyan">{{d.time}} ms</span>
+        {{# } else if (d.time < 1500) { }}
+        <span class="layui-badge febs-tag-orange">{{d.time}} ms</span>
+        {{# } else { }}
+        <span class="layui-badge febs-tag-red">{{d.time}} ms</span>
+        {{# } }}
+    </div>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs','moment'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-organizationLog'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            moment = layui.moment,
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+        laydate.render({
+            elem: '#organizationLogStartTime' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 00:00:00")
+        });
+        laydate.render({
+            elem: '#organizationLogEndTime' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 23:59:59")
+        });
+        // laydate.render({
+        //     elem: '#organizationLog-createTime',
+        //     range: true,
+        //     trigger: 'click'
+        // });
+
+        //头工具栏事件
+        table.on('toolbar(organizationLogTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'add':
+                    febs.modal.open('新增信息', 'organizationLog/add', {
+                        btn: ['提交', '重置'],
+                        area: $(window).width() <= 750 ? '95%' : '50%',
+                        yes: function(index, layero) {
+                            $('#organizationLog-add').find('#submit').trigger('click');
+                        },
+                        btn2: function() {
+                            $('#organizationLog-add').find('#reset').trigger('click');
+                            return false;
+                        }
+                    });
+                    break;
+                case 'del':
+                    if (!checkStatus.data.length) {
+                        febs.alert.warn('请选择需要删除的记录');
+                    } else {
+                        febs.modal.confirm('删除记录', '确定删除该记录？', function() {
+                            var organizationLogIds = [];
+                            layui.each(checkStatus.data, function(key, item) {
+                                organizationLogIds.push(item.organizationLogId)
+                            });
+                            deleteorganizationLogs(organizationLogIds.join(','));
+                        });
+                    }
+                    break;
+            };
+        });
+
+        table.on('tool(organizationLogTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'system/organizationLog/update/' + data.organizationLogname, {
+                    area: $(window).width() <= 750 ? '90%' : '50%',
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#organizationLog-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        });
+
+        table.on('sort(organizationLogTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'organizationLogTable',
+                url: ctx + 'organizationLog/list',
+                toolbar: '#organizationLog-toolbar',
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'username', title: '操作用户'},
+                    {field: 'operation', title: '操作内容'},
+                    {field: 'time', title: '耗时',templet: "#log-time",},
+                    {field: 'method', title: '操作方法'},
+                    {field: 'params', title: '方法参数'},
+                    {field: 'ip', title: 'IP地址'},
+                    {field: 'location', title: '操作地点'},
+                    {field: 'createTime', title: '创建时间'}
+                    /*,
+                    {title: '操作', toolbar: '#location-option'}*/
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                username: $searchForm.find('input[name="username"]').val().trim(),
+                operation: $searchForm.find('input[name="operation"]').val().trim(),
+                method: $searchForm.find('input[name="method"]').val().trim(),
+                organizationLogStartTime:moment($searchForm.find('input[name="organizationLogStartTime"]').val())._d,
+                organizationLogEndTime: moment($searchForm.find('input[name="organizationLogEndTime"]').val())._d,
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deleteorganizationLogs(organizationLogIds) {
+            febs.get(ctx + 'organizationLog/delete/' + organizationLogIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

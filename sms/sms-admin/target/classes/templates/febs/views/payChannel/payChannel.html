@@ -1,0 +1,213 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-payChannel" lay-title="支付通道">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">通道名称</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="channelName" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">商户号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="merchNo" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">网关类型</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="NetwayCode" parentCode="SC" name="netwayCode" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">通道状态</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="stateCode">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${channelStateEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="payChannelTable" lay-data="{id: 'payChannelTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script  th:inline="javascript" type="text/html" id="payChannel-state">
+    {{#
+    var state = {[# th:each="enum : ${channelStateEnums}"]
+    [( ${enum.code} )]:{title: '[( ${enum.name} )]' , color : '[( ${enum.color} )]'},
+    [/]}[d.stateCode];
+    }}
+    <span class="layui-badge febs-tag-{{state.color}}">{{ state.title }}</span>
+</script>
+<script type="text/html" id="payChannel-netwayCode">
+    <sys:template fieldname="netwayCode" sortCode="NetwayCode"/>
+</script>
+<script type="text/html" id="payChannel-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add" shiro:hasAnyPermissions="payChannel:add">新增</button>
+        <button class="layui-btn layui-btn-sm febs-bg-volcano" lay-event="del" shiro:hasAnyPermissions="payChannel:delete">删除</button>
+    </div>
+</script>
+<script type="text/html" id="payChannel-option">
+    <span shiro:lacksPermission="payChannel:view,payChannel:update,payChannel:delete">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <a lay-event="edit" shiro:hasPermission="payChannel:update"><i class="layui-icon febs-edit-area febs-blue" title="修改">&#xe7a4;</i></a>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-payChannel'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+
+        // laydate.render({
+        //     elem: '#payChannel-createTime',
+        //     range: true,
+        //     trigger: 'click'
+        // });
+
+        //头工具栏事件
+        table.on('toolbar(payChannelTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'add':
+                    febs.modal.open('新增信息', 'payChannel/add', {
+                        btn: ['提交', '重置'],
+                        area: ['700px','500px'],
+                        yes: function(index, layero) {
+                            $('#payChannel-add').find('#submit').trigger('click');
+                        },
+                        btn2: function() {
+                            $('#payChannel-add').find('#reset').trigger('click');
+                            return false;
+                        }
+                    });
+                    break;
+                case 'del':
+                    if (!checkStatus.data.length) {
+                        febs.alert.warn('请选择需要删除的记录');
+                    } else {
+                        febs.modal.confirm('删除记录', '确定删除该记录？', function() {
+                            var payChannelIds = [];
+                            layui.each(checkStatus.data, function(key, item) {
+                                payChannelIds.push(item.id)
+                            });
+                            deletepayChannels(payChannelIds.join(','));
+                        });
+                    }
+                    break;
+            };
+        });
+
+        table.on('tool(payChannelTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'payChannel/update/' + data.id, {
+                    area: ['700px','500px'],
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#payChannel-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        });
+
+        table.on('sort(payChannelTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'payChannelTable',
+                url: ctx + 'payChannel/list',
+                toolbar: '#payChannel-toolbar',
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'channelName', title: '通道名称'},
+                    {field: 'merchNo', title: '商户号'},
+                    {field: 'netwayCode', title: '网关类型',templet :"#payChannel-netwayCode"},
+                    {field: 'implFullClass', title: '实现类'},
+                    {field: 'weight', title: '权重'},
+                    {field: 'cost', title: '通道成本'},
+                    {field: 'minAmount', title: '最小金额(元)',templet: function(d){ return d.minAmount/100 }},
+                    {field: 'maxAmount', title: '最大金额(元)',templet: function(d){ return d.maxAmount/100 }},
+                    {field: 'requestUrl', title: '提交url'},
+                    {templet: "#payChannel-state", title: '通道状态'},
+                    {title: '操作',fixed:'right', toolbar: '#payChannel-option'}
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                channelName: $searchForm.find('input[name="channelName"]').val().trim(),
+                merchNo: $searchForm.find('input[name="merchNo"]').val().trim(),
+                netwayCode: $searchForm.find('select[name="netwayCode"]').val().trim(),
+                stateCode: $searchForm.find('select[name="stateCode"]').val().trim(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deletepayChannels(payChannelIds) {
+            febs.get(ctx + 'payChannel/delete/' + payChannelIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.agent.AgentMenuMapper">
+
+    <resultMap id="agentMenu" type="com.hero.sms.entity.agent.AgentMenu">
+        <id column="MENU_ID" jdbcType="DECIMAL" property="menuId" />
+        <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+        <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
+        <result column="URL" jdbcType="VARCHAR" property="url" />
+        <result column="PERMS" jdbcType="VARCHAR" property="perms" />
+        <result column="ICON" jdbcType="VARCHAR" property="icon" />
+        <result column="TYPE" jdbcType="CHAR" property="type" />
+        <result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum" />
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    </resultMap>
+
+    <select id="findAgentPermissions" resultMap="agentMenu">
+        SELECT
+            m.perms
+        FROM
+            t_agent_menu_limit l
+            LEFT JOIN t_agent u ON (u.Id = l.AGENT_ID)
+            LEFT JOIN t_agent_menu m ON (l.MENU_ID = m.MENU_ID)
+        WHERE
+            u.Agent_Account = #{agentAccount}
+        AND m.perms IS NOT NULL
+        AND m.perms &lt;&gt; ''
+    </select>
+
+    <select id="findAgentMenus" resultMap="agentMenu">
+        SELECT
+            m.*
+        FROM
+            t_agent_menu m
+        WHERE
+           m.type &lt;&gt; 1
+        AND m.MENU_ID IN (
+            SELECT DISTINCT
+                l.menu_id
+            FROM
+                t_agent_menu_limit l
+            LEFT JOIN t_agent a ON (a.id = l.agent_id)
+        WHERE
+            a.Agent_Account = #{agentAccount}
+            )
+        ORDER BY
+        m.order_num
+    </select>
+
+</mapper>

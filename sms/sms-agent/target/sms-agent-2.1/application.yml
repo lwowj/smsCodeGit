@@ -1,0 +1,32 @@
+server:
+  port: 8008
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  profiles:
+    active: prod
+
+  thymeleaf:
+    cache: false
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  aop:
+    proxy-target-class: true
+
+
+mybatis-plus:
+  type-aliases-package: com.hero.sms.*.entity
+  mapper-locations: classpath*:mapper/*.xml,classpath*:mapper/*/*.xml
+  configuration:
+    #配置JdbcTypeForNull
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+    db-config:
+      select-strategy: not_empty
+
+cacheServer: merch,gateway

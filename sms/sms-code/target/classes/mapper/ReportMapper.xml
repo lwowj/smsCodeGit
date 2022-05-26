@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hero.sms.mapper.message.ReportMapper">
+
+    <select id="statisticOrgSendCountToday" resultType="java.util.Map">
+        SELECT count(1) as `value`,t.org_code as orgCode from  t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00') GROUP BY t.org_code ORDER BY  `value` DESC LIMIT 10
+    </select>
+
+    <select id="provinceSendCountToday" resultType="java.util.Map">
+        SELECT count(1) as `value`,t.sms_number_province as province from  t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00') GROUP BY t.sms_number_province ORDER BY  `value` DESC
+    </select>
+
+    <select id="operatorSendCountToday" resultType="java.util.Map">
+        SELECT count(1) as `value`,t.sms_number_operator as operator from  t_send_record t WHERE t.create_time > DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00') GROUP BY t.sms_number_operator ORDER BY  `value` DESC
+    </select>
+
+    <select id="statisticSendBoxInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(DISTINCT org_code) as orgTotal,
+            COUNT(1) as total,
+            COALESCE(SUM(number_count),0) as numberCount,
+            COALESCE(SUM(sms_count),0) as smsCount,
+            COALESCE(SUM(consume_amount),0) as consumeAmount,
+            COALESCE(SUM(channel_cost_amount),0) as channelCost,
+            COALESCE(SUM(agent_income_amount + up_agent_income_amount),0) as agentIncomeAmount,
+            COALESCE(SUM(agent_income_amount ),0) as selfAgentIncomeAmount,
+            COALESCE(SUM(up_agent_income_amount),0) as upAgentIncomeAmount,
+            COALESCE(SUM(income_amount),0) as incomeAmount
+	    FROM t_send_box
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+    <select id="statisticSendBoxHistoryInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(DISTINCT org_code) as orgTotal,
+            COUNT(1) as total,
+            COALESCE(SUM(number_count),0) as numberCount,
+            COALESCE(SUM(sms_count),0)  as smsCount,
+            COALESCE(SUM(consume_amount),0)  as consumeAmount,
+            COALESCE(SUM(channel_cost_amount),0)  as channelCost,
+            COALESCE(SUM(agent_income_amount + up_agent_income_amount),0)  as agentIncomeAmount,
+            COALESCE(SUM(agent_income_amount ),0) as selfAgentIncomeAmount,
+            COALESCE(SUM(up_agent_income_amount),0) as upAgentIncomeAmount,
+            COALESCE(SUM(income_amount),0)  as incomeAmount
+	    FROM t_send_box_history
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+    <select id="statisticSendRecordInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(1) as total,
+            COUNT(IF(state = 1 ,1,NULL)) as sortingFail,
+            COUNT(IF(state = 2 ,1,NULL)) as waitReq,
+            COUNT(IF(state = 4 ,1,NULL)) as reqSuccess,
+            COUNT(IF(state = 8 ,1,NULL)) as reqFail,
+            COUNT(IF(state = 16 ,1,NULL)) as receiptSuccess,
+            COUNT(IF(state = 32 ,1,NULL)) as receiptFail,
+            COALESCE((SUM(IF(state = 4 ,sms_count,0))+SUM(IF(state = 8 ,sms_count,0))+SUM(IF(state = 16 ,sms_count,0))+SUM(IF(state = 32 ,sms_count,0))),0) as smsCount,
+            COALESCE(SUM(consume_amount),0) as consumeAmount,
+            COALESCE(SUM(channel_cost_amount),0) as channelCost,
+            COALESCE(SUM(agent_income_amount + up_agent_income_amount),0) as agentIncomeAmount,
+            COALESCE(SUM(agent_income_amount ),0) as selfAgentIncomeAmount,
+            COALESCE(SUM(up_agent_income_amount),0) as upAgentIncomeAmount,
+            COALESCE(SUM(income_amount),0) as incomeAmount
+		FROM t_send_record
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+    <select id="statisticSendRecordHistoryInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(1) as total,
+            COUNT(IF(state = 1 ,1,NULL)) as sortingFail,
+            COUNT(IF(state = 2 ,1,NULL)) as waitReq,
+            COUNT(IF(state = 4 ,1,NULL)) as reqSuccess,
+            COUNT(IF(state = 8 ,1,NULL)) as reqFail,
+            COUNT(IF(state = 16 ,1,NULL)) as receiptSuccess,
+            COUNT(IF(state = 32 ,1,NULL)) as receiptFail,
+            COALESCE((SUM(IF(state = 4 ,sms_count,0))+SUM(IF(state = 8 ,sms_count,0))+SUM(IF(state = 16 ,sms_count,0))+SUM(IF(state = 32 ,sms_count,0))),0) as smsCount,
+            COALESCE(SUM(consume_amount),0) as consumeAmount,
+            COALESCE(SUM(channel_cost_amount),0) as channelCost,
+            COALESCE(SUM(agent_income_amount + up_agent_income_amount),0) as agentIncomeAmount,
+            COALESCE(SUM(agent_income_amount ),0) as selfAgentIncomeAmount,
+            COALESCE(SUM(up_agent_income_amount),0) as upAgentIncomeAmount,
+            COALESCE(SUM(income_amount),0) as incomeAmount
+		FROM t_send_record_history
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+    <select id="statisticReturnRecordInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(1) as total,
+            COUNT(IF(req_state = 4,1,NULL)) as reqSuccess,
+            COUNT(IF(req_state = 8,1,NULL)) as reqFail,
+            COUNT(IF(return_state = 1,1,NULL)) as returnSucess,
+            COUNT(IF(return_state = 0,1,NULL)) as returnFail,
+            COUNT(IF(return_state IS NULL,1,NULL)) as returnFailUnknow
+        FROM t_return_record
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+    <select id="statisticReturnRecordHistoryInfo" resultType="java.util.Map">
+        SELECT
+            COUNT(1) as total,
+            COUNT(IF(req_state = 4 ,1,NULL)) as reqSuccess,
+            COUNT(IF(req_state = 8 ,1,NULL)) as reqFail,
+            COUNT(IF(return_state = 1 ,1,NULL)) as returnSucess,
+            COUNT(IF(return_state = 0,1,NULL)) as returnFail,
+            COUNT(IF(return_state IS NULL,1,NULL)) as returnFailUnknow
+        FROM t_return_record_history
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+    <select id="sumSendRecordByAgent" resultType="java.util.Map">
+        SELECT
+        `org_code`,
+        COUNT(1) as total,
+        COUNT(IF(`state`<![CDATA[&]]>52= `state`,1, NULL ) ) as successTotal,
+        COUNT(IF(`state` = 8,1, NULL )) as failTotal,
+        SUM(`agent_income_amount`) as successAmount,
+        SUM(`up_agent_income_amount`) as upAgentSuccessAmount,
+        SUM(`consume_amount`)	as consumeAmount
+        FROM t_send_record
+       ${ew.customSqlSegment}
+    </select>
+    <select id="statisticRateSuccessGroupBySendCode" resultType="java.util.Map">
+
+        SELECT
+            r.org_code as orgCode,
+            r.agent_id as agentId,
+            COUNT(IF(r.state = 16 ,1,NULL)) as receiptSuccess ,
+            COUNT(IF(r.state = 32 ,1,NULL)) as receiptFail ,
+            COUNT(1) as total,
+            r.send_code as sendCode,
+            r.sms_content as smsContent,
+            r.create_time as createTime
+        FROM t_send_record r
+        <if test="groupId != null">
+            INNER JOIN (SELECT g.org_code FROM t_organization_group g WHERE g.group_id = #{groupId})g2 on g2.org_code = r.org_code
+        </if>
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+    <select id="statisticRateSuccessGroupByContent" resultType="java.util.Map">
+
+        SELECT
+            org_code as orgCode,
+            agent_id as agentId,
+            COUNT(IF(state = 16 ,1,NULL)) as receiptSuccess ,
+            COUNT(1) as total,
+            sms_content as smsContent
+        FROM t_send_record
+        <if test="ew.emptyOfWhere == false">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+</mapper>

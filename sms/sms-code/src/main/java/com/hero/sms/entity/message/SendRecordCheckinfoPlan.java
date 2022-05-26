@@ -1,0 +1,46 @@
+package com.hero.sms.entity.message;
+
+
+import java.util.Date;
+
+import lombok.Data;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+/**
+ * 发送记录提交中间校验表 Entity
+ *
+ * @author Administrator
+ * @date 2022-05-02 20:49:18
+ */
+@Data
+@TableName("t_send_record_checkinfo_plan")
+public class SendRecordCheckinfoPlan {
+
+    /**
+     * 
+     */
+    @TableId(value = "Id", type = IdType.AUTO)
+    private Integer id;
+
+    /**
+     * 发送记录id
+     */
+    @TableField("send_record_id")
+    private Long sendRecordId;
+
+    /**
+     * 状态：0开锁；1锁定。默认1
+     */
+    @TableField("state")
+    private Integer state;
+
+    /**
+     * 
+     */
+    @TableField("create_time")
+    private Date createTime;
+
+}

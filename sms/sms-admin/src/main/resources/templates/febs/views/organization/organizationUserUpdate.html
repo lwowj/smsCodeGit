@@ -1,0 +1,114 @@
+<style>
+    #organizationUser-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #organizationUser-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="organizationUser-update">
+    <form class="layui-form" action="" lay-filter="organizationUser-update-form">
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">商户用户id：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" data-th-value="${organizationUser.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">商户名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="organizationName" lay-verify="required" class="layui-input" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="userName" lay-verify="required" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">登录账号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="userAccount" lay-verify="required" readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">账户类型：</label>
+            <div class="layui-input-block">
+                <sys:dict sortCode="AccountType" name="accountType" lay-verify="required" class="layui-form-label layui-form-label-sm"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require" >绑定谷歌：</label>
+            <div class="layui-input-block">
+            	 <select name="needBindGoogleKey">
+	                 <option  th:each="enum:${needBindGoogleKeyEnums}"
+	                 		  th:value ="${enum.code}"
+	                          th:text="${enum.name}">
+	                  </option>
+                  </select>
+            </div>
+        </div>
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">状态：</label>
+            <div class="layui-input-block">
+                <sys:dict sortCode="StateEnum" name="status" lay-verify="required" class="layui-form-label layui-form-label-sm"/>
+            </div>
+        </div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <textarea type="text" name="description" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="organizationUser-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+<script type="text/html" id="organizationUser-org">
+    <sys:template fieldname="organizationCode" dataType="org"/>
+</script>
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            organizationUser = [[${organizationUser}]],
+            organizationName = [[${organizationName}]],
+            $view = $('#organizationUser-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initorganizationUserValue();
+
+        function initorganizationUserValue() {
+            form.val("organizationUser-update-form", {
+                "organizationName": organizationName,
+                "userName": organizationUser.userName,
+                "userAccount": organizationUser.userAccount,
+                "accountType": organizationUser.accountType,
+                "description": organizationUser.description,
+                "status": organizationUser.status,
+                "needBindGoogleKey": organizationUser.needBindGoogleKey
+            });
+        }
+
+        form.on('submit(organizationUser-update-form-submit)', function (data) {
+            if (febs.nativeEqual(data.field, organizationUser)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'organizationUser/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                $('#febs-organizationUser').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

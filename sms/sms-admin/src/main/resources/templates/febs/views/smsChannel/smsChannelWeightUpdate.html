@@ -1,0 +1,133 @@
+<style>
+    #smsChannelWeight-update {
+        padding: 20px 25px 25px 0;
+    }
+    #smsChannelWeight-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="smsChannelWeight-update">
+    <form class="layui-form" action="" lay-filter="smsChannelWeight-update-form">
+    	<div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">通道id：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" class="layui-input" data-th-value="${smsChannel.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">通道权重：</label>
+            <div class="layui-input-block">
+                <input type="text" name="weight" placeholder="请输入权重值，数值越高，权重越大" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <input type="text" name="description" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">通道名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" class="layui-input" data-th-value="${smsChannel.name}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">通道代码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="code" class="layui-input" data-th-value="${smsChannel.code}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">状态：</label>
+            <div class="layui-input-block">
+                <input type="text" name="state" class="layui-input" data-th-value="${smsChannel.state}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">协议类型：</label>
+            <div class="layui-input-block">
+                <input type="text" name="protocolType" class="layui-input" data-th-value="${smsChannel.protocolType}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">日限量：</label>
+            <div class="layui-input-block">
+                <input type="text" name="dayLimit" class="layui-input" data-th-value="${smsChannel.dayLimit}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">日限量：</label>
+            <div class="layui-input-block">
+                <input type="text" name="implFullClass" class="layui-input" data-th-value="${smsChannel.implFullClass}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">地区限制：</label>
+            <div class="layui-input-block">
+                <input type="text" name="areaRegex" class="layui-input" data-th-value="${smsChannel.areaRegex}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">运营商限制：</label>
+            <div class="layui-input-block">
+                <input type="text" name="operatorRegex" class="layui-input" data-th-value="${smsChannel.operatorRegex}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">组合限制：</label>
+            <div class="layui-input-block">
+                <input type="text" name="areaOperatorRegex" class="layui-input" data-th-value="${smsChannel.areaOperatorRegex}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">支持地区：</label>
+            <div class="layui-input-block">
+                <input type="text" name="supportArea" class="layui-input" data-th-value="${smsChannel.supportArea}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">备注：</label>
+            <div class="layui-input-block">
+                <input type="text" name="remark" class="layui-input" data-th-value="${smsChannel.remark}">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="smsChannelWeight-update-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            smsChannel = [[${smsChannel}]],
+            $view = $('#smsChannelWeight-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initSmsChannelWeightValue();
+
+        function initSmsChannelWeightValue() {
+            form.val("smsChannelWeight-update-form", {
+                "weight": smsChannel.weight,
+                "description": smsChannel.description
+            });
+        }
+
+        form.on('submit(smsChannelWeight-update-form-submit)', function (data) {
+            febs.post(ctx + 'smsChannel/weightSave', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据更新成功！');
+                $('#febs-smsChannel').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

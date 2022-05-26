@@ -1,0 +1,75 @@
+<style>
+    #agentRemitOrder-transfer {
+        padding: 20px 25px 25px 0;
+    }
+    #agentRemitOrder-transfer .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="agentRemitOrder-transfer">
+    <form class="layui-form" action="" lay-filter="agentRemitOrder-transfer-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">可用余额：</label>
+            <div class="layui-input-block">
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" th:value="${AvailableAmount}" readonly>
+                </div>
+                (元)
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">提现金额：</label>
+            <div class="layui-input-block">
+                <div class="layui-input-inline">
+                    <input type="text" name="remitAmount" class="layui-input" lay-verify="required|moneyNumber">
+                </div>
+                (元)
+            </div>
+        </div>
+        <div class="layui-form-item" id="transferVerifyCode" hidden>
+            <label class="layui-form-label">验证码：</label>
+            <div class="layui-input-block">
+                <input type="text" maxlength="6" name="verifyCode" lay-verify="number"
+                       placeholder="请输入谷歌验证码" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item" id="transferPayPassword">
+            <label class="layui-form-label">支付密码：</label>
+            <div class="layui-input-block">
+                <input type="password"  name="payPassword"  class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="agentRemitOrder-transfer-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#agentRemitOrder-transfer'),
+            type = [[ ${type} ]],
+            validate = layui.validate;
+        if(type === 'google'){
+            $view.find("#transferPayPassword").hide();
+            $view.find("#transferVerifyCode").show();
+        }
+
+        form.verify(validate);
+        form.render();
+        form.on('submit(agentRemitOrder-transfer-form-submit)', function (data) {
+            data.field.remitAmount = (parseFloat(data.field.remitAmount)*100).toFixed(0);
+            febs.post(ctx + 'agentRemitOrder/transfer', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('利润转额度成功');
+                $('#febs-agentRemitOrder').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

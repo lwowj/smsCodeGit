@@ -1,0 +1,84 @@
+<style>
+    .connect-info{
+        padding: 20px;
+        background-color: #F2F2F2;
+    }
+    .detail span{
+        width: 100%;
+        display: block;
+        float: left;
+        height: 1.8rem;
+        line-height: 1.8rem;
+        font-size: 0.85rem;
+    }
+    .detail span em{
+        background: none;
+        color: #999999;
+        font-size: 0.85rem;
+        padding-right: 2rem;
+    }
+</style>
+<div id="connect-info">
+    <div th:if="${not #strings.isEmpty(errorMsg)}">
+        <span style="color: red" th:text="${errorMsg}"></span>
+    </div>
+    <div class="connect-info" th:if="${not #lists.isEmpty(connectInfos)}">
+        <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12" style="padding: 10px;"
+             th:each="info:${connectInfos}">
+            <div class="layui-card">
+                <div class="layui-card-header" th:text="${'网关【' + info.localhost + '】'}"></div>
+                <div class="layui-card-body">
+                    <div class="layui-row detail">
+                        <div class="layui-col-md6">
+                            <span>
+                                <em>连&#8195;接&#8195;&nbsp;ip</em>
+                                [[${info.host}]]
+                            </span>
+                            <span>
+                                <em>端&#8195;口&#8195;号</em>
+                                [[${info.port}]]
+                            </span>
+                            <span>
+                                <em>最大连接数</em>
+                                [[${info.maxChannels}]]
+                            </span>
+                            <span>
+                                <em>已&#8195;连&#8195;接</em>
+                                [[${info.connectionNum}]]
+                            </span>
+                        </div>
+                        <div class="layui-col-md6">
+                              <span>
+                                <em>读&#8195;限&#8195;制</em>
+                                [[${info.readLimit}]]
+                            </span>
+                            <span>
+                                <em>写&#8195;限&#8195;制</em>
+                                [[${info.writeLimit}]]
+                            </span>
+                            <span>
+                                <em>最大重试数</em>
+                                [[${info.maxRetryCnt}]]
+                            </span>
+                            <span>
+                                <em>ssl&#8195;加&#8195;密</em>
+                                [[${info.useSSL?'是':'否'}]]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    layui.use(['febs'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            $view = $('#connect-info');
+    });
+</script>

@@ -1,0 +1,217 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-agentRechargeOrder" lay-title="代理充值订单">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">订单编号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="orderNo" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">充值类型</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="RechargeType" name="rechargeType" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">充值方式</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="NetwayCode" name="netwayCode" lay-verify="required" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">请求状态</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="PayStateType" name="reqStateCode" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">充值状态</label>
+                                        <div class="layui-input-inline">
+                                            <sys:dict sortCode="PayStateType" name="rechargeStateCode" class="layui-form-label layui-form-label-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">提交时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="agentReqStartTime" class="layui-input" id="agentReqStartTime">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="agentReqEndTime" class="layui-input" id="agentReqEndTime" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="agentRechargeOrderTable" lay-data="{id: 'agentRechargeOrderTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="agentRechargeOrder-toolbar">
+    <div class="layui-btn-container">
+
+    </div>
+</script>
+<script type="text/html" id="agentRechargeOrder-recharge-type">
+    <sys:template sortCode="RechargeType" fieldname="rechargeType" />
+</script>
+<script type="text/html" id="agentRechargeOrder-netwayCode">
+    <sys:template sortCode="NetwayCode" fieldname="netwayCode" />
+    {{#  if(d.payMerchNo && typeof d.payMerchNo != undefined && d.payMerchNo != '' ){ }}
+    <i class="layui-icon febs-edit-area febs-blue refuse_cause" lay-event="payMerchNo">&#xe702;</i>
+    {{#  } }}
+</script>
+<script type="text/html" id="agentRechargeOrder-reqStateCode-type">
+    {{#var reqStateCode = {'00': {title: '成功' ,color :'layui-badge  febs-tag-green'},
+    '99': {title: '失败',color :'layui-badge febs-tag-volcano'},
+    '03': {title: '签名错误'},
+    '06': {title: '其它错误'},
+    '01': {title: '未支付'},
+    '04': {title: '初始',},
+    null : {title:''},
+    }[d.reqStateCode];}}<span class="{{reqStateCode.color}}">{{reqStateCode.title }}</span>
+</script>
+<script type="text/html" id="agentRechargeOrder-rechargeStateCode-type">
+    {{#var reqStateCode = {'00': {title: '成功' ,color :'layui-badge  febs-tag-green'},
+    '99': {title: '失败',color :'layui-badge febs-tag-volcano'},
+    '03': {title: '签名错误'},
+    '06': {title: '其它错误'},
+    '01': {title: '未支付'},
+    '04': {title: '初始',},
+    null : {title:''},
+    }[d.rechargeStateCode];}}<span class="{{reqStateCode.color}}">{{reqStateCode.title }}</span>
+</script>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['dropdown','jquery', 'laydate', 'form', 'table', 'febs', 'treeSelect','moment'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-agentRechargeOrder'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            moment = layui.moment,
+            sortObject = {field: 'createTime', type: null},
+            initGetAgentsData,
+            tableIns;
+        form.render();
+        initTable();
+        laydate.render({
+            elem: '#agentReqStartTime' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 00:00:00")
+        });
+        laydate.render({
+            elem: '#agentReqEndTime' //指定元素
+            ,type: 'datetime'
+            ,value: moment(new Date()).format("YYYY-MM-DD 23:59:59")
+        });
+        //table内操作
+        table.on('tool(agentRechargeOrderTable)', function(obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'payMerchNo') {
+                var cause = "商户编号：" + data.payMerchNo + "</br>商户名称：" + data.remark;
+                layer.alert(cause,{title:'作废商户'})
+            }
+        });
+        table.on('sort(organizationRechargeOrderTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            initGetAgents();
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            initGetAgents();
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initGetAgents(){
+            var data = [];
+            febs.ajax({
+                url:ctx + 'agent/getAgents',
+                async:false,
+                success:function (res) {
+                    if(res.code == 200){
+                        initGetAgentsData = res.data;
+                    }
+                }
+            })
+            return data;
+        }
+
+        function initTable() {
+            initGetAgents();
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'agentRechargeOrderTable',
+                url: ctx + 'agentRechargeOrder/list',
+                toolbar: '#organizationRechargeOrder-toolbar',
+                cols: [[
+                    {type: 'checkbox'},
+                    {title: '代理商',  templet: function (d) {
+                            var agentName = "";
+                            layui.each(initGetAgentsData,function (index,item) {
+                                if(Object.keys(item) == d.agentId){
+                                    agentName = Object.values(item);
+                                }
+                            });
+                            return agentName;
+                        }, minWidth: 120 },
+                    {field: 'orderNo', title: '订单编号',minWidth: 200},
+                    {templet: '#agentRechargeOrder-recharge-type', title: '充值类型', minWidth: 100},
+                    {templet: '#agentRechargeOrder-netwayCode', title: '充值方式', minWidth: 100},
+                    {field: 'rechargeAmount', title: '充值金额(元)',templet: function(d){ return d.rechargeAmount/100 }, minWidth: 120},
+                    {field: 'availableAmount', title: '可用金额(元)',templet: function(d){ return d.availableAmount/100 }, minWidth: 120},
+                    {templet: '#agentRechargeOrder-reqStateCode-type', title: '请求状态', minWidth: 100},
+                    {templet: '#agentRechargeOrder-rechargeStateCode-type', title: '充值状态', minWidth: 100},
+                    {field: 'remark', title: '备注',minWidth: 100},
+                    {field: 'reqTime', title: '提交时间',minWidth: 160},
+                    {field: 'rechargeCompleteTime', title: '充值完成时间',minWidth: 160}
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                orderNo: $searchForm.find('input[name="orderNo"]').val().trim(),
+                rechargeType: $searchForm.find('select[name="rechargeType"]').val().trim(),
+                reqStateCode: $searchForm.find('select[name="reqStateCode"]').val().trim(),
+                netwayCode: $searchForm.find('select[name="netwayCode"]').val().trim(),
+                rechargeStateCode: $searchForm.find('select[name="rechargeStateCode"]').val().trim(),
+                agentReqStartTime:moment($searchForm.find('input[name="agentReqStartTime"]').val())._d,
+                agentReqEndTime: moment($searchForm.find('input[name="agentReqEndTime"]').val())._d,
+                invalidate_ie_cache: new Date()
+            };
+        }
+    })
+</script>

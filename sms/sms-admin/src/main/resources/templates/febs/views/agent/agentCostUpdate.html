@@ -1,0 +1,188 @@
+<style>
+    #agent-cost-update {
+        padding: 15px 15px 0 15px;
+    }
+
+    #agent-cost-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="agent-cost-update">
+    <form class="layui-form layui-form-pane" action="" lay-filter="agent-update-form">
+        <div id = "addContent" style="height: 420px;overflow:auto;">
+         <label style="color: red;"> &nbsp;&nbsp;注：资费名称、资费、短信类型 如不设置，将直接剔除不保存入库</label>
+        </div>
+
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="agent-cost-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+    <div hidden class="smsType">
+        <select name="smsType" class='costValue'>
+            <option value=""></option>
+            <option th:each="enum:${smsTypeEnums}"
+                    th:value ="${enum.code}"
+                    th:text="${enum.name}">
+            </option>
+        </select>
+    </div>
+    <div hidden class="name">
+        <select name="name" class='costValue'>
+            <option value=""></option>
+            <option th:each="enum:${smsNumberAreaCodeEnums}"
+                    th:value ="${enum.inArea}"
+                    th:text="${enum.areaName}">
+            </option>
+        </select>
+    </div>
+     <div hidden class="operator">
+        <select name="operator" class='costValue'>
+            <option value=""></option>
+            <option th:each="enum:${operatorEnums}"
+                    th:value ="${enum.code}"
+                    th:text="${enum.name}">
+            </option>
+        </select>
+    </div>
+    <div hidden class="channelId">
+        <sys:data dataType="smsChannel" name="channelId" class="layui-form-label layui-form-label-sm costValue"/>
+    </div>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'formSelects', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            agentId = [[${id}]],
+            agentCost = [[${agentCosts}]],
+            $view = $('#agent-cost-update'),
+            $addContent = $view.find('#addContent'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        if(agentCost.length == 0){
+            addContent({},"","add","新增","");
+        }else {
+            for (var i = 0; i < agentCost.length; i++) {
+                addContent(agentCost[i],agentCost[i].value/100,"delete","删除","febs-bg-volcano");
+            }
+            addContent({},"","add","新增","");
+        }
+
+        function getHtml(obj,name) {
+            if(obj[name]){
+                var flag = new RegExp("[`+~!@#$^&*()=|{}':;',\\[\\].<>《》/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？ ]")
+                var val = "value=\""+obj[name]+"\"";
+                if(flag.test(obj[name])){
+                    val = "value=\"\\"+obj[name]+"\"";
+                }
+                var html = $($view.find("."+name)).html().replace(new RegExp(val,'g'),"value=\""+obj[name]+"\""+" selected=\"selected\"");
+                return html;
+            }else {
+                return $($view.find("."+name)).html();
+            }
+        }
+
+        function addContent(obj,value,type,typeName,color) {
+            var html =
+                "<div class='contentDiv'>"+
+	                "<div class=\"layui-form-item\">"+
+	                	"<input type=\"hidden\" class='costValue' name=\"agentId\" value=\""+agentId+"\">"+
+		                "<div class=\"layui-inline\">"+
+		                    "<label class=\"layui-form-label\"> 资费名称：</label>"+
+		                    "<div class=\"layui-input-inline\">"+
+		                    	getHtml(obj,"name") +
+		                    "</div>"+
+		                "</div>"+
+		                "<div class=\"layui-inline\">"+
+		                    "<label class=\"layui-form-label\">资费：</label>"+
+		                    "<div class=\"layui-input-inline\">"+
+		                    "<input type=\"text\" class='costValue layui-input' name=\"value\" value=\""+value+"\">"+
+		                    "</div>"+
+		                    "（元）"+
+		                "</div>"+
+	            	"</div>"+
+	            	"<div class=\"layui-form-item\">"+
+		                "<div class=\"layui-inline\">"+
+		                    "<label class=\"layui-form-label\"> 短信类型：</label>"+
+		                    "<div class=\"layui-input-inline\">"+
+		                   		getHtml(obj,"smsType") +
+		                    "</div>"+
+		                "</div>"+
+		                "<div class=\"layui-inline\">"+
+		                    "<label class=\"layui-form-label\">运营商：</label>"+
+		                    "<div class=\"layui-input-inline\">"+
+		                    	getHtml(obj,"operator") +
+		                    "</div>"+
+		                "</div>"+
+		                "<input  type=\"button\" class=\"layui-btn addButton "+color+"\"  data-method=\"addInput\" name=\""+type+"\" value='"+typeName+"'/>"+
+            		"</div>"+
+            		"<div class=\"layui-form-item\">"+
+		                "<div class=\"layui-inline\">"+
+		                	"<label class=\"layui-form-label\">通道</label>"+
+		                    "<div class=\"layui-input-inline\">"+
+		                    	getHtml(obj,"channelId")+
+		                    "</div>"+
+		                "</div>"+
+        			"</div>"+
+        			"<div class=\"layui-form-item\">"+
+		                "<div class=\"layui-inline\">"+
+		                	"<label style=\"color: #ababab\">&nbsp;&nbsp;&nbsp;&nbsp;————————————————————————————————————————————————</label>"+
+		                "</div>"+
+    				"</div>"+
+                "</div>";
+            $addContent.append(html);
+            form.render();
+        }
+        var $ = layui.jquery;
+        //动态加载元素用
+        $addContent.on('click','input[name="add"]', function () {
+            addContent({},"","add","新增","");
+            this.name = "delete";
+            this.value = "删除";
+            $(this).addClass("febs-bg-volcano");
+        });
+        $addContent.on('click','input[name="delete"]', function () {
+            $($($(this).parent())).parent().remove();
+        });
+
+        form.on('submit(agent-cost-update-form-submit)', function (data) {
+            var objs =  $(data.form).find('.contentDiv');
+            var obj = [];
+            for (var i = 0; i < objs.length; i++) {
+                var strs = $(objs[i]).find('.costValue').serialize();
+                var str = {},arr = strs.split('&');
+                for (var ii = 0; ii < arr.length; ii++) {
+                    var subArr = arr[ii].split('=');
+                    var key = decodeURIComponent(subArr[0]);
+                    var value = decodeURIComponent(subArr[1]);
+                    if("value" == key){
+                        str[key] = (parseFloat(value)*100).toFixed(0);
+                    }else{
+                        str[key] = value;
+                    }
+                }
+                obj[i] = str;
+            }
+            if (febs.nativeEqual(obj, agentCost)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.ajax({
+                type : 'POST',
+                url: ctx + 'agentCost/updates',
+                contentType : "application/json" ,
+                data : JSON.stringify(obj),
+                success : function(res) {
+                    layer.closeAll();
+                    febs.alert.success(' 数据修改成功');
+                }
+            });
+            return false;
+        });
+    });
+</script>

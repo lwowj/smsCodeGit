@@ -1,0 +1,72 @@
+<style>
+    #organizationGroup-update {
+        padding: 20px 25px 25px 0;
+    }
+    #organizationGroup-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="organizationGroup-update">
+    <form class="layui-form" action="" lay-filter="organizationGroup-update-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">商户编码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="orgCode" class="layui-input" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商户分组：</label>
+            <div class="layui-input-block">
+                <select name="groupIds"
+                        xm-select-direction="down"
+                        xm-select="organizationGroup-update-orgGroup"
+                        xm-select-skin="default">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="organizationGroup-update-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form','formSelects', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            formSelects = layui.formSelects,
+            data = [[${data}]],
+            $view = $('#organizationGroup-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initorganizationGroupValue();
+
+        function initorganizationGroupValue() {
+            form.val("organizationGroup-update-form", {
+                "orgCode": data.orgCode,
+                "groupIds": data.groupIds
+            });
+        }
+        formSelects.render();
+
+        formSelects.data('organizationGroup-update-orgGroup', 'local', {
+            arr: data.orgGroupList
+        });
+
+
+        form.on('submit(organizationGroup-update-form-submit)', function (data) {
+            febs.post(ctx + 'organizationGroup/incrementSave', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据更新成功！');
+                $('#febs-organization').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

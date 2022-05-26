@@ -1,0 +1,56 @@
+<style>
+    #numberPool-add {
+        padding: 20px 25px 25px 0;
+    }
+    #numberPool-add .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="numberPool-add">
+    <form class="layui-form" action="" lay-filter="numberPool-add-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">手机号码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="phoneNumber" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">池组</label>
+            <div class="layui-input-block">
+                <select name="groupId" lay-verify="required">
+                    <option value=""></option>
+                    <option th:each="enum:${groupList}"
+                            th:value ="${enum.id}"
+                            th:text="${enum.name}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="numberPool-add-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#numberPool-add'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+        form.on('submit(numberPool-add-form-submit)', function (data) {
+            febs.post(ctx + 'numberPool', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据新增成功！');
+                $('#febs-numberPool').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

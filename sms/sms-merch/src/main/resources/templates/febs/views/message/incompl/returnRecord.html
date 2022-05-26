@@ -1,0 +1,228 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-returnRecord" lay-title="发送回执列表">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">批次号</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="sendCode" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">手机号码</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="smsNumber" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">消息类型</label>
+                                        <div class="layui-input-inline">
+                                            <select  name="smsType">
+                                                <option value=""></option>
+                                                <option  th:each="enum:${smsTypeEnums}"
+                                                         th:value ="${enum.code}"
+                                                         th:text="${enum.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">接收状态</label>
+                                        <div class="layui-input-inline">
+                                            <select name="returnState">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">请求状态</label>
+                                        <div class="layui-input-inline">
+                                            <select name="reqState">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">提交时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="reqCreateStartTime" class="layui-input" id="reqCreateStartTime1">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="reqCreateEndTime" class="layui-input" id="reqCreateEndTime1" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    查询
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="returnRecordTable" lay-data="{id: 'returnRecordTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="returnRecord-option">
+
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-returnRecord'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            todayStart = [[${todayStart}]],
+            todayEnd = [[${todayEnd}]],
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+
+        initTable();
+        var start =  laydate.render({
+            elem: '#reqCreateStartTime1',
+            type: 'datetime',
+            min:"1970-1-1",
+            max: todayEnd,
+            value: todayStart,
+            done: function (value,date) {
+
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+        var end = laydate.render({
+            elem: '#reqCreateEndTime1',
+            type: 'datetime',
+            min:todayStart,
+            max:"2099-12-31",
+            value: todayEnd,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date,
+                    hours: 0,
+                    minutes: 0,
+                    seconds : 0
+                }
+            }
+        });
+
+
+        table.on('tool(returnRecordTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+            if (layEvent === 'edit') {
+                febs.modal.open('修改信息', 'system/returnRecord/update/' + data.returnRecordname, {
+                    area: $(window).width() <= 750 ? '90%' : '50%',
+                    btn: ['提交', '取消'],
+                    yes: function (index, layero) {
+                        $('#returnRecord-update').find('#submit').trigger('click');
+                    },
+                    btn2: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        });
+
+        table.on('sort(returnRecordTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            $('#reqCreateStartTime').val(todayStart);
+            $('#reqCreateEndTime').val(todayStart);
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'returnRecordTable',
+                url: ctx + 'returnRecord/IList',
+                where:{
+                    'reqCreateStartTime':todayStart,
+                    'reqCreateEndTime': todayEnd
+                },
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'sendCode', title: '批次号',width:210},
+                    {field: 'smsNumber', title: '手机号码',width:120},
+                    {field: '', title: '提交',templet:'<div>状态:{{d.reqStateName}} 提交时间:{{d.reqCreateTime}}</div>'},
+                    {field: 'returnStateName', title: '接收状态', width: 100},
+                    {field: 'returnTime', title: '回执时间'},
+                    {field: 'smsType', title: '消息类型',hide:true},
+                    {field: '', title: '信息详情',templet:'<div>字数:{{d.smsWords}} 短信数:{{d.smsCount}}</div>'},
+                    {field: 'createTime', title: '创建时间'},
+                    /*
+                      {field: 'smsWords', title: '短信字数'},
+                    {field: 'smsContent', title: '消息内容'},
+                    {field: 'smsNumberArea', title: '手机号码归属地'},
+                    {field: 'smsCount', title: '有效的短信数'},
+                    {field: 'reqDesc', title: '通道请求返回信息'},
+                    {field: 'reqCreateTime', title: '提交时间'},
+                    {title: '操作',fixed:'right', toolbar: 'returnRecord-option'}*/
+                ]]
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                sendCode: $searchForm.find('input[name="sendCode"]').val().trim(),
+                smsNumber: $searchForm.find('input[name="smsNumber"]').val().trim(),
+                reqCreateStartTime: $searchForm.find('input[name="reqCreateStartTime"]').val(),
+                reqCreateEndTime: $searchForm.find('input[name="reqCreateEndTime"]').val(),
+                smsType: $searchForm.find('select[name="smsType"]').val(),
+                returnState: $searchForm.find('select[name="returnState"]').val(),
+                reqState: $searchForm.find('select[name="reqState"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deletereturnRecords(returnRecordIds) {
+            febs.get(ctx + 'returnRecord/delete/' + returnRecordIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+
+    })
+</script>

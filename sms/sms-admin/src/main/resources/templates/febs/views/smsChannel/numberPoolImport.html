@@ -1,0 +1,112 @@
+<style>
+    #numberPool-import {
+        padding: 20px 25px 25px 0;
+    }
+    #numberPool-import .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="numberPool-import">
+    <form class="layui-form" id="numberPool-form" action="" lay-filter="numberPool-import-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">号码区间：</label>
+            <div class="layui-input-block">
+                <div class="layui-input-inline">
+                    <input type="text" name="poolNumberStart" class="layui-input">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline">
+                    <input type="text" name="poolNumberEnd" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">号码文件：</label>
+            <div class="layui-input-inline">
+                <input type="file" class="layui-input" id="numberFile" name="numberFile">
+            </div>
+            <div class="layui-form-mid layui-word-aux">(每个文件最大支持5W个号码换行或者逗号分割。支持文件格式:txt)</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">池组:</label>
+            <div class="layui-input-block">
+                <select name="groupId" lay-verify="required">
+                    <option value=""></option>
+                    <option th:each="enum:${groupList}"
+                            th:value ="${enum.id}"
+                            th:text="${enum.name}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="numberPool-import-form-submit" id="submit"></button>
+            <button type="reset" class="layui-btn" id="reset"></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    layui.use(['febs', 'form', 'validate','jqueryForm'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            $view = $('#numberPool-import'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+/*        form.on('submit(numberPool-import-form-submit)', function (data) {
+            febs.post(ctx + 'numberPool', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据新增成功！');
+                $('#febs-numberPool').find('#query').click();
+            });
+            return false;
+        });*/
+
+        form.on('submit(numberPool-import-form-submit)', function (data) {
+            var self = $(this);
+            if(self.data('loading')){
+                return false;
+            }
+            self.data('loading',true);
+            var data = $("#sendbox-form").val();
+            $("#numberPool-form").ajaxSubmit({
+                type: 'post',
+                url: ctx + 'numberPool/submitByForm',
+                dataType: 'json',
+                data: data,
+                beforeSubmit: function(formData,jqForm,options){
+                    layui.each(formData,function (index,item) {
+                        if(item.name == 'numberFile' && item.value == ''){
+                            formData.splice(index,1);
+                        }
+                    })
+                },
+                success: function(d) {
+                    self.data('loading',false);
+                    if (d.code === 200) {
+                        layer.closeAll();
+                        febs.alert.success(d.message);
+                        $('#febs-numberPool').find('#query').click();
+                    } else if (d.code === 401) {
+                        febs.modal.info('登录失效', '登录已失效，请重新登录', function () {
+                            window.location.href = ctx + 'login';
+                        });
+                    } else if (d.code === 403) {
+                        febs.alert.warn('对不起，您暂无该操作权限');
+                    }else {
+                        layer.alert(d.message, {icon: 2});
+                    }
+                },
+                error: function(d) {
+                    self.data('loading',false);
+                    layer.alert(d.message, {icon: 2});
+                }
+            })
+            return false;
+        });
+    });
+</script>

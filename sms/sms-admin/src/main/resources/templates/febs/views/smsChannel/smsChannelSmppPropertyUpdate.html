@@ -1,0 +1,284 @@
+<style>
+    #channel-properties-update {
+        padding: 15px 15px 0 15px;
+    }
+</style>
+<div class="layui-fluid " id="channel-properties-update">
+    <form id="properties-form" class="layui-form layui-form-pane" action="">
+        <div id = "addContent">
+
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> ip地址:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="host">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="host" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 端口:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="port">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="port" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 接口号:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="systemId">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="systemId" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 密码:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="password">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="password" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label" > 接口类型:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="systemType">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="systemType" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label" > 版本号:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="version">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="version" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 编码类型:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="addrTon">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="addrTon" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 编码方案:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="addrNpi">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="addrNpi" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 连接数:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="maxChannels">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="maxChannels" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 速率(条/秒):</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="speed">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="speed" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label">写入速率:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="writeLimit">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="writeLimit" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label">读取速率:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="readLimit">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="readLimit" class='costValue layui-input' name="value">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label">号码池策略:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="openNumberPool">
+                    </div>
+                    <div class="layui-input-inline">
+                        <select  id="openNumberPool" name="value" class="costValue">
+                            <option value=""></option>
+                            <option  th:each="enum:${numberPoolPolicyEnums}"
+                                     th:value ="${enum.code}"
+                                     th:text="${enum.name}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class='contentDiv'>
+                    <input type="hidden" class='costValue' name="smsChannelId" data-th-value="${smsChannelId}">
+                    <label class="layui-form-label"> 号码池组:</label>
+                    <div class="layui-input-inline febs-hide">
+                        <input type="text" class='costValue layui-input' name="name" value="numberPoolGroup">
+                    </div>
+                    <div class="layui-input-inline">
+                        <select id="numberPoolGroup" name="value" class="costValue">
+                            <option value=""></option>
+                            <option th:each="enum:${groupList}"
+                                    th:value ="${enum.id}"
+                                    th:text="${enum.name}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="smpp-properties-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'formSelects', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            smsChannelId = [[${smsChannelId}]],
+            channelProperties = [[${channelProperties}]],
+            $view = $('#channel-properties-update'),
+            $addContent = $view.find('#addContent'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        $(document).ready(function (){
+            if(channelProperties.length > 0){
+                for (var i = 0; i < channelProperties.length; i++) {
+                    var name = channelProperties[i].name;
+                    var elem = $('#'+name);
+                    if (elem.length > 0){
+                        elem.val(channelProperties[i].value)
+                        if(elem.is('select')){
+                            form.render('select');
+                        }
+                    }else {
+                        //addContent(channelProperties[i].name,channelProperties[i].value,"delete","删除","febs-bg-volcano");
+                    }
+                }
+            }
+        });
+
+
+  /*      addContent("","","add","新增");
+        function addContent(name,value,type,typeName,color) {
+            var html =
+                "<div class='contentDiv'>"+
+                "<div class=\"layui-form-item\">"+
+                "<input type=\"hidden\" class='costValue' name=\"smsChannelId\" value=\""+smsChannelId+"\">"+
+                "<label class=\"layui-form-label\"> 属性名:</label>"+
+                "<div class=\"layui-input-inline\">"+
+                "<input type=\"text\" class='costValue layui-input' name=\"name\" value=\""+name+"\">"+
+                "</div>"+
+                "<label class=\"layui-form-label\">属性值:</label>"+
+                "<div class=\"layui-input-inline\">"+
+                "<input type=\"text\" class='costValue layui-input' name=\"value\" value=\""+value+"\">"+
+                "</div>"+
+                "<input  type=\"button\" class=\"layui-btn addButton "+color+"\"  data-method=\"addInput\" name=\""+type+"\" value='"+typeName+"'/>"+
+                "</div>"+
+                "</div>";
+            $addContent.append(html);
+        }
+        var $ = layui.jquery;
+        //动态加载元素用
+        $addContent.on('click','input[name="add"]', function () {
+            addContent("","","add","新增");
+            this.name = "delete";
+            this.value = "删除";
+            $(this).addClass("febs-bg-volcano");
+        });
+        $addContent.on('click','input[name="delete"]', function () {
+            $($($(this).parent()).parent()).remove();
+        });*/
+
+        form.on('submit(smpp-properties-update-form-submit)', function (data) {
+            var objs =  $(data.form).find('' +
+                '.contentDiv');
+            var obj = [];
+            for (var i = 0; i < objs.length; i++) {
+                var strs = $(objs[i]).find('.costValue').serialize();
+                var str = {},arr = strs.split('&');
+                for (var ii = 0; ii < arr.length; ii++) {
+                    var subArr = arr[ii].split('=');
+                    var key = decodeURIComponent(subArr[0]);
+                    var value = decodeURIComponent(subArr[1]);
+                    str[key] = value;
+                }
+                obj[i] = str;
+            }
+            if (febs.nativeEqual(obj, channelProperties)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.ajax({
+                type : 'POST',
+                url: ctx + 'smsChannelProperty/updates',
+                contentType : "application/json" ,
+                data : JSON.stringify(obj),
+                success : function(data) {
+                    layer.closeAll();
+                    febs.alert.success(' 数据修改成功');
+                }
+            });
+            return false;
+        });
+    });
+</script>

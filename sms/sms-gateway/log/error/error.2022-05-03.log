@@ -1,0 +1,4 @@
+2022-05-03 15:17:01 ERROR PullMsgThread-SendRecordSMSGATEC1116 com.hero.sms.service.impl.message.SendRecordServiceImpl SMPP发送记录【140130】该批次【BN20220502231224XNXQQ】该号码【15590478565】已提交过发送
+2022-05-03 15:17:57 ERROR PullMsgThread-SendRecordSMSGATEC1114 com.hero.sms.service.impl.message.SendRecordServiceImpl SMPP发送记录【140130】该批次【BN20220502231224XNXQQ】该号码【15590478565】已提交过发送
+2022-05-03 15:19:53 ERROR PullMsgThread-SendRecordSMSGATEC1114 com.hero.sms.service.impl.message.SendRecordServiceImpl SMPP发送记录【140131】该批次【BN20220502231224XNXQQ】该号码【15081024107】已提交过发送
+2022-05-03 15:28:34 ERROR PullMsgThread-SendRecordSMSGATEC112 com.hero.sms.service.impl.message.SendRecordServiceImpl SMPP发送记录【140132】该批次【BN20220502231224XNXQQ】该号码【18959918987】已提交过发送

@@ -1,0 +1,305 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-statisticalChannel" lay-title="通道日报表">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div id="statisticalChannelChart" style="width:100%;height:400px; "></div>
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">通道</label>
+                                        <div class="layui-input-inline">
+                                            <select name="channelId" id="channelId-select"></select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">统计日期</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="statisticalStartTime" class="layui-input" id="statisticalStartTime4" placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="statisticalEndTime" class="layui-input" id="statisticalEndTime4" placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm table-action" id="query">
+                                    搜索
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="statisticalChannelTable" lay-data="{id: 'statisticalChannelTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="statisticalChannel-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="export" shiro:hasAnyPermissions="statisticalChannel:export">导出</button>
+    </div>
+</script>
+<script type="text/html" id="statisticalChannel-option">
+</script>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['jquery', 'laydate', 'form', 'table', 'febs','echarts','moment'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            echarts = layui.echarts,
+            moment = layui.moment,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#febs-statisticalChannel'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            starttime = [[${dateStart}]],
+            endtime = [[${dateEnd}]],
+            sortObject = {field: 'createTime', type: null},
+            tableIns;
+
+        form.render();
+        var start =  laydate.render({
+            elem: '#statisticalStartTime4',
+            type: 'date',
+            min:"1970-1-1",
+            max: endtime,
+            value: starttime,
+            done: function (value,date) {
+                end.config.min ={
+                    year:date.year,
+                    month:date.month-1,
+                    date: date.date
+                }
+            }
+        });
+        var end = laydate.render({
+            elem: '#statisticalEndTime4',
+            type: 'date',
+            min: starttime,
+            max:"2099-12-31",
+            value: endtime,
+            done: function (value,date) {
+                start.config.max={
+                    year:date.year,
+                    month:date.month-1,//注意是month-1，写在date上的话你后边的日期选择不了
+                    date: date.date
+                }
+            }
+        });
+
+        initTable();
+        initChannelSelect();
+        // laydate.render({
+        //     elem: '#statisticalChannel-createTime',
+        //     range: true,
+        //     trigger: 'click'
+        // });
+
+        function initChannelSelect() {
+            var url = ctx + "smsChannel",
+                data = {};
+            data.isDel = 0;
+            $.get(url,data,function (res) {
+                var data = res.data;
+                $("#channelId-select").empty();
+                $("#channelId-select").append(new Option("",""));
+                $.each(res.data,function(index,item){
+                    $("#channelId-select").append(new Option(item.name,item.id));
+                });
+                layui.form.render("select");
+            })
+        }
+
+        //头工具栏事件
+        table.on('toolbar(statisticalChannelTable)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'export':
+                    febs.download(ctx + 'statisticalChannel/excel', getQueryParams(), '通道日报表.xlsx');
+                    break;
+
+            };
+        });
+
+        table.on('tool(statisticalChannelTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+        });
+
+        table.on('sort(statisticalChannelTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+        function loadingEcharts(){
+            var myChart = echarts.init(document.getElementById('myChart'));
+            myChart.showLoading({
+                text: '加载中...',
+                color: '#4cbbff',
+                textStyle: { color: '#444' },
+                effectOption: {backgroundColor: 'rgba(0, 0, 0, 0.2)'}
+            });
+            return false;
+        }
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'statisticalChannelTable',
+                totalRow: true,
+                url: ctx + 'statisticalChannel/list',
+                where:{
+                    statisticalStartTime: starttime,
+                    statisticalEndTime:endtime
+                },
+                toolbar: '#statisticalChannel-toolbar',
+                cols: [[
+                    {type: 'checkbox',totalRowText: '合计'},
+                    {field: 'channelName', title: '通道名称'},
+                    {field: 'totalCount', title: '总数',totalRow: true},
+              /*      {field: 'sortingFailCount', title: '分拣失败'},*/
+                    {field: 'waitReqCount', title: '待发送',totalRow: true}, 
+                   	{field: 'realReqSuccessCount', title: '请求总数',totalRow: true},
+                    {field: 'reqSuccessCount', title: '提交成功',totalRow: true},
+                     {field: 'reqFailCount', title: '提交失败',totalRow: true},
+                    {field: 'receiptSuccessCount', title: '接收成功',totalRow: true},
+                    {field: 'receiptFailCount', title: '接收失败',totalRow: true},
+                    {field: 'rateSuccess', title: '成功率',templet:function (d) {
+                            if (d.realReqSuccessCount == 0){
+                                return '0.00%';
+                            }
+                            var rate = d.receiptSuccessCount * 100 /d.realReqSuccessCount;
+                            rate = rate.toFixed(2);
+                            return rate + "%";
+                        }},
+                    ,{field: 'channelCostAmount', title: '通道成本',templet:function (d) {
+                            return d.channelCostAmount?d.channelCostAmount/100:0;
+                        },totalRow: true}
+                    ,{field: 'incomeAmount', title: '利润',templet:function (d) {
+                            return d.incomeAmount?d.incomeAmount/100:0;
+                        },totalRow: true},
+                    {field: 'statisticalDate', title: '日期',templet:function (d) {
+                            if (d.statisticalDate != 'NaN') 
+                            return moment(d.statisticalDate).format('YYYY-MM-DD')
+                        }}/*,
+                    {title: '操作',fixed:'right', toolbar: 'statisticalChannel-option'}*/
+                ]],
+                done:function (res) {
+                    if(statisticalChannelChart){
+                        statisticalChannelChart.dispose();
+                    }
+                    var statisticalChannelChart = echarts.init(document.getElementById('statisticalChannelChart'));
+                    var legendData;
+                    var seriesData1;
+                    var seriesData2;
+                    febs.get(ctx + 'statisticalChannel/pie', getQueryParams(), function (res) {
+                        var data = res.data;
+                        legendData = data.channelNameS;
+                        seriesData1 = data.totalCounts;
+                        seriesData2 = data.incomeAmounts;
+
+                        layui.each(seriesData2,function (index,item) {
+                            item.value = item.value?item.value/100:0;
+                        })
+                        option = {
+                            title: {
+                                text: '发送量--利润',
+                                subtext: '统计所有筛选的记录',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            },
+                            legend: {
+                                left: 'center',
+                                top: 'bottom',
+                                data: legendData
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: {show: true},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '发送量(条)',
+                                    type: 'pie',
+                                    radius: [20, 110],
+                                    center: ['25%', '50%'],
+                                    roseType: 'radius',
+                                    label: {
+                                        show: false
+                                    },
+                                    emphasis: {
+                                        label: {
+                                            show: true
+                                        }
+                                    },
+                                    data: seriesData1
+                                },
+                                {
+                                    name: '利润(元)',
+                                    type: 'pie',
+                                    radius: [30, 110],
+                                    center: ['75%', '50%'],
+                                    roseType: 'area',
+                                    data: seriesData2
+                                }
+                            ]
+                        };
+                        statisticalChannelChart.setOption(option);
+                    })
+                }
+            });
+        }
+
+        function getQueryParams() {
+            return {
+                channelId: $searchForm.find('select[name="channelId"]').val(),
+                statisticalEndTime: $searchForm.find('input[name="statisticalEndTime"]').val(),
+                statisticalStartTime: $searchForm.find('input[name="statisticalStartTime"]').val(),
+                orgCode: $searchForm.find('select[name="orgCode"]').val(),
+                invalidate_ie_cache: new Date()
+            };
+        }
+
+        function deletestatisticalChannels(statisticalChannelIds) {
+            febs.get(ctx + 'statisticalChannel/delete/' + statisticalChannelIds, null, function () {
+                febs.alert.success('删除成功');
+                $query.click();
+            });
+        }
+    })
+</script>

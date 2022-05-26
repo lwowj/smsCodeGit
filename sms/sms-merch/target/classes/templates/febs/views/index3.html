@@ -1,0 +1,411 @@
+<style>
+    #febs-index .welcome-info {
+        border: 1px solid #f1f1f1;
+        margin-bottom: .5rem;
+        padding: .5rem;
+    }
+
+    #febs-index .welcome-info-wrapper {
+        padding: .2rem;
+        display: inline-block
+    }
+
+    #febs-index .welcome-info-wrapper .user-header {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-header img {
+        width: 5rem;
+        margin: .5rem 1rem;
+        border-radius: 50%
+    }
+
+    #febs-index .welcome-info-wrapper .user-info {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .random-message {
+        font-size: 1rem;
+        margin-bottom: .2rem;
+        max-width: 21rem
+    }
+
+    #febs-index .welcome-info-wrapper .user-info .user-dept, #febs-index .welcome-info-wrapper .user-info .user-login-info {
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    #febs-index .login-count-table {
+        width: 100%;
+        margin: 1rem;
+    }
+
+    #febs-index .login-count-table .count {
+        padding-top: .8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1890ff
+    }
+
+    #febs-index .project-table {
+        padding: .5rem;
+        border: 1px solid #f1f1f1;
+        width: 100%
+    }
+
+    #febs-index .project-table-td {
+        padding: .5rem 0.7rem;
+        border: 1px solid #f1f1f1;
+    }
+
+    #febs-index .project-table-td a {
+        color: #42b983;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+    #febs-index .project-desc {
+        color: rgba(0, 0, 0, 0.45);
+    }
+    
+    .layuiadmin-card-list p.layuiadmin-big-font {
+        font-size: 36px;
+        color: #666;
+        line-height: 36px;
+        padding: 5px 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+    }
+      .layuiadmin-badge {
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        right: 15px;
+        color: #01AAED;
+    }
+    #febs-index .layui-badge {
+        height: 18px;
+        line-height: 18px;
+        padding: 3px 9px;
+    }
+    .layuiadmin-span-color {
+        font-size: 14px;
+        position: absolute;
+        right: 15px;
+    }
+</style>
+<div class="layui-fluid layui-anim febs-anim-up" id="febs-index" lay-title="系统首页">
+    <div class="layui-row layui-col-space8 febs-container">
+
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body layui-anim layui-anim-fadein">
+                    <div class="layui-row welcome-info">
+                        <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                            <div class="layui-row welcome-info-wrapper">
+                                <div class="user-header">
+                                    <img alt="头像" id="user-avatar" data-th-src="@{febs/images/avatar/default.jpg}">
+                                </div>
+                                <div class="user-info">
+                                    <div class="layui-row">
+                                        <div class="random-message">
+                                            <span id="welcome-message"></span>
+                                        </div>
+                                        <div class="user-dept">
+                                            <span>商户名</span> : <span id="user-realName"></span>
+                                        </div>
+                                        <div class="user-login-info">
+                                            上次登录时间：<span id="last-login-time"></span>
+                                        </div>
+                                        <div class="user-login-info">
+                                            上次登录IP地址：<span id="last-login-ip"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md6 layui-col-sm12 layui-col-xs12">
+                            <div class="layui-col-md-offset5">
+                                <table class="login-count-table">
+                                    <tr>
+                                        <td>商户状态</td>
+                                        <td>认证状态</td>
+                                        <td>技术对接</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="org-status">
+                                        </td>
+                                        <td id="org-approve-state">
+                                        </td>
+                                        <td style="padding-bottom: 0;">
+			                                <div class="layui-btn-container">
+			                                    <a href="https://www.showdoc.cc/433509058009929?page_id=4354665729844943" target="_blank" class="layui-btn layui-btn-danger">接口文档</a>
+			                                </div>
+			                            </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm4" >
+            <div class="layui-card">
+                <div class="layui-card">
+                        <div class="layui-card-header">
+                          本次登录信息
+                            <span class="layui-badge layui-bg-orange layuiadmin-badge">当前</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                       	登录时间&nbsp;：<span id="this-login-time"></span><br/>
+                                           登录&nbsp;I&nbsp; P&nbsp;：<span id="this-login-ip"></span>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            可用额度（元）
+                            <span class="layui-badge layui-bg-blue layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p class="layuiadmin-big-font count" id="available_amount">0</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="layui-col-sm4" >
+            <div class="layui-card">
+                     <div class="layui-card">
+                        <div class="layui-card-header">
+                            消费金额(元)
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">合计</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p class="layuiadmin-big-font count" id="cash_amount">0</p>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                           发送总数（条）
+                            <span class="layui-badge layui-bg-green layuiadmin-badge">当前</span>
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p class="layuiadmin-big-font count" id="send_sms_total">0</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="layui-col-sm4" >
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    商户信息
+                </div>
+                <div class="layui-card-body">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>商户名称</td>
+                            <td><span id="org-name"></span></td>
+                        </tr>
+                         <tr>
+                            <td>登录账号</td>
+                            <td><span id="org-account"></span></td>
+                        </tr>
+                        <tr>
+                            <td>绑定手机</td>
+                            <td><span id="org-mobile"></span></td>
+                        </tr>
+                        <!-- 
+                        <tr>
+                            <td>商户状态</td>
+                            <td><span id="org-status"></span></td>
+                        </tr>
+                        <tr>
+                            <td>认证状态</td>
+                            <td><span id="org-approve-state"></span></td>
+                        </tr>
+                        -->
+                        <tr>
+                            <td>商户编号</td>
+                            <td><span id="org-code"></span></td>
+                        </tr>
+                        <tr>
+                            <td>MD5秘钥</td>
+                            <td id="org-key"></td>
+                        </tr>
+                        <!-- 
+                        <tr>
+                            <td>接口文档</td>
+                            <td style="padding-bottom: 0;">
+                                <div class="layui-btn-container">
+                                    <a href="https://www.showdoc.cc/smsDoc?page_id=4055191089222154" target="_blank" class="layui-btn layui-btn-danger">接口文档</a>
+                                </div>
+                            </td>
+                        </tr>
+                         -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="layui-col-sm8" >
+            <div class="layui-card" >
+                <div class="layui-card-body">
+                    <div id="lineChartDatalabels"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['apexcharts', 'febs', 'jquery', 'util','moment'], function () {
+        var $ = layui.jquery,
+            util = layui.util,
+            moment = layui.moment,
+            $view = $('#febs-index'),
+            febs = layui.febs;
+        $view.find('#user-realName').text(currentUser.userName ? currentUser.userName : '未获取到信息').end()
+            .find('#org-name').text(currentOrg.organizationName ? currentOrg.organizationName : '未获取到信息').end()
+            .find('#org-account').text(currentUser.userAccount ? currentUser.userAccount : '未获取到信息').end()
+            .find('#org-mobile').text(currentOrg.contactMobile ? currentOrg.contactMobile : '未获取到信息').end()
+            .find('#org-code').text(currentOrg.organizationCode ? currentOrg.organizationCode : '未获取到信息').end()
+            .find('#org-status').html(currentOrg.status =='1' ? '<span class="layui-badge febs-tag-green" style="line-height: 23px">正常</span>' : '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">锁定</span>').end()
+            .find('#org-approve-state').html(currentOrg.approveStateCode =='1' ? '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">未成功</span>' : currentOrg.approveStateCode =='2' ? '<span class="layui-badge febs-tag-green" style="line-height: 23px">认证通过</span>' : '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">认证失败</span>').end()
+            .find('#org-key').text(currentOrg.md5Key ? currentOrg.md5Key : '未获取到信息').end()
+            .find('#last-login-time').text(lastLoginTime ? lastLoginTime : '第一次访问系统').end()
+            .find('#last-login-ip').text(lastLoginIp ? lastLoginIp : '第一次访问系统').end()
+        .find('#this-login-time').text(thisLoginTime).end()
+        .find('#this-login-ip').text(thisLoginIp).end()
+        .find('#available_amount').text(currentOrg.availableAmount/100).end()
+        .find('#cash_amount').text(currentOrg.cashAmount/100 ).end()
+        .find('#send_sms_total').text(currentOrg.sendSmsTotal ).end();
+        $(function () {
+            var availableAmount = currentOrg.availableAmount/100;
+            if(availableAmount < orgCashlessNotifyNum){
+                var message = "商户可用余额剩余<span style='font-size: large'>" + availableAmount + "</span>元,可用余额已不多，以防不足抵扣短信费用而被限制发送,请及时充值";
+                amountNotify(message)
+            }
+        })
+        febs.get(ctx + 'index/statistics', null, function (r) {
+            handleSuccess(r.data.rows);
+        });
+        function handleSuccess(data) {
+            var xAxisData = [];
+            var seriesDataSuc = [];
+            var seriesDataFail = [];
+            layui.each(data.reverse(),function (index,item) {
+                xAxisData.push(moment(item.statisticalDate).format('MM-DD'));
+                seriesDataSuc.push(item.reqSuccessCount);
+                seriesDataFail.push(item.reqFailCount);
+            })
+
+            var lineChartDatalabelsOptions = {
+                chart: {
+                    height: 213,
+                    type: 'line',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                colors: ['#727cf5', '#0acf97'],
+                dataLabels: {
+                    enabled: true
+                },
+                stroke: {
+                    width: [5, 3],
+                    curve: 'smooth'
+                },
+                series: [{
+                    name: '成功',
+                    data: seriesDataSuc
+                }, {
+                    name: '失败',
+                    data: seriesDataFail
+                }],
+                title: {
+                    text: '短信发送统计',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['transparent', 'transparent'],
+                        opacity: 0.2
+                    },
+                    borderColor: '#f1f3fa'
+                },
+                markers: {
+                    style: 'inverted',
+                    size: 5,
+                    hover: {
+                        size: 6
+                    }
+                },
+                xaxis: {
+                    categories: xAxisData
+                },
+                yaxis: {
+                    title: {
+                        text: '条数'
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    floating: true,
+                    offsetY: -25,
+                    offsetX: -5
+                },
+                responsive: [{
+                    breakpoint: 600,
+                    options: {
+                        chart: {
+                            toolbar: {
+                                show: false
+                            }
+                        },
+                        legend: {
+                            show: false
+                        }
+                    }
+                }]
+            };
+            // --------------- lineChartDatalabels ----------------
+            new ApexCharts(
+                document.querySelector("#lineChartDatalabels"),
+                lineChartDatalabelsOptions
+            ).render();
+        }
+
+        function amountNotify(message) {
+            layer.open({
+                type: 1
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: '300px;'
+                ,shade: 0
+                ,id: 'availableAmount_notify' //设定一个id，防止重复弹出
+                ,resize: false
+                ,btn: [ '知道了']
+                ,btnAlign: 'c'
+                ,offset:'rb'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">温馨提示：<br>'+ message + '</div>'
+            });
+        }
+
+
+
+
+    });
+</script>

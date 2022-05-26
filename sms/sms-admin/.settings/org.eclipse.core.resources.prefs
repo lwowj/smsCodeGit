@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/febs.properties=UTF-8
+encoding//src/main/resources/spy.properties=UTF-8
+encoding//src/main/resources/templates=UTF-8
+encoding//src/main/resources/templates/febs/views/index.html=UTF-8
+encoding//src/main/resources/templates/febs/views/layout.html=UTF-8
+encoding//src/main/resources/templates/febs/views/system/code/code.html=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

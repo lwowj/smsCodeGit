@@ -1,0 +1,173 @@
+<style>
+    #smsTemplate-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #smsTemplate-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="smsTemplate-update">
+    <form class="layui-form" action="" lay-filter="smsTemplate-update-form">
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">模板ID：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item ">
+            <label class="layui-form-label febs-form-item-require">模板名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="templateName" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">商户：</label>
+            <div class="layui-input-inline">
+                <sys:data dataType="org" name="orgCode" lay-filter="orgSeleted" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">商户名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="orgName" id="orgName" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">提交人：</label>
+            <div class="layui-input-inline">
+                <select name="submitterId" id="submitterId" lay-filter="submitterSeleted" lay-verify="required"></select>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <label class="layui-form-label febs-form-item-require">提交人名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="submitterName" id="submitterName" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">模板内容：</label>
+            <div class="layui-input-block">
+                <textarea name="templateContent" class="layui-textarea" lay-verify="required"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核状态：</label>
+            <div class="layui-input-inline">
+                <select name="approveStatus">
+                    <option value=""></option>
+                    <option th:each="enum:${auditStateEnums}"
+                            th:value ="${enum.code}"
+                            th:text="${enum.name}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <textarea  name="description" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="smsTemplate-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            formSelects = layui.formSelects,
+            treeSelect = layui.treeSelect,
+            form = layui.form,
+            smsTemplate = [[${smsTemplate}]],
+            $view = $('#smsTemplate-update'),
+            flag = true,
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        getUsersByOrgCode(smsTemplate.orgCode,false);
+
+        initsmsTemplateValue();
+
+        function initsmsTemplateValue() {
+            form.val("smsTemplate-update-form", {
+                "templateName": smsTemplate.templateName,
+                "orgCode": smsTemplate.orgCode,
+                "orgName": smsTemplate.orgName,
+                "submitterId": smsTemplate.submitterId,
+                "submitterName": smsTemplate.submitterName,
+                "templateContent": smsTemplate.templateContent,
+                "approveStatus": smsTemplate.approveStatus,
+                "description": smsTemplate.description,
+                "id": smsTemplate.id
+            });
+
+        }
+        form.on('select(orgSeleted)',function (data) {
+            //记录选中的商户名称
+            selectedOrgName =  data.elem[data.elem.selectedIndex].text;
+            $('#orgName').val(selectedOrgName);
+            //级联渲染商户用户
+            getUsersByOrgCode(data.value,true);
+        });
+
+        //根据商户代码   渲染提交人select框
+        //orgCode  商户编码   async是否异步请求
+        function getUsersByOrgCode(orgCode,async){
+            var url = ctx + 'organizationUser?organizationCode=' + orgCode;
+            if (async){
+                $.get(url,function (res) {
+                    var data = res.data;
+                    $("#submitterId").empty();
+                    $("#submitterId").append(new Option("请选择用户",""));
+                    $.each(res.data,function(index,item){
+                        $("#submitterId").append(new Option(item.userName,item.id));
+                    });
+                    flag = false;
+                    layui.form.render("select");
+                })
+            } else {
+                febs.ajax({
+                    url:url,
+                    async:false,
+                    success:function (res) {
+                        var data = res.data;
+                        $("#submitterId").empty();
+                        $("#submitterId").append(new Option("请选择用户",""));
+                        $.each(res.data,function(index,item){
+                            $("#submitterId").append(new Option(item.userName,item.id));
+                        });
+                        flag = false;
+                        layui.form.render("select");
+                    }
+                })
+            }
+        }
+
+
+        form.on('select(submitterSeleted)',function (data) {
+            //记录选中的提交人名称
+            selectedSubmitterName = data.elem[data.elem.selectedIndex].text;
+            $('#submitterName').val(selectedSubmitterName);
+        });
+
+        form.on('submit(smsTemplate-update-form-submit)', function (data) {
+            if (febs.nativeEqual(data.field, smsTemplate)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'smsTemplate/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                $('#febs-smsTemplate').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

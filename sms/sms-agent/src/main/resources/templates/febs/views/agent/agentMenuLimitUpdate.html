@@ -1,0 +1,93 @@
+<style>
+    #agent-limit-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #agent-limit-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="agent-limit-update">
+    <form class="layui-form" action="" lay-filter="agent-update-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色权限：</label>
+            <div class="layui-input-block agent-menu-tree" style="margin-top: .8rem;"></div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="agent-limit-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'formSelects', 'validate', 'eleTree'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            eleTree = layui.eleTree,
+            agentId = [[${id}]],
+            limits = [[${limits}]],
+            $view = $('#agent-limit-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        var ids = [];
+        for (var i = 0; i < limits.length; i++) {
+            ids[i] = limits[i].menuId + "";
+        }
+
+        var menuTree = eleTree.render({
+                elem: '.agent-menu-tree',
+                url: ctx + 'agentMenu/tree',
+                showCheckbox: true,
+                where: {
+                    "invalidate_ie_cache": new Date()
+                },
+                accordion: true,
+                isStrictly: true,
+                //checkStrictly: true,
+                renderAfterExpand: false,
+                request: {
+                    name: "title",
+                    key: "id",
+                    children: "childs",
+                    checked: "checked",
+                    data: "data"
+                },
+                response: {
+                    statusName: "code",
+                    statusCode: 200,
+                    dataName: "data"
+                },
+            defaultCheckedKeys:ids
+        });
+        form.on('submit(agent-limit-update-form-submit)', function (data) {
+            var selected = menuTree.getChecked(false, false);
+            var menuIds = [];
+            layui.each(selected, function (key, item) {
+                menuIds.push(item.id)
+            });
+            data.field.menuIds = menuIds.join(',');
+            data.field.agentId = agentId;
+            if (!menuIds.length) {
+                febs.modal.confirm('提示', '当前角色未授予任何权限，是否继续？', function () {
+                    updateLimit(data.field);
+                });
+            } else {
+                updateLimit(data.field);
+            }
+            return false;
+        });
+
+        function updateLimit(data) {
+            febs.post(ctx + 'agentMenuLimit/updates', data, function () {
+                layer.closeAll();
+                febs.alert.success('修改权限成功');
+            });
+        }
+
+    });
+</script>

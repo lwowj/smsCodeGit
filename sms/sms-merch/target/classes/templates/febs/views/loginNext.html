@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${session.sysConfig.platformName + '【商户后台】'}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{layui/css/layui.css(t=2)}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/febs.css(t=2)}" media="all">
+    <link rel="stylesheet" th:href="@{febs/css/main.css(t=2)}" media="all">
+    <link rel="icon" th:href="@{febs/images/favicon.ico}" type="image/x-icon"/>
+    <style>
+    * {
+            margin: 0px;
+            padding: 0px;
+            font-family: "微软雅黑";
+        }
+
+        .drag {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #e8e8e8;
+            position: relative;
+        }
+
+        .bg {
+            width: 40px;
+            height: 100%;
+            position: absolute;
+            background-color: #75CDF9;
+        }
+
+        .text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            user-select: none;
+        }
+
+        .btn {
+            width: 40px;
+            height: 38px;
+            position: absolute;
+            border: 1px solid #ccc;
+            cursor: move;
+            font-family: "宋体";
+            text-align: center;
+            background-color: #fff;
+            user-select: none;
+            color: #666;
+        }
+ 
+    </style>
+</head>
+<body>
+<div id="febs-login" lay-title="登录">
+    <div class="login-wrap">
+        <div class="layui-container">
+            <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 febs-tc" style="margin-left: 58%;width:35%">
+                   <img data-th-src="${session.sysConfig.logoPath}" th:alt="${session.sysConfig.platformName}" width="300" height="75">
+                </div>
+                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4" id="login-div" style="margin-left: 60%;width:35%">
+                    <div class="layui-form" lay-filter="login-form" >
+                        <div class="layui-anim layui-anim-upbit">
+                            <ul class="login-type-tab">
+                                <li class="active">商户登录</li>
+                            </ul>
+                            <div class="normal-login-form">
+                                <div class="layui-form-item">
+                                    <label class="layui-icon label-icon layui-icon-username"></label>
+                                    <input type="text" name="userAccount" lay-verify="required"
+                                           placeholder="商户账号" autocomplete="off" class="layui-input" style="font-size:18px;width: 95%;" >
+                                </div>
+                                <div class="layui-form-item password-block">
+                                    <label class="layui-icon label-icon layui-icon-password"></label>
+                                    <input type="password" name="password" lay-verify="required"
+                                           placeholder="密码" autocomplete="off" class="layui-input" style="font-size:18px;width: 95%;" >
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-row">
+                                        <div class="layui-col-xs7">
+                                            <label class="layui-icon label-icon layui-icon-vercode"></label>
+                                            <input type="text" maxlength="6" name="goologoVerifyCode" lay-verify="number"
+                                                   placeholder="未绑定可不填" class="layui-input" autocomplete="off" style="font-size:18px;">
+                                        </div>
+                                        <div class="layui-col-xs5">
+                                            <img data-th-src="@{febs/images/goologo.png}"/>
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-row">
+                                        <div class="layui-col-xs5">
+                                            <img class="J_codeimg" id="codeimg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-row">
+                                        <div class="layui-col-xs7">
+                                            <label class="layui-icon label-icon layui-icon-vercode"></label>
+                                            <input type="text" maxlength="5" name="verifyCode" lay-verify="required"
+                                                   placeholder="上方5位验证码" class="layui-input" autocomplete="off" style="font-size:20px;width: 200px;letter-spacing:4px ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class='layui-row drag'>
+                                        <div class="layui-col-xs7 bg"></div>
+								        <div class="layui-col-xs7 text" onselectstart="return false" style="color: black;">请拖动滑块解锁</div>
+								        <div class="layui-col-xs7 btn">&gt;&gt;</div>
+						    		</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <button class="layui-btn layui-btn-normal layui-btn-fluid" lay-submit
+                                            lay-filter="login-submit" id="login" style="background-color: #2c8b2659;width: 95%;">
+                                        <i style="display: none"
+                                           class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                        登录
+                                    </button>
+                                </div>
+                                <input type="hidden" id="sessionToken" name="sessionToken"  data-th-value="${sessionToken}"/>
+                                <input type="hidden" id="behaviorCheckToken" name="behaviorCheckToken"  value=""/>
+                                <input type="hidden" id="verifyInfoToken" name="verifyInfoToken"  value=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+             <div class="air-balloon ab-1 png"></div>
+             <div class="air-balloon ab-4 png"></div>
+		    <div class="air-balloon ab-2 png"></div>
+			<div class="air-balloon ab-3 png"></div>
+			<div class="air-balloon ab-4 png"></div>
+		    <div class="air-balloon ab-2 png"></div>
+			<div class="air-balloon ab-3 png"></div>
+			<div class="air-balloon ab-3 png"></div>
+			<div class="air-balloon ab-4 png"></div>
+			<div class="air-balloon ab-4 png"></div>
+			<div class="air-balloon ab-4 png"></div>
+		    <div class="footer"></div>
+    </div>
+</div>
+<script th:src="@{layui/layui.js}"></script>
+<script th:src="@{febs/jQuery.js}"></script>
+<script th:src="@{febs/fun.base.js}"></script>
+<script th:src="@{febs/script.js}"></script>
+<script th:inline="javascript">
+    var ctx = [[@{/}]];
+        console.log([[${session.sysConfig}]])
+
+        layui.extend({
+            validate: './febs/lay/modules/validate'
+        }).use(['form', 'layer', 'validate'], function (form, layer) {
+            var $ = layui.jquery,
+                validate = layui.validate,
+                $view = $('#febs-login'),
+                type = 'login',
+                $loginDiv = $view.find('#login-div');
+            form.verify(validate);
+            form.render();
+            initCode();
+
+            //提交登录表单
+            form.on('submit(login-submit)', function (data) {
+                var loading = $(this).find('.layui-icon');
+                if (loading.is(":visible")) return;
+                if ($view.find('#behaviorCheckToken').val()=='')
+                {
+                	if(checkNum==0)
+                	{
+                		layer.msg("请先拖动滑块解锁验证！");
+                	}
+                	else
+                	{
+                		layer.msg("滑块解锁异常，请刷新界面重新操作！");
+                	}
+                	return false;
+                }
+                loading.show();
+                $.post(ctx + 'login', data.field, function (r) {
+                    if (r.code === 200) {
+                        location.href = ctx + 'index';
+                    } else {
+                    	 if(r.sessionToken!=null)
+                         {
+                        	 $view.find('#sessionToken').val(r.sessionToken);
+                         }
+                        layer.msg(r.message);
+                        loading.hide();
+                        initCode();
+                        initBehaviorImg();
+                    }
+                });
+                return false;
+            });
+
+            function initCode() {
+                $view.find('#codeimg').attr("src", ctx + "images/captcha?data=" + new Date().getTime());
+            }
+
+            $view.find('#codeimg').on('click', function () {
+                initCode();
+            });
+
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 13) {
+                    if (type === 'login')
+                        $view.find('#login').trigger("click");
+                }
+            });
+            
+          //一、定义一个获取DOM元素的方法
+            var b = function (selector) {
+                return document.querySelector(selector);
+            },
+                box = b(".drag"),//容器
+                bg = b(".bg"),//背景
+                text = b(".text"),//文字
+                btn = b(".btn"),//滑块
+                success = false,//是否通过验证的标志
+				checkNum = 0,
+                distance = box.offsetWidth - btn.offsetWidth;//滑动成功的宽度（距离）
+                
+                //初始化
+                function initBehaviorImg()
+                {
+                	text.innerHTML = "请拖动滑块解锁";
+                    text.style.color = "black";
+                    btn.innerHTML = "&gt;&gt;";
+                    btn.style.color = "#666";
+                    bg.style.backgroundColor = "#75CDF9";
+                    btn.style.left = 0;
+                    bg.style.width = 0;
+                    btn.style.transition = "left 1s ease";
+                    bg.style.transition = "width 1s ease";
+                    $view.find('#behaviorCheckToken').val("");
+                    $view.find('#verifyInfoToken').val("");
+                    checkNum = 0;
+                }
+               
+
+            	//二、给滑块注册鼠标按下事件
+                btn.onmousedown = function (e) {
+                    //1.鼠标按下之前必须清除掉后面设置的过渡属性
+                    btn.style.transition = "";
+                    bg.style.transition = "";
+
+                    //说明：clientX 事件属性会返回当事件被触发时，鼠标指针向对于浏览器页面(或客户区)的水平坐标。
+
+                    //2.当滑块位于初始位置时，得到鼠标按下时的水平位置
+                    var e = e || window.event;
+                    var downX = e.clientX;
+                    //三、给文档注册鼠标移动事件
+                    document.onmousemove = function (e) {
+
+                        var e = e || window.event;//是为了更好的兼容IE浏览器和非ie浏览器。在ie浏览器中,window.event是全局变量,在非ie中，就需要自己传入一个参数来获取event啦，所以就有了var e = e||window.event
+                        //1.获取鼠标移动后的水平位置
+                        var moveX = e.clientX;
+
+                        //2.得到鼠标水平位置的偏移量（鼠标移动时的位置 - 鼠标按下时的位置）
+                        var offsetX = moveX - downX;
+
+                        //3.在这里判断一下：鼠标水平移动的距离 与 滑动成功的距离 之间的关系
+                        if (offsetX > distance) {
+                            offsetX = distance;//如果滑过了终点，就将它停留在终点位置
+                        } else if (offsetX < 0) {
+                            offsetX = 0;//如果滑到了起点的左侧，就将它重置为起点位置
+                        }
+
+                        //4.根据鼠标移动的距离来动态设置滑块的偏移量和背景颜色的宽度
+                        btn.style.left = offsetX + "px";
+                        bg.style.width = offsetX + "px";
+
+                        //如果鼠标的水平移动距离 = 滑动成功的宽度
+                        console.log(checkNum);
+                        if (offsetX == distance) {
+                        	checkNum++;
+                        	if(checkNum==1)
+                        	{
+                        		//1.设置滑动成功后的样式
+                                text.innerHTML = "验证通过";
+                                text.style.color = "#fff";
+                                btn.innerHTML = "&radic;";
+                                btn.style.color = "green";
+                                bg.style.backgroundColor = "lightgreen";
+
+                                //2.设置滑动成功后的状态
+                                success = true;
+                                //btn.onmousedown = null;
+                                //document.onmousemove = null;
+                              //3.成功解锁后的回调函数
+                                setTimeout(function () 
+                                {
+                                	$.post(ctx + 'loginBehavior', null, function (r) {
+                                		var behaviorCheckToken = r.behaviorCheckToken;
+                                		var verifyInfoToken = r.verifyInfoToken;
+                                		if(behaviorCheckToken!='')
+                                		{
+                                			//成功后，清除掉鼠标按下事件和移动事件（因为移动时并不会涉及到鼠标松开事件）
+                                            document.onmousemove = null;
+                                            document.onmouseup = null;
+                                			$view.find('#behaviorCheckToken').val(behaviorCheckToken);
+                                			$view.find('#verifyInfoToken').val(verifyInfoToken);
+                                		}
+                                		else
+                                		{
+                                			success = false;
+                                			initBehaviorImg(); 
+                                		}
+                                    });
+                                }, 100);
+                        	}
+                        }
+                    }
+
+                    //四、给文档注册鼠标松开事件
+                    document.onmouseup = function (e) {
+                        //如果鼠标松开时，滑到了终点，则验证通过
+                        if (success) {
+                        	//只要鼠标松开了，说明此时不需要拖动滑块了，那么就清除鼠标移动和松开事件。
+                            document.onmousemove = null;
+                            document.onmouseup = null;
+                            return;
+                        } else {
+                            //反之，则将滑块复位（设置了1s的属性过渡效果）
+                        	initBehaviorImg();
+                        }
+                    }
+                    
+                }
+        });
+        
+     
+</script>
+</body>
+</html>

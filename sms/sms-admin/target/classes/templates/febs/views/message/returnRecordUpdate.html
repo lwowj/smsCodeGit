@@ -1,0 +1,168 @@
+<style>
+    #returnRecord-update {
+        padding: 20px 25px 25px 0;
+    }
+
+    #returnRecord-update .layui-treeSelect .ztree li a, .ztree li span {
+        margin: 0 0 2px 3px !important;
+    }
+</style>
+<div class="layui-fluid" id="returnRecord-update">
+    <form class="layui-form" action="" lay-filter="returnRecord-update-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">批次号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="sendCode" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">代理商id：</label>
+            <div class="layui-input-block">
+                <input type="text" name="agentId" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">：</label>
+            <div class="layui-input-block">
+                <input type="text" name="orgCode" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">通道id：</label>
+            <div class="layui-input-block">
+                <input type="text" name="channelId" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">消息类型：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsType" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">消息内容：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsContent" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">手机号码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsNumber" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">手机号码归属地：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsNumberArea" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">有效的短信数：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsCount" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">短信字数：</label>
+            <div class="layui-input-block">
+                <input type="text" name="smsWords" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">通道请求状态：</label>
+            <div class="layui-input-block">
+                <input type="text" name="reqState" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">通道请求返回信息：</label>
+            <div class="layui-input-block">
+                <input type="text" name="reqDesc" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">提交时间：</label>
+            <div class="layui-input-block">
+                <input type="text" name="reqCreateTime" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">通道消息标识：</label>
+            <div class="layui-input-block">
+                <input type="text" name="resMsgid" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">接收状态：</label>
+            <div class="layui-input-block">
+                <input type="text" name="returnState" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">接收状态描述：</label>
+            <div class="layui-input-block">
+                <input type="text" name="returnDesc" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">消息序列号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="returnSeq" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">创建时间：</label>
+            <div class="layui-input-block">
+                <input type="text" name="createTime" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item febs-hide">
+            <button class="layui-btn" lay-submit="" lay-filter="returnRecord-update-form-submit" id="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs', 'form', 'validate'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            formSelects = layui.formSelects,
+            treeSelect = layui.treeSelect,
+            form = layui.form,
+            returnRecord = [[${returnRecord}]],
+            $view = $('#returnRecord-update'),
+            validate = layui.validate;
+
+        form.verify(validate);
+        form.render();
+
+        initreturnRecordValue();
+
+        function initreturnRecordValue() {
+            form.val("returnRecord-update-form", {
+                //"mobile": returnRecord.mobile
+            });
+        }
+
+        form.on('submit(returnRecord-update-form-submit)', function (data) {
+            if (febs.nativeEqual(data.field, returnRecord)) {
+                febs.alert.warn('数据未作任何修改！');
+                return false;
+            }
+            febs.post(ctx + 'returnRecord/update', data.field, function () {
+                layer.closeAll();
+                febs.alert.success('数据修改成功！');
+                $('#febs-returnRecord').find('#query').click();
+            });
+            return false;
+        });
+    });
+</script>

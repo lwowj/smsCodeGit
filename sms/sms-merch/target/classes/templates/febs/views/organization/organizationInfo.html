@@ -1,0 +1,172 @@
+
+<div class="layui-fluid" id="user-info" lay-title="商户信息">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">商户信息</div>
+                <div class="layui-card-body" pad15="">
+				<div class="layui-card">
+                <div class="layui-card-body layui-inline">
+                    <table class="layui-table" style="width: 800px">
+                        <colgroup>
+                            <col width="200">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td width="200px">商户名称</td>
+                            <td><span id="org-name"></span></td>
+                        </tr>
+                        <tr>
+                            <td>商户编号</td>
+                            <td><span id="org-code"></span></td>
+                        </tr>
+                        <tr>
+                            <td>绑定手机</td>
+                            <td><span id="org-mobile"></span></td>
+                        </tr>
+                         <tr>
+                            <td>商户状态</td>
+                            <td><span id="org-status"></span></td>
+                        </tr>
+                        <tr>
+                            <td>审核状态</td>
+                            <td><span id="org-approve-state"></span></td>
+                        </tr>
+                        <tr>
+                            <td>开通接口</td>
+                            <td><span id="org-interface_type"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-card-body febs-hide" id="docking-http">
+                    <table class="layui-table" style="width: 800px">
+                    	<tr>
+                        <td colspan="2">
+                        <span class="layui-badge febs-tag-volcano" style="line-height: 23px;font-size: 16px;">HTTP对接信息</span>
+                        </td>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <td width="200px">HTTP接入地址：</td>
+                            <td><span>请咨询客服人员获取</span></td>
+                        </tr>
+                        <tr>
+                            <td>MD5秘钥</td>
+                            <td id="org-key"></td>
+                        </tr>
+                        <tr>
+                            <td>回执通知地址</td>
+                            <td id="org-notify-url"></td>
+                        </tr>
+                        <tr>
+                            <td>接口文档</td>
+                            <td style="padding-bottom: 0;">
+                                <div class="layui-btn-container">
+                                	 <input type="text" name="interfaceDocText" class="layui-input  febs-hide" data-th-value="${interfaceDocUri}" id="interfaceDocText" />
+                                    <a href="#" target="_blank" class="layui-btn layui-btn-danger" id="interfaceDocUri" >接口文档</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-card-body febs-hide" id="docking-smpp">
+                    <table class="layui-table" style="width: 800px">
+                        <tr>
+                        <td colspan="2">
+                            <span class="layui-badge febs-tag-blue" style="line-height: 23px;font-size: 16px;">SMPP对接信息</span>
+                        </td>
+                        </tr>
+                        <tbody>
+                         <tr>
+                            <td width="200px">SMPP接入IP与端口：</td>
+                            <td>
+                            <span>请咨询客服人员获取</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>systemId：</td>
+                            <td>
+                            <span data-th-text="${systemId}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>password：</td>
+                            <td>
+                            <span data-th-text="${password}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>最大连接数：</td>
+                             <td>
+                             <span data-th-text="${maxChannels}"></span>
+                             </td>
+                        </tr>
+                        <tr>
+                            <td>流速：</td>
+                             <td>
+                             <span data-th-text="${readLimit}"></span>
+                             </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+	layui.use(['jquery','febs', 'form', 'formSelects', 'validate','element'], function () {
+	 var $ = layui.jquery,
+	 interfaceType = [[${interfaceType}]],
+	 accountType = [[${accountType}]],
+     $view = $('#user-info');
+     $view.find('#org-name').text(currentOrg.organizationName ? currentOrg.organizationName : '未获取到信息').end()
+     .find('#org-code').text(currentOrg.organizationCode ? currentOrg.organizationCode : '未获取到信息').end()
+     .find('#org-mobile').text(currentOrg.contactMobile ? currentOrg.contactMobile : '未获取到信息').end()
+     .find('#org-status').html(currentOrg.status =='1' ? '<span class="layui-badge febs-tag-green" style="line-height: 23px">正常</span>' : '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">锁定</span>').end()
+     .find('#org-approve-state').html(currentOrg.approveStateCode =='1' ? '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">未审核</span>' : currentOrg.approveStateCode =='2' ? '<span class="layui-badge febs-tag-green" style="line-height: 23px">审核通过</span>' : '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">审核失败</span>').end()
+     .find('#org-interface_type').html(currentOrg.interfaceType =='1' ? '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">HTTP</span>' : currentOrg.interfaceType =='2' ? '<span class="layui-badge febs-tag-blue" style="line-height: 23px">SMPP</span>':currentOrg.interfaceType =='3' ? '<span class="layui-badge febs-tag-volcano" style="line-height: 23px">HTTP</span>&nbsp;<span class="layui-badge febs-tag-blue" style="line-height: 23px">SMPP</span>'  : '未开通接口').end();
+     if(accountType == 0)
+		{
+			if(interfaceType == 1)
+			{
+				$('#interfaceDocUri').attr('href',$('#interfaceDocText').val()); 
+				 $view.find('#org-key').text(currentOrg.md5Key ? currentOrg.md5Key : '未获取到信息').end()
+				 .find('#org-notify-url').text(currentOrg.notifyUrl ? currentOrg.notifyUrl : '未绑定回执通知地址，如有使用接口模式，请联系客服进行绑定' ).end();
+				$('#docking-http').show();
+				$('#docking-smpp').hide();
+			}
+			else if(interfaceType == 2)
+			{
+				$('#docking-http').hide();
+				$('#docking-smpp').show();
+			}
+			else if(interfaceType == 3)
+			{
+				
+				$('#interfaceDocUri').attr('href',$('#interfaceDocText').val()); 
+				$view.find('#org-key').text(currentOrg.md5Key ? currentOrg.md5Key : '未获取到信息').end()
+				 .find('#org-notify-url').text(currentOrg.notifyUrl ? currentOrg.notifyUrl : '未绑定回执通知地址，如有使用接口模式，请联系客服进行绑定' ).end();
+				$('#docking-http').show();
+				$('#docking-smpp').show();
+			}
+			else
+			{
+				$('#docking-http').hide();
+				$('#docking-smpp').hide();
+			}
+		}
+		else
+		{
+			$('#docking-http').hide();
+			$('#docking-smpp').hide();
+		}
+	});
+</script>

@@ -1,0 +1,80 @@
+<style>
+    #org-properties-info {
+        padding: 15px 15px 0 15px;
+    }
+    .container{
+        position: relative;
+    }
+    .copyArea{
+        height: 340px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: #f9faf0;
+    }
+    .copybtn{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        z-index:1;
+        border-radius:5px;
+        display: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+    }
+</style>
+<div class="layui-fluid " id="org-properties-info">
+    <form class="layui-form container" action="" lay-filter="org-properties-info">
+
+        <div id="copy-item">
+            <!-- Target -->
+            <textarea class="copyArea" readonly id="bar" name="propertyInfo"></textarea>
+            <!-- Trigger -->
+            <button type="button" class="copybtn layui-btn layui-btn-primary layui-btn-sm" data-clipboard-target="#bar">
+                <i class="layui-icon"></i> 复制
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script data-th-inline="javascript">
+    layui.use(['febs','form','jquery','ClipboardJS'], function () {
+        var $ = layui.$,
+            febs = layui.febs,
+            layer = layui.layer,
+            form = layui.form,
+            ClipboardJS = layui.ClipboardJS,
+            propertyInfo = [[${propertyInfo}]],
+            $view = $('#org-properties-info');
+
+        init();
+        function init() {
+            form.val("org-properties-info", {
+                propertyInfo: propertyInfo
+            });
+            $view.find("#copy-item").each(function () {
+                $(this).mouseover(function () {
+                    $(this).find(".copybtn").css("display","block");
+                });
+                $(this).mouseout(function () {
+                    $(this).find(".copybtn").css("display","none");
+                });
+            })
+            initClipboardJs();
+        }
+        function initClipboardJs() {
+            var clipboard = new ClipboardJS('.copybtn');
+            clipboard.on('success', function(e) {
+                febs.alert.success('复制成功');
+            });
+
+            clipboard.on('error', function(e) {
+                febs.alert.fail('复制失败，请手动复制！');
+            });
+        }
+
+    });
+
+</script>
