@@ -1,2 +1,0 @@
-2022-03-22 20:46:58 ERROR ConsumeMessageThread_1 com.hero.sms.commands.receiptReturnRecord.SaveReturnRecordFromGateCommand NO.1-【SaveReturnRecordFromGateCommand】执行时间：【2022-03-22 20:46:58:282】回执查询结果异常：sendRecord=【null】,supportArea=【】,smsNumber=【+1666666】,getResMsgid=【20220322204658NNEUQ】
-2022-03-22 20:46:58 ERROR ConsumeMessageThread_2 com.hero.sms.commands.receiptReturnRecord.SaveReturnRecordFromGateCommand NO.1-【SaveReturnRecordFromGateCommand】执行时间：【2022-03-22 20:46:58:291】回执查询结果异常：sendRecord=【null】,supportArea=【】,smsNumber=【+1666666】,getResMsgid=【202203222046585LXTH】
