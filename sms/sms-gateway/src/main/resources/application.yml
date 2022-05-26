@@ -28,4 +28,4 @@ mybatis-plus:
     db-config:
       select-strategy: not_empty
 
-gatewayType: 1
+gatewayType: 7
